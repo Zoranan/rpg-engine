@@ -1,0 +1,9 @@
+
+weapon
+offHand
+headGear
+chestGear
+handGear
+legGear
+footGear
+ring

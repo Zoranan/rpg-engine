@@ -1,0 +1,12 @@
+rightFoot
+leftFoot
+rightThigh
+leftThigh
+head
+chest
+rightArm
+rightHand
+leftArm
+leftHand
+weapon
+offHand
