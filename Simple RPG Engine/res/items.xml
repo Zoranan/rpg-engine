@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+  <smallHealthPotion>
+    <spriteIconID>IconHealthPotion</spriteIconID>
+    <name>Health Potion</name>
+    <type>Potion</type>
+    <consumable>true</consumable>
+    <maxStackSize>2</maxStackSize>
+    <value>10</value>
+    <model />
+    <effects />
+  </smallHealthPotion>
+  <smallManaPotion>
+    <spriteIconID>IconManaPotion</spriteIconID>
+    <name>Mana Potion</name>
+    <type>Potion</type>
+    <consumable>true</consumable>
+    <maxStackSize>3</maxStackSize>
+    <value>10</value>
+    <models />
+    <effects />
+  </smallManaPotion>
+  <ironSword>
+    <spriteIconID>ironSwordIcon</spriteIconID>
+    <name>Iron Sword</name>
+    <type>weapon</type>
+    <consumable>false</consumable>
+    <maxStackSize>1</maxStackSize>
+    <value>250</value>
+    <models>
+      <list>ironSword</list>
+    </models>
+    <effects />
+  </ironSword>
+  <ironPlateCuirass>
+    <spriteIconID>ironPlateCuirassIcon</spriteIconID>
+    <name>Iron Plate Cuirass</name>
+    <type>chestGear</type>
+    <consumable>false</consumable>
+    <maxStackSize>1</maxStackSize>
+    <value>125</value>
+    <models>
+      <list>ironCuirassChest</list>
+      <list>ironCuirassLeft</list>
+      <list>ironCuirassRight</list>
+    </models>
+    <effects />
+  </ironPlateCuirass>
+  <ironPlateHelm>
+    <spriteIconID>ironPlateHelmIcon</spriteIconID>
+    <name>Iron Plate Helm</name>
+    <type>headGear</type>
+    <consumable>false</consumable>
+    <maxStackSize>1</maxStackSize>
+    <value>55</value>
+    <models>
+      <list>ironPlateHelm</list>
+    </models>
+    <effects />
+  </ironPlateHelm>
+  <ironPlateGreaves>
+    <spriteIconID>ironPlateGreavesIcon</spriteIconID>
+    <name>Iron Greaves</name>
+    <type>legGear</type>
+    <consumable>false</consumable>
+    <maxStackSize>1</maxStackSize>
+    <value>65</value>
+    <models>
+      <list>ironGreavesLeft</list>
+      <list>ironGreavesRight</list>
+    </models>
+    <effects />
+  </ironPlateGreaves>
+</items>

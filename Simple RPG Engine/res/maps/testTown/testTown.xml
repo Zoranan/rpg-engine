@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<world>
+	<bounds src="testTownBounds.png"></bounds>
+	<ground src="testTown.png"></ground>
+	<upper src="testTownUpperLayer.png"></upper>
+	
+	<entities>
+		<envEnt>
+			<envID>Tree01</envID>
+			<position x = "1100" y = "1400"></position>
+		</envEnt>
+		
+		<itemEnt>
+			<itemID>smallHealthPotion</itemID>
+			<position x = "1000" y = "1400"></position>
+		</itemEnt>
+		
+		<itemEnt>
+			<itemID>smallHealthPotion</itemID>
+			<position x = "950" y = "1400"></position>
+		</itemEnt>
+		
+		<itemEnt>
+			<itemID>smallHealthPotion</itemID>
+			<position x = "900" y = "1400"></position>
+		</itemEnt>
+		
+		<itemEnt>
+			<itemID>smallManaPotion</itemID>
+			<position x = "900" y = "1450"></position>
+		</itemEnt>
+		
+		<itemEnt>
+			<itemID>smallManaPotion</itemID>
+			<position x = "900" y = "1500"></position>
+		</itemEnt>
+		
+		<itemEnt>
+			<itemID>smallManaPotion</itemID>
+			<position x = "900" y = "1550"></position>
+		</itemEnt>
+		
+		<itemEnt>
+			<itemID>smallManaPotion</itemID>
+			<position x = "900" y = "1600"></position>
+		</itemEnt>
+		
+		<itemEnt>
+			<itemID>ironSword</itemID>
+			<position x = "850" y = "1600"></position>
+		</itemEnt>
+		
+		<itemEnt>
+			<itemID>ironPlateHelm</itemID>
+			<position x = "800" y = "1600"></position>
+		</itemEnt>
+		
+		<itemEnt>
+			<itemID>ironPlateCuirass</itemID>
+			<position x="1000" y="1600"></position>
+		</itemEnt>
+		
+		<itemEnt>
+			<itemID>ironPlateGreaves</itemID>
+			<position x="975" y="1600"></position>
+		</itemEnt>
+	</entities>
+	
+</world>

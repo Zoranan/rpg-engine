@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects>
+  <Tree01>
+    <name>Tree</name>
+    <spriteID>Tree01</spriteID>
+    <depthRegister>299</depthRegister>
+    <isSolid>true</isSolid>
+    <solidBounds x="88" y="291" w="23" h="10" />
+    <totalBounds x="76" y="207" w="44" h="99" />
+    <script />
+  </Tree01>
+</objects>

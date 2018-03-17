@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<races>
+  <white>
+    <tags />
+    <male>
+      <list>whiteMaleBody</list>
+      <list>whiteMaleHead</list>
+      <list>whiteMaleLeftArm</list>
+      <list>whiteMaleLeftFoot</list>
+      <list>whiteMaleLeftHand</list>
+      <list>whiteMaleLeftThigh</list>
+      <list>whiteMaleRightArm</list>
+      <list>whiteMaleRightFoot</list>
+      <list>whiteMaleRightHand</list>
+      <list>whiteMaleRightThigh</list>
+      <list>whiteMaleHair1</list>
+    </male>
+  </white>
+</races>

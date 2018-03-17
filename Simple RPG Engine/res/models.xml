@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<models>
+  <ironSword limb="weapon">
+    <front>ironSwordFront</front>
+    <back />
+    <left />
+    <right />
+    <tags />
+  </ironSword>
+  <whiteMaleBody limb="chest">
+    <front>whiteMaleBodyFront</front>
+    <back />
+    <left />
+    <right />
+  </whiteMaleBody>
+  <whiteMaleHead limb="head">
+    <front>whiteMaleHeadFront</front>
+    <back />
+    <left />
+    <right />
+  </whiteMaleHead>
+  <whiteMaleLeftArm limb="leftArm">
+    <front>whiteMaleLeftArmFront</front>
+    <back />
+    <left />
+    <right />
+  </whiteMaleLeftArm>
+  <whiteMaleLeftFoot limb="leftFoot">
+    <front>whiteMaleLeftFootFront</front>
+    <back />
+    <left />
+    <right />
+  </whiteMaleLeftFoot>
+  <whiteMaleLeftHand limb="leftHand">
+    <front>whiteMaleLeftHandFront</front>
+    <back />
+    <left />
+    <right />
+  </whiteMaleLeftHand>
+  <whiteMaleLeftThigh limb="leftThigh">
+    <front>whiteMaleLeftThighFront</front>
+    <back />
+    <left />
+    <right />
+  </whiteMaleLeftThigh>
+  <whiteMaleRightArm limb="rightArm">
+    <front>whiteMaleRightArmFront</front>
+    <back />
+    <left />
+    <right />
+  </whiteMaleRightArm>
+  <whiteMaleRightFoot limb="rightFoot">
+    <front>whiteMaleRightFootFront</front>
+    <back />
+    <left />
+    <right />
+  </whiteMaleRightFoot>
+  <whiteMaleRightHand limb="rightHand">
+    <front>whiteMaleRightHandFront</front>
+    <back />
+    <left />
+    <right />
+  </whiteMaleRightHand>
+  <whiteMaleRightThigh limb="rightThigh">
+    <front>whiteMaleRightThighFront</front>
+    <back />
+    <left />
+    <right />
+  </whiteMaleRightThigh>
+  <whiteMaleHair1 limb="hair">
+    <front>whiteMaleHair1Front</front>
+    <back />
+    <left />
+    <right />
+  </whiteMaleHair1>
+  <ironPlateHelm limb="head">
+    <front>ironPlateHelmFront</front>
+    <back />
+    <left />
+    <right />
+  </ironPlateHelm>
+  <ironCuirassChest limb="chest">
+    <front>ironPlateCuirassFront</front>
+    <back />
+    <left />
+    <right />
+  </ironCuirassChest>
+  <ironCuirassLeft limb="leftArm">
+    <front>ironPlateCuirassLeftFront</front>
+    <back />
+    <left />
+    <right />
+  </ironCuirassLeft>
+  <ironCuirassRight limb="rightArm">
+    <front>ironPlateGauntletsRightFront</front>
+    <back />
+    <left />
+    <right />
+  </ironCuirassRight>
+  <ironGreavesLeft limb="leftThigh">
+    <front>ironPlateGreavesLeftFront</front>
+    <back />
+    <left />
+    <right />
+  </ironGreavesLeft>
+  <ironGreavesRight limb="rightThigh">
+    <front>ironPlateGreavesRightFront</front>
+    <back />
+    <left />
+    <right />
+  </ironGreavesRight>
+</models>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sprites>
+  <Tree01>
+    <name>Tree</name>
+    <src>/sprites/tree1(sm).png</src>
+    <width>211</width>
+    <height>300</height>
+    <fps>0</fps>
+    <tags>
+      <tag>Nature</tag>
+      <tag>Forest</tag>
+    </tags>
+  </Tree01>
+  <IconHealthPotion>
+    <name>Health Potion</name>
+    <src>/sprites/icons/Health-Potion.png</src>
+    <width>50</width>
+    <height>50</height>
+    <fps>0</fps>
+    <tags />
+  </IconHealthPotion>
+  <IconManaPotion>
+    <name>Mana Potion</name>
+    <src>/sprites/icons/Mana-Potion.png</src>
+    <width>50</width>
+    <height>50</height>
+    <fps>0</fps>
+    <tags />
+  </IconManaPotion>
+  <ironSwordIcon>
+    <name>Iron Sword Icon</name>
+    <src>/sprites/icons/ironSwordIcon.png</src>
+    <width>50</width>
+    <height>50</height>
+    <fps>0</fps>
+    <tags />
+  </ironSwordIcon>
+  <ironSwordFront>
+    <name>iron sword</name>
+    <src>/sprites/models/ironSword/ironSwordFront.png</src>
+    <width>21</width>
+    <height>52</height>
+    <fps>0</fps>
+    <tags />
+  </ironSwordFront>
+  <ironPlateBootsIcon>
+    <name>ironPlateBootsIcon</name>
+    <src>/sprites/icons/ironPlateBootsIcon.png</src>
+    <width>50</width>
+    <height>50</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateBootsIcon>
+  <ironPlateCuirassIcon>
+    <name>ironPlateCuirassIcon</name>
+    <src>/sprites/icons/ironPlateCuirassIcon.png</src>
+    <width>50</width>
+    <height>50</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateCuirassIcon>
+  <ironPlateGauntletsIcon>
+    <name>ironPlateGauntletsIcon</name>
+    <src>/sprites/icons/ironPlateGauntletsIcon.png</src>
+    <width>50</width>
+    <height>50</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateGauntletsIcon>
+  <ironPlateGreavesIcon>
+    <name>ironPlateGreavesIcon</name>
+    <src>/sprites/icons/ironPlateGreavesIcon.png</src>
+    <width>50</width>
+    <height>50</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateGreavesIcon>
+  <ironPlateHelmIcon>
+    <name>ironPlateHelmIcon</name>
+    <src>/sprites/icons/ironPlateHelmIcon.png</src>
+    <width>50</width>
+    <height>50</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateHelmIcon>
+  <ironPlateShieldIcon>
+    <name>ironPlateShieldIcon</name>
+    <src>/sprites/icons/ironPlateShieldIcon.png</src>
+    <width>50</width>
+    <height>50</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateShieldIcon>
+  <whiteMaleBodyFront>
+    <name>whiteMaleBodyFront</name>
+    <src>/sprites/mobs/humanoid/male/white/whiteMaleBodyFront.png</src>
+    <width>39</width>
+    <height>42</height>
+    <fps>0</fps>
+    <tags />
+  </whiteMaleBodyFront>
+  <whiteMaleHeadFront>
+    <name>whiteMaleHeadFront</name>
+    <src>/sprites/mobs/humanoid/male/white/whiteMaleHeadFront.png</src>
+    <width>27</width>
+    <height>27</height>
+    <fps>0</fps>
+    <tags />
+  </whiteMaleHeadFront>
+  <whiteMaleLeftArmFront>
+    <name>whiteMaleLeftArmFront</name>
+    <src>/sprites/mobs/humanoid/male/white/whiteMaleLeftArmFront.png</src>
+    <width>11</width>
+    <height>16</height>
+    <fps>0</fps>
+    <tags />
+  </whiteMaleLeftArmFront>
+  <whiteMaleLeftFootFront>
+    <name>whiteMaleLeftFootFront</name>
+    <src>/sprites/mobs/humanoid/male/white/whiteMaleLeftFootFront.png</src>
+    <width>12</width>
+    <height>19</height>
+    <fps>0</fps>
+    <tags />
+  </whiteMaleLeftFootFront>
+  <whiteMaleLeftHandFront>
+    <name>whiteMaleLeftHandFront</name>
+    <src>/sprites/mobs/humanoid/male/white/whiteMaleLeftHandFront.png</src>
+    <width>11</width>
+    <height>18</height>
+    <fps>0</fps>
+    <tags />
+  </whiteMaleLeftHandFront>
+  <whiteMaleLeftThighFront>
+    <name>whiteMaleLeftThighFront</name>
+    <src>/sprites/mobs/humanoid/male/white/whiteMaleLeftThighFront.png</src>
+    <width>11</width>
+    <height>16</height>
+    <fps>0</fps>
+    <tags />
+  </whiteMaleLeftThighFront>
+  <whiteMaleRightArmFront>
+    <name>whiteMaleRightArmFront</name>
+    <src>/sprites/mobs/humanoid/male/white/whiteMaleRightArmFront.png</src>
+    <width>11</width>
+    <height>16</height>
+    <fps>0</fps>
+    <tags />
+  </whiteMaleRightArmFront>
+  <whiteMaleRightFootFront>
+    <name>whiteMaleRightFootFront</name>
+    <src>/sprites/mobs/humanoid/male/white/whiteMaleRightFootFront.png</src>
+    <width>12</width>
+    <height>19</height>
+    <fps>0</fps>
+    <tags />
+  </whiteMaleRightFootFront>
+  <whiteMaleRightHandFront>
+    <name>whiteMaleRightHandFront</name>
+    <src>/sprites/mobs/humanoid/male/white/whiteMaleRightHandFront.png</src>
+    <width>11</width>
+    <height>18</height>
+    <fps>0</fps>
+    <tags />
+  </whiteMaleRightHandFront>
+  <whiteMaleRightThighFront>
+    <name>whiteMaleRightThighFront</name>
+    <src>/sprites/mobs/humanoid/male/white/whiteMaleRightThighFront.png</src>
+    <width>11</width>
+    <height>16</height>
+    <fps>0</fps>
+    <tags />
+  </whiteMaleRightThighFront>
+  <whiteMaleHair1Front>
+    <name>whiteMaleHair1Front</name>
+    <src>/sprites/mobs/humanoid/male/white/whiteMaleHair1Front.png</src>
+    <width>27</width>
+    <height>27</height>
+    <fps>0</fps>
+    <tags />
+  </whiteMaleHair1Front>
+  <WalkingTest>
+    <name>Walking</name>
+    <src>/sprites/walkAnimTest.png</src>
+    <width>50</width>
+    <height>50</height>
+    <fps>4</fps>
+    <tags>
+      <tag>walking</tag>
+      <tag>stick</tag>
+      <tag>guy</tag>
+    </tags>
+  </WalkingTest>
+  <ironPlateBootsLeftFront>
+    <name>ironPlateBootsLeftFront</name>
+    <src>/sprites/models/IronArmor/ironPlateBootsLeftFront.png</src>
+    <width>12</width>
+    <height>19</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateBootsLeftFront>
+  <ironPlateBootsRightFront>
+    <name>ironPlateBootsRightFront</name>
+    <src>/sprites/models/IronArmor/ironPlateBootsRightFront.png</src>
+    <width>12</width>
+    <height>19</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateBootsRightFront>
+  <ironPlateCuirassFront>
+    <name>ironPlateCuirassFront</name>
+    <src>/sprites/models/IronArmor/ironPlateCuirassFront.png</src>
+    <width>39</width>
+    <height>42</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateCuirassFront>
+  <ironPlateCuirassLeftFront>
+    <name>ironPlateCuirassLeftFront</name>
+    <src>/sprites/models/IronArmor/ironPlateCuirassLeftFront.png</src>
+    <width>11</width>
+    <height>16</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateCuirassLeftFront>
+  <ironPlateCuirassRightFront>
+    <name>ironPlateCuirassRightFront</name>
+    <src>/sprites/models/IronArmor/ironPlateCuirassRightFront.png</src>
+    <width>11</width>
+    <height>16</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateCuirassRightFront>
+  <ironPlateGauntletsLeftFront>
+    <name>ironPlateGauntletsLeftFront</name>
+    <src>/sprites/models/IronArmor/ironPlateGauntletsLeftFront.png</src>
+    <width>11</width>
+    <height>18</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateGauntletsLeftFront>
+  <ironPlateGauntletsRightFront>
+    <name>ironPlateGauntletsRightFront</name>
+    <src>/sprites/models/IronArmor/ironPlateGauntletsRightFront.png</src>
+    <width>11</width>
+    <height>18</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateGauntletsRightFront>
+  <ironPlateGreavesLeftFront>
+    <name>ironPlateGreavesLeftFront</name>
+    <src>/sprites/models/IronArmor/ironPlateGreavesLeftFront.png</src>
+    <width>11</width>
+    <height>16</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateGreavesLeftFront>
+  <ironPlateGreavesRightFront>
+    <name>ironPlateGreavesRightFront</name>
+    <src>/sprites/models/IronArmor/ironPlateGreavesRightFront.png</src>
+    <width>11</width>
+    <height>16</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateGreavesRightFront>
+  <ironPlateHelmFront>
+    <name>ironPlateHelmFront</name>
+    <src>/sprites/models/IronArmor/ironPlateHelmFront.png</src>
+    <width>27</width>
+    <height>27</height>
+    <fps>0</fps>
+    <tags />
+  </ironPlateHelmFront>
+</sprites>

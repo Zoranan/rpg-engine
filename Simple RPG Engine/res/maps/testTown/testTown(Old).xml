@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<world>
+	<bounds src="testTownBounds.png"></bounds>
+	<ground src="testTown.png"></ground>
+	<upper src="testTownUpperLayer.png"></upper>
+	
+	<entities>
+	
+		<trees>
+			<tree treeType = "1">
+				<position x = "1000" y = "1700"></position>
+			</tree>
+			
+			<tree treeType = "1">
+				<position x = "800" y = "1501"></position>
+			</tree>
+		</trees>
+		
+		<Items>
+			<healthPotion>
+				<position x= "1175" y= "1550"></position>
+			</healthPotion>
+			<manaPotion>
+				<position x= "1150" y= "1550"></position>
+			</manaPotion>
+			<manaPotion>
+				<position x= "1125" y= "1550"></position>
+			</manaPotion>
+			
+			<meleeWeapon>
+				<position x= "1200" y= "1300"></position>
+				<name>ironSword</name>
+			</meleeWeapon>
+			
+			<headGear>
+				<position x= "1150" y= "1250"></position>
+				<name>ironPlateHelm</name>
+			</headGear>
+			
+			<chestGear>
+				<position x= "1120" y= "1250"></position>
+				<name>ironPlateCuirass</name>
+			</chestGear>
+			
+			<legGear>
+				<position x= "1090" y= "1250"></position>
+				<name>ironPlateGreaves</name>
+			</legGear>
+	
+			<handGear>
+				<position x= "1050" y= "1250"></position>
+				<name>ironPlateGauntlets</name>
+			</handGear>
+			
+			<footGear>
+				<position x= "1020" y= "1250"></position>
+				<name>ironPlateBoots</name>
+			</footGear>
+			
+			<offHand>
+				<position x= "980" y= "1250"></position>
+				<name>ironPlateShield</name>
+			</offHand>
+			
+			<ringGear>
+				<position x= "940" y= "1250"></position>
+				<name>goldRubyRing</name>
+			</ringGear>
+			
+		</Items>
+		
+		<mobs>
+			<humanoid>
+				<position x = "900" y = "1200"></position>
+				<nameID>testFriend</nameID>
+			</humanoid>
+		</mobs>
+	
+	</entities>
+	
+</world>
