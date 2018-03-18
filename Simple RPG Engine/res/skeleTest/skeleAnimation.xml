@@ -1,0 +1,275 @@
+
+
+<skeletonAnimations>
+
+# x = "" y = "" w = "" h = "" r = "0"
+
+	<lower>
+		<walk angle = "front">
+			
+			<keyFrame n = "1">
+				<rightThigh x = "15" y = "43" w = "11" h = "16" r = "0"></rightThigh>
+				<leftThigh x = "21" y = "43" w = "11" h = "17" r = "0"></leftThigh>
+				<rightFoot x = "15" y = "53" w = "9" h = "14" r = "0"></rightFoot>
+				<leftFoot x = "22" y = "52" w = "14" h = "22" r = "0"></leftFoot>
+				
+				
+			</keyFrame>
+			
+			<keyFrame n = "5">
+				
+				<rightFoot x = "15" y = "49" w = "9" h = "14" r = "0"></rightFoot>
+				<leftFoot x = "22.5" y = "52.5" w = "12" h = "18" r = "0"></leftFoot>
+				
+				
+			</keyFrame>
+			
+			<keyFrame n = "10">
+				
+				<rightFoot x = "11" y = "52" w = "14" h = "22" r = "0"></rightFoot>
+				<leftFoot x = "23" y = "53" w = "9" h = "14" r = "0"></leftFoot>
+				
+				
+			</keyFrame>
+			
+			<keyFrame n = "15">
+				
+				<rightFoot x = "12.6" y = "52.5" w = "11" h = "18" r = "0"></rightFoot>
+				<leftFoot x = "23" y = "49" w = "9" h = "14" r = "0"></leftFoot>
+				
+				
+			</keyFrame>
+			
+			<keyFrame n = "20">
+				<rightThigh x = "15" y = "43" w = "11" h = "16" r = "0"></rightThigh>
+				<leftThigh x = "21" y = "43" w = "11" h = "17" r = "0"></leftThigh>
+				<rightFoot x = "15" y = "53" w = "9" h = "14" r = "0"></rightFoot>
+				<leftFoot x = "22" y = "52" w = "14" h = "22" r = "0"></leftFoot>
+				
+				
+			</keyFrame>
+		
+		</walk>
+		
+		<idle angle = "front">
+			<keyFrame n = "1">
+				<rightThigh x = "15" y = "43" w = "11" h = "16" r = "0"></rightThigh>
+				<leftThigh x = "21" y = "43" w = "11" h = "17" r = "0"></leftThigh>
+				<rightFoot x = "13" y = "52" w = "12" h = "19" r = "0"></rightFoot>
+				<leftFoot x = "22" y = "52" w = "12" h = "19" r = "0"></leftFoot>
+			</keyFrame>
+		</idle>
+	
+	</lower>
+	
+	<upper>
+	
+		#Idle animations
+		<idleEmptyHand angle = "front">
+			<keyFrame n = "1">
+				<rightArm x = "7" y = "21" w = "11" h = "16" r = "0"></rightArm>
+				<leftArm x = "29" y = "21" w = "11" h = "16" r = "0"></leftArm>
+				<chest x = "4" y = "12" w = "39" h = "42" r = "0"></chest>
+				<head x = "10" y = "-8" w = "27" h = "27" r = "0"></head>
+				<rightHand x = "6" y = "30" w = "11" h = "18" r = "0"></rightHand>
+				<leftHand x = "30" y = "30" w = "11" h = "18" r = "0"></leftHand>
+				<offHand x = "20" y = "22" w = "29" h = "45" r = "0"></offHand>
+			</keyFrame>
+		</idleEmptyHand>
+		
+		<idleOneHand angle = "front">
+			<keyFrame n = "1">
+				<rightArm x = "7" y = "21" w = "11" h = "16" r = "0"></rightArm>
+				<leftArm x = "29" y = "21" w = "11" h = "16" r = "0"></leftArm>
+				<chest x = "4" y = "12" w = "39" h = "42" r = "0"></chest>
+				<head x = "10" y = "-8" w = "27" h = "27" r = "0"></head>
+				<rightHand x = "6" y = "30" w = "11" h = "18" r = "0"></rightHand>
+				<leftHand x = "30" y = "30" w = "11" h = "18" r = "0"></leftHand>
+				<weapon x = "2" y = "42" w = "21" h = "52" r = "0"></weapon>
+				<offHand x = "20" y = "22" w = "29" h = "45" r = "0"></offHand>
+			</keyFrame>
+		</idleOneHand>
+		#End idle animations
+		
+		#Walk animations
+		<walkEmptyHand angle = "front">
+		
+			<keyFrame n = "1">
+				<rightArm x = "7" y = "21" w = "11" h = "16" r = "0"></rightArm>
+				<leftArm x = "29" y = "21" w = "11" h = "16" r = "0"></leftArm>
+				<chest x = "4" y = "12" w = "39" h = "42" r = "0"></chest>
+				<head x = "10" y = "-8.5" w = "27" h = "27" r = "0"></head>
+				
+				<rightHand x = "5" y = "26" w = "13" h = "21" r = "0"></rightHand>
+				<leftHand x = "32" y = "29" w = "9" h = "15" r = "0"></leftHand>
+				
+				<offHand x = "21" y = "23" w = "27" h = "43" r = "0"></offHand>
+			</keyFrame>
+			
+			<keyFrame n = "5">
+				<head x = "10" y = "-7" w = "27" h = "27" r = "0"></head>		
+			</keyFrame>
+			
+			<keyFrame n = "10">
+				<head x = "10" y = "-8.5" w = "27" h = "27" r = "0"></head>
+				
+				<rightHand x = "8" y = "29" w = "9" h = "15" r = "0"></rightHand>
+				<leftHand x = "30" y = "26" w = "13" h = "21" r = "0"></leftHand>
+				
+				<offHand x = "19" y = "21" w = "34" h = "44.5" r = "0"></offHand>
+			</keyFrame>
+			
+			<keyFrame n = "15">
+				<head x = "10" y = "-7" w = "27" h = "27" r = "0"></head>
+			</keyFrame>
+			
+			<keyFrame n = "20">
+				<rightArm x = "7" y = "21" w = "11" h = "16" r = "0"></rightArm>
+				<leftArm x = "29" y = "21" w = "11" h = "16" r = "0"></leftArm>
+				<chest x = "4" y = "12" w = "39" h = "42" r = "0"></chest>
+				<head x = "10" y = "-8.5" w = "27" h = "27" r = "0"></head>
+				
+				<rightHand x = "5" y = "26" w = "13" h = "21" r = "0"></rightHand>
+				<leftHand x = "32" y = "29" w = "9" h = "15" r = "0"></leftHand>
+				
+				<offHand x = "21" y = "23" w = "27" h = "43" r = "0"></offHand>
+			</keyFrame>
+		
+		</walkEmptyHand>
+		
+		<walkOneHand angle = "front">
+		
+			<keyFrame n = "1">
+				
+				<rightArm x = "7" y = "21" w = "11" h = "16" r = "0"></rightArm>
+				<leftArm x = "29" y = "21" w = "11" h = "16" r = "0"></leftArm>
+				<chest x = "4" y = "12" w = "39" h = "42" r = "0"></chest>
+				<head x = "10" y = "-8.5" w = "27" h = "27" r = "0"></head>
+				
+				<rightHand x = "6" y = "30" w = "11" h = "18" r = "0"></rightHand>
+				<leftHand x = "32" y = "29" w = "9" h = "15" r = "0"></leftHand>
+				
+				<offHand x = "21" y = "23" w = "27" h = "43" r = "0"></offHand>
+				<weapon x = "2" y = "42" w = "21" h = "52" r = "0"></weapon>
+				
+			</keyFrame>
+			
+			<keyFrame n = "5">
+				<head x = "10" y = "-7" w = "27" h = "27" r = "0"></head>
+			</keyFrame>
+			
+			<keyFrame n = "10">
+				<head x = "10" y = "-8.5" w = "27" h = "27" r = "0"></head>
+				
+				<rightHand x = "6" y = "30" w = "11" h = "18" r = "0"></rightHand>
+				<leftHand x = "30" y = "26" w = "13" h = "21" r = "0"></leftHand>
+				
+				<offHand x = "19" y = "21" w = "34" h = "44.5" r = "0"></offHand>
+			</keyFrame>
+			
+			<keyFrame n = "15">
+				<head x = "10" y = "-7" w = "27" h = "27" r = "0"></head>
+			</keyFrame>
+			
+			<keyFrame n = "20">
+				
+				<rightArm x = "7" y = "21" w = "11" h = "16" r = "0"></rightArm>
+				<leftArm x = "29" y = "21" w = "11" h = "16" r = "0"></leftArm>
+				<chest x = "4" y = "12" w = "39" h = "42" r = "0"></chest>
+				<head x = "10" y = "-8.5" w = "27" h = "27" r = "0"></head>
+				
+				<rightHand x = "6" y = "30" w = "11" h = "18" r = "0"></rightHand>
+				<leftHand x = "32" y = "29" w = "9" h = "15" r = "0"></leftHand>
+				
+				<offHand x = "21" y = "23" w = "27" h = "43" r = "0"></offHand>
+				<weapon x = "2" y = "42" w = "21" h = "52" r = "0"></weapon>
+			</keyFrame>
+		</walkOneHand>
+		#End walk animations
+		
+		#Attack animations
+		<attackOneHand angle = "front" trigger = "28">
+			
+			<keyFrame n = "1">
+				<rightArm x = "7" y = "21" w = "11" h = "16" r = "0"></rightArm>
+				<leftArm x = "29" y = "21" w = "11" h = "16" r = "0"></leftArm>
+				<chest x = "4" y = "12" w = "39" h = "42" r = "0"></chest>
+				<head x = "10" y = "-8.5" w = "27" h = "27" r = "0"></head>
+				
+				<rightHand x = "6" y = "30" w = "11" h = "18" r = "0"></rightHand>
+				<leftHand x = "30" y = "30" w = "11" h = "18" r = "0"></leftHand>
+				
+				<offHand x = "20" y = "22" w = "29" h = "45" r = "0"></offHand>
+				<weapon x = "2" y = "41" w = "21" h = "52" r = "0"></weapon>
+			</keyFrame>
+			
+			#Half Way up
+			<keyFrame n = "8">
+				<rightArm x = "9" y = "19.6" w = "11" h = "16" r = "37"></rightArm>
+				<rightHand x = "4" y = "26" w = "11" h = "18" r = "65"></rightHand>
+				
+				<weapon x = "5" y = "27" w = "21" h = "52" r = "125"></weapon>
+			</keyFrame>
+			
+			#Sword raised all the way
+			<keyFrame n = "18">
+				<rightArm x = "15" y = "18" w = "11" h = "16" r = "84"></rightArm>
+				<rightHand x = "10" y = "23" w = "11" h = "18" r = "138"></rightHand>
+				
+				<weapon x = "5" y = "19" w = "21" h = "52" r = "206"></weapon>
+			</keyFrame>
+			
+			#Slight pause with sword raised
+			<keyFrame n = "23">
+				<rightArm x = "15" y = "18" w = "11" h = "16" r = "84"></rightArm>
+				<rightHand x = "10" y = "23" w = "11" h = "18" r = "138"></rightHand>
+				
+				<weapon x = "5" y = "19" w = "21" h = "52" r = "206"></weapon>
+			</keyFrame>
+			
+			#Sword points straight ahead (TRIGGER)
+			<keyFrame n = "28">
+				<rightArm x = "7" y = "21" w = "11" h = "16" r = "0"></rightArm>
+				<leftArm x = "29" y = "21" w = "11" h = "16" r = "0"></leftArm>#
+				<chest x = "4" y = "12" w = "39" h = "42" r = "0"></chest>#
+				<head x = "10" y = "-8.5" w = "27" h = "27" r = "0"></head>#
+				
+				<rightHand x = "6" y = "30" w = "11" h = "18" r = "0"></rightHand>
+				<leftHand x = "30" y = "30" w = "11" h = "18" r = "0"></leftHand>#
+				
+				<weapon x = "2" y = "41" w = "21" h = "52" r = "0"></weapon>
+			</keyFrame>
+			
+			#Swing complete
+			<keyFrame n = "32">
+				<rightArm x = "8" y = "22" w = "11" h = "16" r = "0"></rightArm>
+				<rightHand x = "6" y = "34" w = "11" h = "18" r = "-38"></rightHand>
+				
+				<weapon x = "13" y = "52" w = "21" h = "52" r = "-73"></weapon>
+			</keyFrame>
+			
+			#Slight pause
+			<keyFrame n = "38">
+				<rightArm x = "8" y = "22" w = "11" h = "16" r = "0"></rightArm>
+				<rightHand x = "6" y = "34" w = "11" h = "18" r = "-38"></rightHand>
+				
+				<weapon x = "13" y = "52" w = "21" h = "52" r = "-73"></weapon>
+			</keyFrame>
+			
+			#Resting position (Final frame)
+			<keyFrame n = "45">
+				<rightArm x = "7" y = "21" w = "11" h = "16" r = "0"></rightArm>
+				<leftArm x = "29" y = "21" w = "11" h = "16" r = "0"></leftArm>
+				<chest x = "4" y = "12" w = "39" h = "42" r = "0"></chest>
+				<head x = "10" y = "-8.5" w = "27" h = "27" r = "0"></head>
+				
+				<rightHand x = "6" y = "30" w = "11" h = "18" r = "0"></rightHand>
+				<leftHand x = "30" y = "30" w = "11" h = "18" r = "0"></leftHand>
+				
+				<offHand x = "20" y = "22" w = "29" h = "45" r = "0"></offHand>
+				<weapon x = "2" y = "41" w = "21" h = "52" r = "0"></weapon>
+			</keyFrame>
+		
+		</attackOneHand>
+	</upper>
+</skeletonAnimations>
