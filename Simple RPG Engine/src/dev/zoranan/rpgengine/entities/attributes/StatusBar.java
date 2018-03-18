@@ -6,11 +6,15 @@ import java.awt.image.BufferedImage;
 
 import dev.zoranan.rpgengine.util.Assets;
 
+/*
+ * Status bars can be attached to any Stat Object, to track their percentage.
+ */
+
 public class StatusBar {
 	protected int posX, posY;
 	protected int width, height;
 	private Stat stat;
-	private BufferedImage bar = Assets.redBar;
+	private BufferedImage bar = Assets.redBar;	//TEMP
 	
 	//CONSTRUCTOR
 	//TAKES ALL PARAMETERS
@@ -52,9 +56,7 @@ public class StatusBar {
 		g.fillRect(posX, posY, width, height);
 		
 		//Fill bar
-		//g.setColor(Color.RED);
 		g.drawImage(bar, posX, posY, (int) (width * stat.calcDecimal()), height, null);
-		//g.fillRect(posX, posY, (int) (width * stat.calcDecimal()), height);
 		//Outline
 		g.setColor(Color.BLACK);
 		g.drawRect(posX, posY, width, height);

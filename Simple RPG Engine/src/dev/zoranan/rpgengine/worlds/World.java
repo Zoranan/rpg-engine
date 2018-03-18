@@ -8,7 +8,6 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import dev.zoranan.rpgengine.Handler;
-import dev.zoranan.rpgengine.entities.Building;
 import dev.zoranan.rpgengine.entities.Entity;
 import dev.zoranan.rpgengine.entities.EntityManager;
 import dev.zoranan.rpgengine.entities.EnvironmentalEntity;
@@ -20,6 +19,10 @@ import dev.zoranan.rpgengine.gfx.GameCamera;
 import dev.zoranan.rpgengine.gfx.ImageLoader;
 import dev.zoranan.rpgengine.util.Assets;
 import dev.zoranan.rpgengine.util.XmlLoader;
+
+/*
+ * World Objects load world (map) data, and create objects for that world dynamically 
+ */
 
 public class World {
 	public static final String MAP_DIR = "/maps/";
@@ -37,11 +40,7 @@ public class World {
 	private CombatManager combatManager;
 
 	public World (String name, Handler handler)
-	{
-		
-		//map.put("tree", Tree.class);
-		//map.put("healthPotion", HealthPotion.class);
-		
+	{	
 		this.handler = handler;
 		entityManager = new EntityManager(handler);
 		combatManager = new CombatManager(handler);
@@ -49,12 +48,9 @@ public class World {
 		handler.setCombatManager(combatManager);
 		player = handler.getPlayer();
 		entityManager.addEntity(player);
-		player.setPos(1100f, 1400f);	//NEEDS to be determined by the map xml file? NOPE
+		player.setPos(1100f, 1400f);	//NEEDS to be determined by WHERE the player was loaded in from
 	
 		this.loadWorld(name);
-		
-		//TEST
-		//entityManager.addEntity(new Building ("Test House", handler, 1350f, 1400f, Assets.testHouse[2]));
 	}
 	
 	//LOAD THE WORLD
@@ -64,7 +60,7 @@ public class World {
 		Document map = XmlLoader.readXML((baseURL + name + ".xml"));
 		Element root = map.getRootElement();
 		
-		//Start by loading the base images in
+		//Start by loading the base images in (Due for removal)
 		groundMap = ImageLoader.loadImage(baseURL + root.getChild("ground").getAttributeValue("src"));
 		hitAreaMap = ImageLoader.loadImage(baseURL + root.getChild("bounds").getAttributeValue("src"));
 		buildingsMap = ImageLoader.loadImage(baseURL + root.getChild("upper").getAttributeValue("src"));
@@ -75,13 +71,7 @@ public class World {
 		
 		for (Element g : entityGroup)
 		{
-			//Get the specific entities from their groups
-			//List<Element>entityList = g.getChildren();
-			//for (Element e : entityList)
-			{
-				entityManager.addEntity(this.createNew(g));
-				//this.createNew(e);
-			}
+			entityManager.addEntity(this.createNew(g));
 		}
 	}
 	
@@ -135,7 +125,7 @@ public class World {
 		combatManager.render(g);
 	}
 	
-	//GET SOLID AREA?
+	//GET SOLID AREA? (Due for removal when separate map collision is removed)
 	public boolean isSolid (int x, int y)
 	{
 		if (hitAreaMap != null)

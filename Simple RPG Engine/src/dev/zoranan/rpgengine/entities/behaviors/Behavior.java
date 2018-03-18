@@ -25,7 +25,8 @@ public abstract class Behavior {
 		return mob;
 	}
 	
-	//Checks for collision at a single point depending on player direction
+	//Checks for map collision at a single point depending on player direction
+	//Up for deletion when separate map collision is removed
 	public boolean check(Mob.Direction dir)
 	{
 		centerX = (int) mob.getPosX() + (mob.getWidth()/2);

@@ -4,6 +4,11 @@ import dev.zoranan.rpgengine.entities.Entity;
 import dev.zoranan.rpgengine.entities.containers.ItemTransfer.Context;
 import dev.zoranan.rpgengine.items.Item;
 
+/*
+ * Container object are not physical Entities. They are attached to entities in order to store items
+ * if that entity is meant to be a container
+ */
+
 public class Container {
 	protected int capacity;	//Total storage space
 	protected int length;	//Currently used slots
@@ -152,9 +157,8 @@ public class Container {
 		return add(it.getItem());
 	}
 	
-	//Removes an item. Returns number of items removed from the container
-	//REMOVE AN ITEM
-	
+	//Removes an Item
+	//Returns That Item
 	public Item remove(int i)
 	{
 		Item item = contents[i];
@@ -162,13 +166,15 @@ public class Container {
 		return item;
 	}
 	
+	//Remove an item from the container, and wrap it in an Item Transfer
 	public ItemTransfer removeIT(int i)
 	{
-		ItemTransfer it = new ItemTransfer(contents[i], this.owner, this, i, Context.LOOT);
-		contents[i] = null;
+		ItemTransfer it = new ItemTransfer(this.remove(i), this.owner, this, i, Context.LOOT);
 		return it;
 	}
 	
+	
+	//Remove an item (reduce stack size) by passing that item in
 	public int remove(Item item)
 	{
 		int removed = 0;

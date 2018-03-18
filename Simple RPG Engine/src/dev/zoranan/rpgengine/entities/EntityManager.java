@@ -9,11 +9,14 @@ import dev.zoranan.rpgengine.entities.behaviors.Behavior;
 import dev.zoranan.rpgengine.entities.behaviors.Player;
 import dev.zoranan.rpgengine.items.Item;
 
+/*
+ * Handles all entities currently placed on the loaded map
+ */
+
 public class EntityManager {
 	private Handler handler;
-	private Mob player;
 	private ArrayList<Entity> entities;
-	private static final int ACTIVATION_RANGE = 60;
+	private static final int ACTIVATION_RANGE = 60; //This, should be passed in or checked at entity level
 	
 	//Sorts the list by depth
 	private Comparator<Entity> depth = new Comparator<Entity>() {
@@ -30,7 +33,6 @@ public class EntityManager {
 	public EntityManager (Handler handler)
 	{
 		this.handler = handler;
-		this.player = handler.getPlayer();
 		entities = new ArrayList<Entity>();
 	}
 	

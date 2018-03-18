@@ -36,6 +36,7 @@ public class ItemEntity extends Entity{
 		int x = Integer.parseInt(mapElement.getChild("position").getAttributeValue("x"));
 		int y = Integer.parseInt(mapElement.getChild("position").getAttributeValue("y"));
 		this.setPos(x, y);
+		this.setDepthReference(ITEM_SIZE);
 	}
 
 	@Override

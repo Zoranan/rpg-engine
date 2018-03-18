@@ -6,6 +6,10 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+/*
+ * This class creates the game window /  canvas
+ */
+
 public class Display {
 	private JFrame frame;
 	private Canvas canvas;

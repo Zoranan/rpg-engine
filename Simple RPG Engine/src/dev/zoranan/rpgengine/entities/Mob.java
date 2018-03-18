@@ -71,6 +71,7 @@ public abstract class Mob extends Entity{
 		return null;
 	}
 	
+	//For use with skeletal animated mobs (humanoid)
 	public HashMap<String, HashMap<String, String>> getSkinModels()
 	{
 		return null;
@@ -89,9 +90,9 @@ public abstract class Mob extends Entity{
 		GameCamera cam = handler.getGameCamera();
 		g.drawImage(icon.getFrame(0), cam.calcRenderX(posX), cam.calcRenderY(posY), width, height, null);
 	}
-	//COLLISION DETECTION
-	//map collision
 	
+	//COLLISION DETECTION
+	//map collision (due to be removed)
 	public boolean checkMapCollision(float xOffset, float yOffset)
 	{
 		float xCheck, yCheck;
@@ -101,7 +102,7 @@ public abstract class Mob extends Entity{
 		return (handler.getWorld().isSolid(xCheck, yCheck));
 	}
 	
-	//Get a hold of our stats
+	//Get ahold of our stats
 	public StatSheet getStatSheet()
 	{
 		return statSheet;
@@ -114,9 +115,7 @@ public abstract class Mob extends Entity{
 	
 	//MOVEMENT
 	public void move()
-	{
-		//depthReference =  height;
-		
+	{	
 		boolean xHit = checkMapCollision(xMove, 0f) || checkEntityCollision(xMove, 0f);
 		boolean yHit = checkMapCollision(0f, yMove) || checkEntityCollision(0f, yMove);
 		
@@ -177,7 +176,7 @@ public abstract class Mob extends Entity{
 		
 		//Try to move
 		move();
-		//Face the proper way
+		//Face the proper way (disabled until animations are finished)
 		if (!attacking);
 			//facing = dir;
 	}
@@ -198,6 +197,7 @@ public abstract class Mob extends Entity{
 				int initialStackSize = i.getStackSize();			//Store how many items are in the stack before we loot any of them
 				handler.getEntityManager().removeEntity(activatedEntity);	//Take the entity off the map.
 				
+				//Adds the item, which returns the amount left in the stack when done
 				//If we still have items left in the stack, drop them
 				if (inventory.add(i) < initialStackSize)
 				{
@@ -205,7 +205,7 @@ public abstract class Mob extends Entity{
 				}
 			}
 			else; //<---------------------------------------------\/
-				//Activate the item. Remember to remove that semicolon!!
+				//Activate the item. Remember to remove that semicolon when implemented!!
 					
 		}
 	}

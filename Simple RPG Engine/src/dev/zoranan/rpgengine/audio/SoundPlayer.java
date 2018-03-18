@@ -56,6 +56,7 @@ public class SoundPlayer implements Runnable{
 		toPlayOnce.add(soundID);
 	}
 	
+	//starts playing the next sound in our sound que
 	private void startPlayOnce(String soundID)
 	{
 		try
@@ -82,7 +83,7 @@ public class SoundPlayer implements Runnable{
 		}
 	}
 	
-	//Plays / Restarts the sound
+	//Plays / Restarts a sound
 	public void playPersistent(String soundID)
 	{
 		toStart.add(soundID);
@@ -115,6 +116,7 @@ public class SoundPlayer implements Runnable{
 		persistentSounds.remove(soundID);
 	}
 	
+	//Stop all sounds
 	public void stopAll()
 	{
 		for (String s : persistentSounds.keySet())
@@ -125,6 +127,7 @@ public class SoundPlayer implements Runnable{
 
 	
 	//Need a volatile int to keep the thread from sleeping
+	//We are using a separate thread for audio
 	private volatile int i;
 	@Override
 	public void run() 

@@ -1,18 +1,23 @@
 package dev.zoranan.rpgengine.entities.attributes;
 
+/*
+ * Simple objects that store the name, current, and maximum values for a stat.
+ */
+
 public class Stat {
 	private String name;
 	private int current;
 	private int maximum;
 	//possibly add in for buffs / debuffs
 	
-	public Stat(String name, int level)
+	public Stat(String name, int level, int max)
 	{
 		this.name = name;
 		this.current = level;
-		this.maximum = level;
+		this.maximum = max;
 	}
 	
+	//Returns a decimal value (percent) representing this stat's percentage to max value.
 	public double calcDecimal()
 	{
 		if (current < 0)
@@ -33,11 +38,13 @@ public class Stat {
 			current = c;
 	}
 	
+	//Increase the stat by a given amount
 	public void increase(int i)
 	{
 		this.set(this.current + i);
 	}
 	
+	//Decrease the stat by a given amount
 	public void decrease(int i)
 	{
 		this.set(this.current - i);
@@ -51,7 +58,7 @@ public class Stat {
 		
 		int dif = c - maximum;
 		maximum = c;
-		this.increase(dif);
+		this.increase(dif); //Drops or lowers our current value by the same amount we changed our max value.
 	}
 	
 	public void increaseMax(int i)
@@ -68,6 +75,11 @@ public class Stat {
 	public int get()
 	{
 		return current;
+	}
+	
+	public int getMax()
+	{
+		return this.maximum;
 	}
 	
 	public String name()

@@ -10,6 +10,10 @@ import dev.zoranan.rpgengine.gfx.GameCamera;
 import dev.zoranan.rpgengine.gfx.Sprite;
 import dev.zoranan.rpgengine.util.Assets;
 
+/*
+ * Any non moving object used to make up the game map
+ */
+
 public class EnvironmentalEntity extends Entity{
 	
 	protected Sprite sprite;	//The sprite used to render this object
@@ -19,7 +23,7 @@ public class EnvironmentalEntity extends Entity{
 		super(name, handler, x, y, w, h);
 	}
 	
-	//Constructor that takes an XML element but no handler
+	//Constructor that takes an XML element but no handler (Why? Testing.. To be removed)
 	private EnvironmentalEntity(Element envEntityElement)
 	{
 		super (envEntityElement, null);	//we must set the handler here!

@@ -6,9 +6,15 @@ import java.awt.Rectangle;
 import org.jdom2.Element;
 
 import dev.zoranan.rpgengine.Handler;
-import dev.zoranan.rpgengine.entities.behaviors.Behavior;
 import dev.zoranan.rpgengine.entities.containers.Container;
-import dev.zoranan.rpgengine.util.Assets;
+
+/*
+ * ABSTRACT CLASS
+ * This class encompasses all physical items that are added to a game map
+ * We have position variables, a name, and some flags to determine if the object
+ * can be interacted with, or has a solid area. Something like a rug would not be solid.
+ * 
+ */
 
 public abstract class Entity {
 	protected float posX;
@@ -30,6 +36,7 @@ public abstract class Entity {
 	public abstract void update();
 	public abstract void render(Graphics g);
 	
+	//Default Constructor
 	public Entity(String name, Handler handler, float x, float y, int w, int h)
 	{
 		//defaults
@@ -45,10 +52,10 @@ public abstract class Entity {
 		hasAction = false;
 	}
 	
-	//Takes an Entity element and creates it
+	//Takes an Entity XML element and creates it
 	public Entity (Element e, Handler handler)
 	{	
-		setWidthHeight(0,0);
+		setWidthHeight(0,0);	//We do this here to initialize these variables
 		hitBounds = new Rectangle();
 		touchBounds = new Rectangle();
 		this.handler = handler;
@@ -73,7 +80,7 @@ public abstract class Entity {
 								Integer.parseInt(bounds.getAttributeValue("w")), Integer.parseInt(bounds.getAttributeValue("h")));
 	}
 	
-	//COPY CONSTRUCTOR
+	//COPY CONSTRUCTOR (Not used when loading from xml, possibly useful later for caching entities)
 	public Entity (Entity e, Handler handler)
 	{
 		this.handler = handler;
@@ -97,15 +104,23 @@ public abstract class Entity {
 	
 	//COLLISION DETECTION
 	//Between entities
+	//Only called by moving objects, while they are moving
 	public boolean checkEntityCollision(float xOffset, float yOffset)
 	{
 		for (int i = 0; i < handler.getEntityManager().size(); i++)
 		{
+			//Get the current entity
 			Entity e = handler.getEntityManager().get(i);
-			if (e.equals(this) || e.getHitBounds(0f, 0f) == null)
+			/*
+			 * Do not check for a collision if...
+			 * e is not solid (check this first to short circuit the condition on the easiest check)
+			 * e is this (we are checking against ourself, since that will always return true)
+			 */
+			if (!e.isSolid || e.equals(this))
 				continue;
+			
 			else if (e.getHitBounds(0f, 0f).intersects(this.getHitBounds(xOffset, yOffset)))
-				return true;
+				return true;	//We don't need to keep looking if we find a collision, return immediately
 			
 		}
 		return false;
@@ -114,7 +129,8 @@ public abstract class Entity {
 	//What happens when this item is activated
 	public void onActivate()
 	{
-		//Nothing yet
+		//By Default:
+		//Do Nothing
 	}
 	
 	//Getters
@@ -124,7 +140,7 @@ public abstract class Entity {
 	public float getPosY() {
 		return posY;
 	}
-	//Get center position
+	
 	public float getCenterX() {
 		return posX + (width / 2);
 	}
@@ -143,6 +159,11 @@ public abstract class Entity {
 	
 	public boolean hasAction() {
 		return hasAction;
+	}
+	
+	public boolean isSolid()
+	{
+		return this.isSolid;
 	}
 	
 	public Container getInventory() 

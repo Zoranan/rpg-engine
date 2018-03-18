@@ -6,6 +6,10 @@ import dev.zoranan.rpgengine.entities.Mob;
 
 //Status effects are added to mob objects. They cover everything from DoT attacks, to weaknesses
 
+/*
+ * This class may be up for removal. When stat effects are implemented, we will see
+ */
+
 public abstract class StatusEffect {
 	protected float duration;
 	protected Mob effected;		//A reference to the effected mob

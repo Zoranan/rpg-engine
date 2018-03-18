@@ -12,6 +12,8 @@ import dev.zoranan.rpgengine.gfx.Skeleton;
 import dev.zoranan.rpgengine.util.Assets;
 import dev.zoranan.rpgengine.util.FpsTimer;
 
+//A skeletal animated mob
+
 public class Human extends Mob{
 	protected HashMap <String, HashMap<String, String>> skinModels;
 	protected Skeleton skeleton;
@@ -27,10 +29,10 @@ public class Human extends Mob{
 	
 	private void init ()
 	{
-		this.setHitBounds(18, 64, 14, 7);
+		this.setHitBounds(18, 64, 14, 7);	//This needs to be loaded eventually
 		
 		skinModels = new HashMap <String, HashMap<String, String>>();
-		Element skin = Assets.getRace("white").getChild("male");	//Hard coded for now
+		Element skin = Assets.getRace("white").getChild("male");	//Hard coded for now. Races are loading from XML though. YAY!
 		
 		//Get the mob's skin
 		for (Element e : skin.getChildren())
