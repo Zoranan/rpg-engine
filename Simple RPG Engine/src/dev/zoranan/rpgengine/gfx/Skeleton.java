@@ -19,26 +19,13 @@ import dev.zoranan.rpgengine.util.Assets;
 import dev.zoranan.rpgengine.util.FpsTimer;
 import dev.zoranan.rpgengine.util.XmlLoader;
 
+/*
+ * The Skeleton class controls grouped skeleton animations
+ * This class holds the information for what sprites are used to draw each limb,
+ * as well as different skeletal animations for each action at each angle.
+ */
+
 public class Skeleton {
-	//POSSIBLE BONES
-	//Head
-	//Body
-	
-	//LEGS
-	//left thigh
-	//right thigh
-	//left calf
-	//right calf
-	
-	//ARMS
-	//left arm
-	//right arm
-	//left forearm
-	//right forearm
-	
-	//WEAPONS / OFFHAND
-	//Left hand
-	//right hand
 	
 	//ANIMATION STATE VARIABLES
 	public static enum State {IDLE, ATTACKING, WALKING};
@@ -86,34 +73,24 @@ public class Skeleton {
 		models.put("weapon", new HashMap<String, String>());
 		models.put("offHand", new HashMap<String, String>());	//NEW
 		
-		//TEMP
+		//TEMP - This wil be controlled by entity speed.
 		walkTimer = new FpsTimer(16);
 		torsoTimer = new FpsTimer(16);
 		
-		//models.get("rightFoot").put("front", ImageLoader.loadImage("/skeleTest/rightBoot.png"));
-		//models.get("leftFoot").put("front", ImageLoader.loadImage("/skeleTest/leftBoot.png"));
-		//models.get("rightThigh").put("front", ImageLoader.loadImage("/skeleTest/rightThigh.png"));
-		//models.get("leftThigh").put("front", ImageLoader.loadImage("/skeleTest/leftThigh.png"));
-		//models.get("head").put("front", ImageLoader.loadImage("/skeleTest/head.png"));
-		//models.get("chest").put("front", ImageLoader.loadImage("/skeleTest/body.png"));
-		//models.get("rightArm").put("front", ImageLoader.loadImage("/skeleTest/rightArm.png"));
-		//models.get("rightHand").put("front", ImageLoader.loadImage("/skeleTest/rightHand.png"));
-		//models.get("leftArm").put("front", ImageLoader.loadImage("/skeleTest/leftArm.png"));
-		//models.get("leftHand").put("front", ImageLoader.loadImage("/skeleTest/leftHand.png"));
-		
 		
 		//DEFAULT WALK ANIMATIONS
-		
+		//Initialize our animation groups
 		lowerSkeleAngles = new  HashMap <String, HashMap<String, SkeletonAnimation>>();
 		upperSkeleAngles = new  HashMap <String, HashMap<String, SkeletonAnimation>>();
 		
-		//Set up angle maps
+		//Set up angle maps for each animation group
 		for (String key : Assets.lowerSkeleAngles.keySet())
 		{
 			lowerSkeleAngles.put(key, new HashMap<String, SkeletonAnimation>());
 			upperSkeleAngles.put(key, new HashMap<String, SkeletonAnimation>());
 		}
 		
+		//X This could be replaced with a '.putAll(source_map)' command
 		//Copy lower animations
 		for (Entry<String, HashMap<String, SkeletonAnimation>> angleEntry : Assets.lowerSkeleAngles.entrySet())
 		{	
@@ -135,9 +112,11 @@ public class Skeleton {
 		legs = lowerSkeleAngles.get(angle).get("walk");
 		torso = upperSkeleAngles.get(angle).get("walkEmptyHand");
 		
-		updateSkin();
+		updateSkin();	//Load our sprite limb info
 	}
 	
+	//Looks at our parent Humanoid Mob, and gets all of the skin sprites from it first
+	//Then, replaces it with the sprites from our equipped weapons and armor
 	public void updateSkin()
 	{
 		models.putAll(mob.getSkinModels());
@@ -166,13 +145,12 @@ public class Skeleton {
 		else if (dir == Direction.WEST)
 			this.angle = "left";
 		
-		//Updating status
+		//Updating status - Determines which animations to use
 		//Weapon
 		Item mobWeap = mob.equipment().getEquipped("weapon");
 		if (mobWeap == null)
 			weaponType = "EmptyHand";
 		else
-		//else if (mobWeap.isOneHand())
 			weaponType = "OneHand";
 		//else if (mob.equipment().getWeapon() instanceof rangedWeapon)
 			//weaponType = "Bow";

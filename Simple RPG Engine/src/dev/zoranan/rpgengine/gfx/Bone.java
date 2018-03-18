@@ -1,5 +1,12 @@
 package dev.zoranan.rpgengine.gfx;
 
+/*
+ * Bone: Sometimes referred to as a limb.
+ * This class is a container for all the position data associated with
+ * the individual bones in a skeleton animation. 
+ * Bone objects can be added, subtracted and divided.
+ */
+
 public class Bone {
 	public float x;
 	public float y;

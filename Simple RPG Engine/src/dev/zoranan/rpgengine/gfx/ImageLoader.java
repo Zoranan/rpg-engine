@@ -6,6 +6,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/*
+ * This class handles all of the image loading.
+ * Currently, all loading is automatically done as a resource.
+ */
+
 public class ImageLoader {
 	public static BufferedImage loadImage (String path)
 	{

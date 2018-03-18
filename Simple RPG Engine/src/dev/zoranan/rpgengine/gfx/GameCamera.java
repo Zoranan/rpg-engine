@@ -3,6 +3,12 @@ package dev.zoranan.rpgengine.gfx;
 import dev.zoranan.rpgengine.Handler;
 import dev.zoranan.rpgengine.entities.Entity;
 
+/*
+ * The Game Camera class calculates and returns position data that controls
+ * what the game screen is centered on. When a new target is set, the camera 
+ * stays centered on that target
+ */
+
 public class GameCamera {
 	private float xOffset, yOffset;
 	private Entity target;
