@@ -14,6 +14,12 @@ import dev.zoranan.rpgengine.gfx.ImageLoader;
 import dev.zoranan.rpgengine.gfx.SkeletonAnimation;
 import dev.zoranan.rpgengine.gfx.SpriteSheet;
 
+/*
+ * The assets class handles all of our File/Resource IO
+ * The assets class exists to keep the same resource from being loaded repeatedly.
+ * Once all XML documents are loaded, they are kept here for reference.
+ */
+
 public class Assets {
 	//FINAL
 	public static final int BOUNDS_COLOR = -16777216;

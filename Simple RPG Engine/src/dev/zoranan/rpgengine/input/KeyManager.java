@@ -3,6 +3,8 @@ package dev.zoranan.rpgengine.input;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+//This class handles all keyboard input
+
 public class KeyManager implements KeyListener{
 	private boolean[] keys;
 	private boolean up, down, left, right, space, F, I, K, ctrl;

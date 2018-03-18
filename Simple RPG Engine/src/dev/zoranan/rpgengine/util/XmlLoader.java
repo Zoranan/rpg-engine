@@ -3,6 +3,10 @@ package dev.zoranan.rpgengine.util;
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
 
+/*
+ * This class loads XML files, returning the document object for them
+ */
+
 public class XmlLoader {
 	
 	//Reference documents to keep loaded
@@ -33,10 +37,4 @@ public class XmlLoader {
 		
 		return doc;
 	}
-	
-	public static void init()
-	{
-		//equipment = readXML("res/items/equipment/equipment.xml");
-	}
-
 }

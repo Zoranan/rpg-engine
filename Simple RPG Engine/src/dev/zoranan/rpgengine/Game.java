@@ -65,7 +65,6 @@ public class Game implements Runnable {
 		
 		//LOAD EXTERNAL FILES
 		Assets.init();
-		XmlLoader.init();
 		
 		handler = new Handler(this);
 		gameCamera = new GameCamera(handler, 0,0);

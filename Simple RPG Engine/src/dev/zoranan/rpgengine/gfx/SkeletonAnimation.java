@@ -10,6 +10,12 @@ import org.jdom2.Element;
 
 import dev.zoranan.rpgengine.util.Assets;
 
+/*
+ * This Class handles a skeleton animation.
+ * Skeleton animations are a collection of bone objects (limbs) for each frame.
+ * Our hashmap stores a Key Value pair of the LimbName, and an array list of bones (the frames of that limb)
+ */
+
 public class SkeletonAnimation {
 	private HashMap<String, ArrayList<Bone>> limbs;
 	private ArrayList<String> renderOrder;
@@ -60,8 +66,6 @@ public class SkeletonAnimation {
 			
 			g.drawImage(i, at, null);
 		}
-		//g.drawImage(i, (int)(parent.getStartX() + b.x), (int)(parent.getStartY() + b.y), 
-		//			(int) b.width, (int) b.height, null);
 	}
 	
 	//
@@ -96,53 +100,6 @@ public class SkeletonAnimation {
 			this.triggerFrame = 0;
 		}
 		
-		/*
-		//Get our key frames
-		for (Element frame : frameElements)
-		{
-			List<Element> limbEle = frame.getChildren();
-			
-			//If its our first frame, or the last frame came directly before the current one, just add the frame
-			if (last == null || Integer.parseInt(frame.getAttributeValue("n")) - Integer.parseInt(last.getAttributeValue("n")) == 1)
-			{
-				for (Element currentBone : limbEle)
-				{
-					if (!limbs.containsKey(currentBone.getName()))
-						limbs.put(currentBone.getName(), new ArrayList<Bone>());
-					
-					limbs.get(currentBone.getName()).add(createBone(currentBone));
-					length++;
-				}
-				
-				//set the render order
-				if (renderOrder.isEmpty())
-					for (Element currentBone : limbEle)
-						renderOrder.add(currentBone.getName());
-			}
-			//Otherwise, start tweening
-			else
-			{
-				int frameGap = Integer.parseInt(frame.getAttributeValue("n")) - Integer.parseInt(last.getAttributeValue("n"));
-				
-				while (frameGap >= 1)
-				{
-					//TWEEN
-					
-					for (Element currentBone : limbEle)
-					{	
-						length = limbs.get(currentBone.getName()).size();
-						
-						limbs.get(currentBone.getName()).add(tween(limbs.get(currentBone.getName()).get(length -1),
-								createBone(currentBone), frameGap));
-						
-						
-					}
-					frameGap--;
-				}
-			}
-			last = frame;
-		}*/
-		
 		//set the render order
 		if (renderOrder.isEmpty())
 			for (Element currentBone : frameElements.get(0).getChildren())
@@ -169,7 +126,6 @@ public class SkeletonAnimation {
 					length++;
 				}
 					
-			
 				//Otherwise, start tweening
 				else
 				{
@@ -191,7 +147,7 @@ public class SkeletonAnimation {
 		}//End renderOrder for
 	}//END loadAnim function
 	
-	//Creates a bone from an element
+	//Creates a bone from an XML element
 	private Bone createBone(Element e)
 	{
 		return new Bone(Float.parseFloat(e.getAttributeValue("x")), Float.parseFloat(e.getAttributeValue("y")),
@@ -199,7 +155,7 @@ public class SkeletonAnimation {
 						Float.parseFloat(e.getAttributeValue("r")));
 	}
 	
-	//Creates in-between frames 
+	//Creates in-between frames (for tweening)
 	private Bone tween(Bone b1, Bone b2, int frames)
 	{
 		Bone tweenFrame = b1.difference(b2);

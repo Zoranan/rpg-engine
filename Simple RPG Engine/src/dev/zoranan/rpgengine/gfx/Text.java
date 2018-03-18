@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 
+//The Text Class, has static methods used to draw text to the canvas
+
 public class Text {
 	public static enum H_align {LEFT, CENTER, RIGHT};
 	public static enum V_align {ABOVE, CENTER, BELOW};

@@ -6,6 +6,8 @@ import java.awt.event.MouseMotionListener;
 
 import dev.zoranan.rpgengine.gui.GUIManager;
 
+//This class handles all mouse input
+
 public class MouseManager implements MouseListener, MouseMotionListener{
 
 	private boolean leftPressed, rightPressed, leftToggled, rightToggled;

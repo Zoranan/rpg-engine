@@ -4,6 +4,10 @@ import java.util.HashMap;
 
 import dev.zoranan.rpgengine.items.Item;
 
+/*
+ * The equipment sheet class holds all equipped equipment for a mob.
+ */
+
 public class EquipmentSheet {
 	private boolean changesMade = false;
 	private HashMap<String, Item> equipment;
@@ -11,7 +15,7 @@ public class EquipmentSheet {
 	public EquipmentSheet()
 	{
 		equipment = new HashMap<String, Item>();
-		
+		//The following needs to be loaded from a global variable XML file
 		equipment.put("weapon", null);
 		equipment.put("offHand", null);
 		

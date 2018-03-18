@@ -18,6 +18,12 @@ import dev.zoranan.rpgengine.gfx.Sprite;
 import dev.zoranan.rpgengine.gfx.Text;
 import dev.zoranan.rpgengine.util.Assets;
 
+/*
+ * The item class is used to create all items in the game. An XML element is passed in
+ * and an instance of item is created which holds all the information needed to create
+ * the item in our game world.
+ */
+
 public class Item{
 	//Item stats
 	public static final int ICON_SIZE = 50;
@@ -68,6 +74,8 @@ public class Item{
 		catch(Exception ex)
 		{
 			//DO NOTHING
+			//Not all Items have models and if we throw an error, that is probably why
+			//We should expand on this later
 		}
 		
 		//Load all effects (magic or otherwise)
@@ -95,7 +103,7 @@ public class Item{
 
 	public void update()
 	{
-		
+		//Items don't have stats to update
 	}
 	
 	//For rendering the item within a container

@@ -5,6 +5,10 @@ import java.awt.FontFormatException;
 import java.io.File;
 import java.io.IOException;
 
+/*
+ * This class exists to load font files
+ */
+
 public class FontLoader {
 	
 	public static Font loadFont(String path, int size)

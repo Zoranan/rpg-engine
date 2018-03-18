@@ -9,9 +9,12 @@ import dev.zoranan.rpgengine.entities.behaviors.Player;
 import dev.zoranan.rpgengine.gui.GUIViewSwitch;
 import dev.zoranan.rpgengine.worlds.World;
 
+/*
+ * The game state renders our world object, and our gui/hud objects
+ */
+
 public class GameState extends State{
 
-	//private Mob player;
 	private World testWorld;
 	private Mob player;
 	private GUIViewSwitch guiViewSwitch;
