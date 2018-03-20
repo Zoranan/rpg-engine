@@ -25,12 +25,15 @@ import editors.compoundObjects.XmlSelection;
 import editors.subPanels.SpriteViewerPanel;
 import gameObjects.SpriteSheet;
 import util.Handler;
+import util.ImageLoader;
 import util.TextValidator;
 import util.TxtLoader;
 import util.XmlLoader;
 
 public class ItemEditorForm extends XmlForm {
 	private SpriteViewerPanel iconPreview;
+	private XmlSelection compIconSelect;
+	private Document itemsXml;
 	/**
 	 * Create the panel.
 	 */
@@ -40,23 +43,23 @@ public class ItemEditorForm extends XmlForm {
 		ComboBoxSelection compType = new ComboBoxSelection("Type", "type", TxtLoader.getTxtAsArray("configFiles/itemTypes.txt"));
 		LabeledTextBox compStackSize = new LabeledTextBox("Max Stack Size", "maxStackSize");
 		LabeledTextBox compBaseValue = new LabeledTextBox("Base Value", "value");
-		XmlSelection compIconSelect = new XmlSelection("Icon (Sprite)", "spriteIconID", "/sprites.xml", "Sprites", false);
+		compIconSelect = new XmlSelection("Icon (Sprite)", "spriteIconID", "/sprites.xml", "Sprites", false);
 		fields = new CompoundComponent[] {compIconSelect,
 											new LabeledTextBox("Item Name", "name"),
 											compType,
 											new CheckBoxSelection("Consumable", "consumable", false),
 											compStackSize,
 											compBaseValue,
-											new XmlMultiSelection("Models", "models", "/models.xml", "Models"),//???
+											new XmlMultiSelection("Models", "models", "/models.xml", "Models"),
 											new XmlMultiSelection("Effects", "effects")//??????
 											};
 		
 		compType.setEditable(true);
 		compType.setMode(LabeledTextBox.CharacterMode.ALPHA);
 		compStackSize.setMode(LabeledTextBox.CharacterMode.NUMERIC);
-		compStackSize.setText("1");
+		compStackSize.setValue("1");
 		compBaseValue.setMode(LabeledTextBox.CharacterMode.NUMERIC);
-		compBaseValue.setText("0");
+		compBaseValue.setValue("0");
 		
 		//This will make sure the value within the field is kept above 0
 		compStackSize.getTextField().addFocusListener(new FocusAdapter(){
@@ -70,7 +73,7 @@ public class ItemEditorForm extends XmlForm {
 				catch (Exception ex)
 				{
 					//If anything goes wrong, the stack size is set to 1
-					compStackSize.setText("1");
+					compStackSize.setValue("1");
 				}
 			}
 		});
@@ -86,7 +89,7 @@ public class ItemEditorForm extends XmlForm {
 				catch (Exception ex)
 				{
 					//If anything goes wrong, the stack size is set to 1
-					compBaseValue.setText("0");
+					compBaseValue.setValue("0");
 				}
 			}
 		});
@@ -94,8 +97,7 @@ public class ItemEditorForm extends XmlForm {
 		compIconSelect.addSelectAction(new Action(){
 			@Override
 			public void action() {
-				Element e = XmlLoader.readXML(Handler.getRootDirectory() + "/sprites.xml").getRootElement().getChild(compIconSelect.getValue());
-				iconPreview.setSprite(new SpriteSheet(e));
+				loadSelectedSprite();
 			}
 		});
 		
@@ -110,10 +112,11 @@ public class ItemEditorForm extends XmlForm {
 		
 		//Add a save button
 		JButton btnSave = new JButton("Save");
+		btnSave.setIcon(ImageLoader.loadResourceIcon("/Icons/save20px.png"));
 		btnSave.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				saveAs();
+				save();
 			}
 		});
 		springLayout.putConstraint(SpringLayout.NORTH, btnSave, VERT_PADDING, SpringLayout.SOUTH, fields[fields.length-1]);
@@ -123,9 +126,57 @@ public class ItemEditorForm extends XmlForm {
 	
 	//FUNCTIONS
 	
-	public void saveAs()
+	private void loadSelectedSprite()
 	{
-		Document itemsXml = XmlLoader.readXML(Handler.getRootDirectory() + "/items.xml"); //Get the document
+		Element e = XmlLoader.readXML(Handler.getRootDirectory() + "/sprites.xml").getRootElement().getChild(compIconSelect.getValue());
+		iconPreview.setSprite(new SpriteSheet(e));
+	}
+	
+	//Process an element that is being loaded in
+	@Override
+	public void postLoad()
+	{
+		Element current;
+		for (int i = 0; i < fields.length; i++)
+		{
+			fields[i].clear();
+			current = editElement.getChild(fields[i].getNodeName());
+			
+			try
+			{
+				if (current.getContentSize() == 1)
+					fields[i].setValue(current.getValue());
+				else if (current.getContentSize() > 1)
+				{
+					XmlMultiSelection field = ((XmlMultiSelection)fields[i]); 
+					List<Element> items = current.getChildren();
+
+					if (items != null)
+						for (Element e : items)
+						{
+							field.addValue(e.getValue());
+						}
+				}
+			}
+			catch(Exception e)	
+			{
+				//Do nothing
+			}
+		}
+		loadSelectedSprite();
+	}
+	
+	private void save()
+	{
+		itemsXml = XmlLoader.readXML(Handler.getRootDirectory() + "/items.xml");
+		if (editElement == null)
+			saveAs();
+		else
+			saveUpdate();
+	}
+	
+	private void saveAs()
+	{
 		//Get the itemID from the user
 		String itemID = "";
 		boolean valid = false;
@@ -174,17 +225,43 @@ public class ItemEditorForm extends XmlForm {
 					newItem.addContent(new Element(fields[i].getNodeName()).addContent(fields[i].getValue()));
 			}
 			
-			//Element effects = new Element("effects");
-			
 			//the saving
 			itemsXml.getRootElement().addContent(newItem);
 			XmlLoader.writeXML(itemsXml);
 		}
 	}
 	
-	public void save(String itemID)
+	//Updates an element that is being edited
+	private void saveUpdate()
 	{
-		
+		Element current;
+		for (int i = 0; i < fields.length; i++)
+		{
+			current =  editElement.getChild(fields[i].getNodeName());
+			if (fields[i] instanceof XmlMultiSelection)
+			{
+				XmlMultiSelection field = (XmlMultiSelection) fields[i];
+				//We need to delete the old list first
+				current.detach();
+				current = new Element(current.getName());
+				//Now start adding elements
+				ArrayList<String> list = field.getListItems();
+				for (String s : list)
+				{
+					current.addContent(new Element("list").addContent(s));
+				}
+				editElement.addContent(current);
+			}
+			else
+				current.setText(fields[i].getValue());
+		}
+		XmlLoader.writeXML(itemsXml);
 	}
-
+	
+	@Override
+	public void clearForm()
+	{
+		super.clearForm();
+		iconPreview.setSprite(null);
+	}
 }

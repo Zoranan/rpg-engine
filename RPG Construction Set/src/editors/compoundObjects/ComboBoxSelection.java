@@ -62,6 +62,48 @@ public class ComboBoxSelection extends LabeledTextBox {
 	}
 	
 	@Override
+	public void setEnabled(boolean b)
+	{
+		comboBox.setEnabled(b);
+	}
+	
+	@Override
+	public void setValue(String s)
+	{
+		if (comboBox.isEditable())
+			comboBox.getEditor().setItem(s);
+		else
+			setSelection(s);
+	}
+	
+	//Attempts to set the selection to one that exists in the combo box model
+	//If an empty string is passed in, we select the first option
+	public void setSelection(String s)
+	{
+		if (s.isEmpty())
+			comboBox.setSelectedIndex(0);
+		else
+			for (int i = 0; i < model.getSize(); i++)
+			{
+				if (model.getElementAt(i).equals(s))
+				{
+					comboBox.setSelectedIndex(i);
+					return;
+				}
+			}
+		//If we are here, we need to add the item to our combo box
+		//Recursive
+		model.addElement(s);
+		setSelection(s);
+	}
+	
+	@Override
+	public void clear()
+	{
+		comboBox.setSelectedIndex(0);
+	}
+	
+	@Override
 	public int getComponentHeight()
 	{
 		return 28;
@@ -69,7 +111,7 @@ public class ComboBoxSelection extends LabeledTextBox {
 	
 	@Override
 	public String getValue()
-	{
+	{	
 		return (String) this.comboBox.getSelectedItem();
 	}
 

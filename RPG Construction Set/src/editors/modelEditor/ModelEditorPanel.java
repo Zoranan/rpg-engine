@@ -13,18 +13,21 @@ import javax.swing.SwingConstants;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import editors.compoundObjects.XmlMultiSelection;
 import editors.subPanels.XMLExplorerPanel;
 import util.Handler;
+import util.ImageLoader;
 import util.XmlLoader;
 
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ModelEditorPanel extends JPanel {
 	private XMLExplorerPanel leftSide;
-
+	private ModelEditorForm form;
 	/**
 	 * Create the panel.
 	 */
@@ -36,11 +39,33 @@ public class ModelEditorPanel extends JPanel {
 		JSplitPane splitPane = new JSplitPane();
 		add(splitPane, BorderLayout.CENTER);
 		
+		//Set up the XML Explorer (left side)
 		leftSide = new XMLExplorerPanel("models.xml", "Models");
+		
+		//Edit Button
+		JButton btnEdit = new JButton(ImageLoader.loadResourceIcon("/Icons/edit.png"));
+		btnEdit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				form.load(leftSide.getSelectedElement());
+			}
+		});
+		leftSide.addBtn(btnEdit);
+		
+		//New Button
+		JButton btnNew = new JButton(ImageLoader.loadResourceIcon("/Icons/newSingle.png"));
+		btnNew.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				form.clearForm();
+			}
+		});
+		leftSide.addBtn(btnNew);
+		
 		splitPane.setLeftComponent(leftSide);
 		
-		//JPanel panel = new JPanel();
-		splitPane.setRightComponent(new ModelEditorForm());
+		form = new ModelEditorForm();
+		splitPane.setRightComponent(form);
 
 	}
 }

@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import editors.subPanels.XMLExplorerPanel;
+import util.ImageLoader;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +17,7 @@ public class EnvironmentalEntityEditor extends JPanel {
 	private JButton btnEdit;
 	private JButton btnNew;
 	private XMLExplorerPanel left;
+	private EnvironmentalEntityForm editor;
 	
 	/**
 	 * Create the panel.
@@ -28,32 +30,34 @@ public class EnvironmentalEntityEditor extends JPanel {
 		add(splitPane, BorderLayout.CENTER);
 		
 		//set the right side
-		JPanel right = new JPanel();
-		splitPane.setRightComponent(right);
-		right.setLayout(new BorderLayout(0, 0));
+		editor = new EnvironmentalEntityForm();
+		splitPane.setRightComponent(editor);
 		
 		//Set the left side
-		btnEdit = new JButton("L");						//Create a load button for the eeep panel
+		btnEdit = new JButton(ImageLoader.loadResourceIcon("/Icons/edit.png"));						//Create a load button for the eeep panel
 		left = new XMLExplorerPanel("environmentalObjects.xml", "Environmental Objects");
 		btnEdit.addActionListener(new ActionListener() 		//Add the actions for a button to be added to the eeep panel
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				//Get our Entity from the list
+				if (left.getSelectedName() != null)
+					editor.load(left.getSelectedElement());
+				
+				splitPane.setRightComponent(editor);
+				editor.validate();
+				editor.repaint();
 			}
 		});
 		btnEdit.setBounds(107, 36, 89, 23);
 		left.addBtn(btnEdit);				//Add the load putton to the eeep panel
 		
-		btnNew = new JButton("");
-		btnNew.setIcon(new ImageIcon(EnvironmentalEntityEditor.class.getResource("/Icons/newSingle.png")));
+		btnNew = new JButton(ImageLoader.loadResourceIcon("/Icons/newSingle.png"));
 		btnNew.addActionListener(new ActionListener() 		//Add the actions for a button to be added to the eeep panel
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				right.add(new EnvironmentalEntityForm(), BorderLayout.CENTER);
-				right.validate();
-				right.repaint();
+				splitPane.setRightComponent(editor);
+				editor.clearForm();
 			}
 		});
 		left.addBtn(btnNew);

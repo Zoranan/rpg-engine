@@ -38,6 +38,16 @@ public class CompoundComponent  extends JPanel{
 		this.height = h;
 	}
 	
+	public void setValue(String s)
+	{
+		
+	}
+	
+	public void clear()
+	{
+		setValue("");
+	}
+	
 	public String getNodeName()
 	{
 		return this.nodeName;

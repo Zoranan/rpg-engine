@@ -82,7 +82,8 @@ public class LabeledTextBox extends CompoundComponent {
 		return this.txtSelectionField;
 	}
 	
-	public void setText(String s)
+	@Override
+	public void setValue(String s)
 	{
 		this.txtSelectionField.setText(s);
 	}

@@ -2,6 +2,7 @@ package editors.compoundObjects;
 
 import javax.swing.SpringLayout;
 import editors.subPanels.XMLExplorerPanel;
+import util.ImageLoader;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +30,7 @@ public class XmlSelection extends LabeledTextBox{
 		//Select btn
 		btnSelect = new JButton("");
 		springLayout.putConstraint(SpringLayout.EAST, btnSelect, 30, SpringLayout.EAST, txtSelectionField);
-		btnSelect.setIcon(new ImageIcon(XmlSelection.class.getResource("/Icons/choose.png")));
+		btnSelect.setIcon(ImageLoader.loadResourceIcon("/Icons/choose.png"));
 		springLayout.putConstraint(SpringLayout.WEST, btnSelect, 6, SpringLayout.EAST, txtSelectionField);
 		springLayout.putConstraint(SpringLayout.VERTICAL_CENTER, btnSelect, 0, SpringLayout.VERTICAL_CENTER, txtSelectionField);
 		
@@ -53,7 +54,7 @@ public class XmlSelection extends LabeledTextBox{
 					txtSelectionField.setText("");
 				}
 			});
-			btnClear.setIcon(new ImageIcon(XmlSelection.class.getResource("/Icons/x.png")));
+			btnClear.setIcon(ImageLoader.loadResourceIcon("/Icons/x.png"));
 			springLayout.putConstraint(SpringLayout.WEST, btnClear, 6, SpringLayout.EAST, btnSelect);
 			springLayout.putConstraint(SpringLayout.VERTICAL_CENTER, btnClear, 0, SpringLayout.VERTICAL_CENTER, btnSelect);
 			add(btnClear);
@@ -70,7 +71,8 @@ public class XmlSelection extends LabeledTextBox{
 		this.setXmlName(xmlName);
 		
 		btnSelect.setToolTipText("Select from " + xmlTypeName);
-		btnClear.setToolTipText("Clear " + labelTxt);
+		if (btnClear != null)
+			btnClear.setToolTipText("Clear " + labelTxt);
 	}
 	
 	//Remove all action listeners
@@ -102,15 +104,14 @@ public class XmlSelection extends LabeledTextBox{
 			XMLExplorerPanel chooser = XMLExplorerPanel.newXmlChooser(this.xmlPath, this.xmlTypeName, this);
 			
 			JButton btn = new JButton ("");
-			btn.setIcon(new ImageIcon(XmlSelection.class.getResource("/Icons/check.png")));
+			btn.setIcon(ImageLoader.loadResourceIcon("/Icons/check.png"));
 			btn.addActionListener(
 				new ActionListener()
 				{
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{
-						txtSelectionField.setText(chooser.getSelectedName());
-						
+						setValue(chooser.getSelectedName());
 						if (selectAction != null)
 							selectAction.action();
 						

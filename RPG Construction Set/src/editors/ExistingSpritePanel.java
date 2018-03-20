@@ -59,7 +59,7 @@ public class ExistingSpritePanel extends JPanel {
 		
 		//Add a NEW button to the loader
 		btnNewSprite = new JButton("");
-		btnNewSprite.setIcon(new ImageIcon(XMLExplorerPanel.class.getResource("/Icons/newSingle.png")));
+		btnNewSprite.setIcon(ImageLoader.loadResourceIcon("/Icons/newSingle.png"));
 		btnNewSprite.setToolTipText("New Sprite: Wizard");
 		btnNewSprite.addActionListener(new ActionListener()
 		{
@@ -72,7 +72,7 @@ public class ExistingSpritePanel extends JPanel {
 		
 		//Add a new batch button to the loader
 		btnNewSpriteBatch = new JButton("");
-		btnNewSpriteBatch.setIcon(new ImageIcon(XMLExplorerPanel.class.getResource("/Icons/newMulti.png")));
+		btnNewSpriteBatch.setIcon(ImageLoader.loadResourceIcon("/Icons/newMulti.png"));
 		btnNewSpriteBatch.setToolTipText("New Sprite(s): Quick");
 		btnNewSpriteBatch.addActionListener(new ActionListener()
 		{

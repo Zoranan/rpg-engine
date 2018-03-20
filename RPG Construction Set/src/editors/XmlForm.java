@@ -3,6 +3,8 @@ package editors;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
+import org.jdom2.Element;
+
 import editors.compoundObjects.CompoundComponent;
 
 import javax.swing.JLabel;
@@ -11,9 +13,12 @@ import java.awt.Font;
 public class XmlForm extends JPanel {
 	protected final int VERT_PADDING = 5;
 	protected SpringLayout springLayout;
-	protected JLabel lblLabel;
+	protected JLabel lblTitle;
+	protected JLabel lblSubTitle;
 	protected CompoundComponent fields[];
-	protected int h = 80;
+	protected int h = 100;
+	
+	protected Element editElement = null;
 	/**
 	 * Create the panel.
 	 */
@@ -21,21 +26,27 @@ public class XmlForm extends JPanel {
 		springLayout = new SpringLayout();
 		setLayout(springLayout);
 		
-		lblLabel = new JLabel(title);
-		lblLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		springLayout.putConstraint(SpringLayout.NORTH, lblLabel, 10, SpringLayout.NORTH, this);
-		springLayout.putConstraint(SpringLayout.WEST, lblLabel, 10, SpringLayout.WEST, this);
-		add(lblLabel);
+		lblTitle = new JLabel(title);
+		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		springLayout.putConstraint(SpringLayout.NORTH, lblTitle, 10, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, lblTitle, 10, SpringLayout.WEST, this);
+		add(lblTitle);
+		
+		lblSubTitle = new JLabel("New");
+		lblSubTitle.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		springLayout.putConstraint(SpringLayout.NORTH, lblSubTitle, 10, SpringLayout.SOUTH, lblTitle);
+		springLayout.putConstraint(SpringLayout.WEST, lblSubTitle, 10, SpringLayout.WEST, lblTitle);
+		add(lblSubTitle);
 
 	}
 	
 	public void buildForm()
 	{
 		//Place first component
-		springLayout.putConstraint(SpringLayout.NORTH, fields[0], VERT_PADDING, SpringLayout.SOUTH, lblLabel);
-		springLayout.putConstraint(SpringLayout.WEST, fields[0], 0, SpringLayout.WEST, lblLabel);
-		springLayout.putConstraint(SpringLayout.EAST, fields[0], 300, SpringLayout.WEST, lblLabel);
-		springLayout.putConstraint(SpringLayout.SOUTH, fields[0], VERT_PADDING + fields[0].getComponentHeight(), SpringLayout.SOUTH, lblLabel);
+		springLayout.putConstraint(SpringLayout.NORTH, fields[0], VERT_PADDING, SpringLayout.SOUTH, lblSubTitle);
+		springLayout.putConstraint(SpringLayout.WEST, fields[0], 0, SpringLayout.WEST, lblSubTitle);
+		springLayout.putConstraint(SpringLayout.EAST, fields[0], 300, SpringLayout.WEST, lblSubTitle);
+		springLayout.putConstraint(SpringLayout.SOUTH, fields[0], VERT_PADDING + fields[0].getComponentHeight(), SpringLayout.SOUTH, lblSubTitle);
 		add(fields[0]);
 		
 		for (int i = 1; i < fields.length; i++) //Start at our second element. The first one is placed manually
@@ -47,5 +58,34 @@ public class XmlForm extends JPanel {
 			add(fields[i]);
 			h += VERT_PADDING + fields[i].getComponentHeight();
 		}
+	}
+	
+	//Clears all elements in the form, sets the loaded element to null, and changes the subTitle text
+	public void clearForm()
+	{
+		editElement = null;
+		for (int i=0; i<fields.length; i++)
+		{
+			fields[i].clear();
+		}
+		this.lblSubTitle.setText("New");
+	}
+	
+	//Loads an element to be edited. Further processing needs to be handled by each form using the "postLoad" function
+	public final void load(Element e)
+	{
+		if (e != null)
+		{
+			this.editElement = e;
+			this.lblSubTitle.setText("Editing \"" + e.getName() + "\"");
+
+			postLoad();
+		}
+	}
+	
+	//Actions to take after an element is loaded
+	protected void postLoad()
+	{
+		
 	}
 }

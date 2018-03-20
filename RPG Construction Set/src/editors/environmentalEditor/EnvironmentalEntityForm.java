@@ -8,6 +8,7 @@ import javax.swing.SpringLayout;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
@@ -21,9 +22,11 @@ import editors.subPanels.SpriteViewerCanvas;
 import gameObjects.SpriteSheet;
 import util.FpsTimer;
 import util.Handler;
+import util.ImageLoader;
 import util.TextValidator;
 import util.XmlLoader;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class EnvironmentalEntityForm extends XmlForm implements Runnable {
@@ -58,8 +61,8 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 		compDepthReg = new XmlSelection("Depth Register", "depthRegister", true);
 		compSpriteIcon = new XmlSelection("Sprite", "spriteID", "/sprites.xml", "Sprites", false);
 		compIsSolid = new CheckBoxSelection("Is Solid", "isSolid", "Yes it is", "No its not", true);
-		compSolidBounds = new XmlSelection("Solid Bounds", null, true);	//We set these to null nodes because we 
-		compTotalBounds = new XmlSelection("Total Bounds", null, true);//will manually calculate them
+		compSolidBounds = new XmlSelection("Solid Bounds", "solidBounds", true);
+		compTotalBounds = new XmlSelection("Total Bounds", "totalBounds", true);
 		
 		fields = new CompoundComponent[] {
 				new LabeledTextBox("Name", "name"),
@@ -80,14 +83,13 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 		add(spriteFrame);
 		spriteFrame.setVisible(true);
 		
-		this.setPreferredSize(springLayout.preferredLayoutSize(this));//?? Not sure if I need this
-		
 		//Save Button
 		btnSave = new JButton("Save");
+		btnSave.setIcon(ImageLoader.loadResourceIcon("/Icons/save20px.png"));
 		btnSave.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				saveEntityAs();//Needs to save as only if we are creating a new entity
+				save();
 			}
 		});
 		springLayout.putConstraint(SpringLayout.NORTH, btnSave, VERT_PADDING, SpringLayout.SOUTH, fields[fields.length-1]);
@@ -218,7 +220,12 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 		//If the sprite doesn't exist, tell the user, and clear the field
 		if (spriteNode == null)
 		{
+			clearForm();
 			JOptionPane.showMessageDialog(this, "Sprite '" + compSpriteIcon.getValue() + "' does not exist", "Input Error", JOptionPane.ERROR_MESSAGE);
+		}
+		else if (compSpriteIcon.getValue().isEmpty())
+		{
+			clearForm();
 		}
 		//if it does exist, create the sprite sheet object
 		else
@@ -231,8 +238,43 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 		}
 	}
 	
-	//Save the Entity
-	public void saveEntityAs()
+	//Save (called by pressing the save button)
+	public void save()
+	{
+		envObjDoc = XmlLoader.readXML(Handler.getRootDirectory() + "/environmentalObjects.xml");
+		
+		if (editElement == null)
+			saveEntityAs();
+		else
+			saveUpdate();
+	}
+	
+	//Updates the current model being edited
+	private void saveUpdate()
+	{
+		for (int i = 0; i < fields.length; i ++)
+		{
+			//Set the text for all elements to what is found in our text fields
+			Element child = editElement.getChild(fields[i].getNodeName());
+			if (!child.hasAttributes())
+				editElement.getChild(fields[i].getNodeName()).setText(fields[i].getValue());
+			else
+			{
+				String[] values = fields[i].getValue().split(",");
+				List<Attribute> attribs = child.getAttributes();
+				
+				for (int j = 0; j < values.length; j++)
+				{
+					//System.out.println(attribs.get(j).getName() + "=" + values[j]);
+					attribs.get(j).setValue(values[j]);
+				}
+			}
+		}
+		XmlLoader.writeXML(envObjDoc);
+	}
+	
+	//Prompts for and validates a save name, then calls the saveEntity function if a valid name is entered
+	private void saveEntityAs()
 	{
 		boolean valid = false;
 		String nameID = "";
@@ -240,7 +282,6 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 		while (valid == false)
 		{
 			//Get our current document
-			envObjDoc = XmlLoader.readXML(Handler.getRootDirectory() + "/environmentalObjects.xml");
 			Element root = envObjDoc.getRootElement();
 			
 			//Get the desired save name
@@ -272,7 +313,7 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 	}
 	
 	//Save entity with a specified name
-	public void saveEntity(String nameID, boolean reload)
+	private void saveEntity(String nameID, boolean reload)
 	{
 		if (reload)
 			envObjDoc = XmlLoader.readXML(Handler.getRootDirectory() + "/environmentalObjects.xml");
@@ -291,7 +332,7 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 			}
 		
 		//Manually set the boundary objects (unique case)
-		Element solidArea = new Element ("solidBounds");
+		Element solidArea = new Element (compSolidBounds.getNodeName());
 		Rectangle r = spriteFrame.getSolidBoundsRect();
 		solidArea.setAttribute("x", Integer.toString(r.x));
 		solidArea.setAttribute("y", Integer.toString(r.y));
@@ -299,7 +340,7 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 		solidArea.setAttribute("h", Integer.toString(r.height));
 		newEntity.addContent(solidArea);
 		
-		Element totalArea = new Element ("totalBounds");
+		Element totalArea = new Element (compTotalBounds.getNodeName());
 		r = spriteFrame.getTotalBoundsRect();
 		totalArea.setAttribute("x", Integer.toString(r.x));
 		totalArea.setAttribute("y", Integer.toString(r.y));
@@ -312,6 +353,8 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 		//Finally, add the new node to our root, and save the doc
 		envObjDoc.getRootElement().addContent(newEntity);
 		XmlLoader.writeXML(envObjDoc);
+		
+		load(newEntity);
 	}
 	
 	//Disable all buttons / fields
@@ -322,6 +365,51 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 				compSolidBounds.setEnabled(this.compIsSolid.getBoolValue());
 			else
 				fields[i].setEnabled(b);
+	}
+	
+	//Loading an element to Edit
+	@Override
+	protected void postLoad()
+	{
+		stop();
+		for (int i = 0; i < fields.length; i++)
+		{
+			String value = "";
+			//Simply load the contents of the appropriate node
+			if (!editElement.getChild(fields[i].getNodeName()).hasAttributes())
+				value = editElement.getChildText(fields[i].getNodeName());
+			
+			//If its empty, we know its one of our bounding boxes. So look at the attributes
+			else
+			{
+				List<Attribute> attribs = editElement.getChild(fields[i].getNodeName()).getAttributes();
+				//value = "";
+				for (int j = 0; j < attribs.size(); j++)
+				{
+					value += attribs.get(j).getValue();
+					if (j < 3)
+						value += ",";	
+				}
+			}
+			
+			//Set our components value
+			fields[i].setValue(value);
+		}
+		spriteFrame.setSolidBounds(compSolidBounds.getValue());
+		spriteFrame.setTotalBounds(compTotalBounds.getValue());
+		spriteFrame.setDepthRegister(Integer.parseInt(compDepthReg.getValue()));
+		
+		this.loadSelectedSprite();
+	}
+	
+	@Override
+	public void clearForm()
+	{
+		stop();
+		super.clearForm();
+		setEnableAll(false);
+		compSpriteIcon.setEnabled(true);
+		//spriteFrame = new SpriteViewerCanvas();
 	}
 	
 	///////////
@@ -365,7 +453,7 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 	}
 	
 	//Start the thread
-	public void start()
+	public synchronized void start()
 	{	
 		if (running == false && thread.isAlive() == false)
 		{
@@ -384,10 +472,5 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 			thread.interrupt();
 			while (thread.isAlive()); //Wait for thread to die
 		}
-	}
-	
-	//Setters and getters
-	public void setSaveAsNew(boolean saveAsNew) {
-		this.saveAsNew = saveAsNew;
 	}
 }

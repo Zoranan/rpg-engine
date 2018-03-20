@@ -92,7 +92,7 @@ public class SpritePreviewLabel extends JLabel implements Runnable
 		
 		if (ss == null)
 		{
-			this.preview.setImage(null);
+			this.setIcon(null);
 			this.setText(placeholderText);
 		}
 		
@@ -100,6 +100,7 @@ public class SpritePreviewLabel extends JLabel implements Runnable
 		{
 			this.preview.setImage(ss.getFrame(0));
 			this.setText("");
+			this.setIcon(preview);
 		}
 		
 		this.sprite = ss;

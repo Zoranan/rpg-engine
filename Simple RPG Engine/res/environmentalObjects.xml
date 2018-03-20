@@ -3,10 +3,10 @@
   <Tree01>
     <name>Tree</name>
     <spriteID>Tree01</spriteID>
-    <depthRegister>299</depthRegister>
+    <depthRegister>300</depthRegister>
     <isSolid>true</isSolid>
     <solidBounds x="88" y="291" w="23" h="10" />
-    <totalBounds x="76" y="207" w="44" h="99" />
+    <totalBounds x="65" y="275" w="65" h="35" />
     <script />
   </Tree01>
 </objects>

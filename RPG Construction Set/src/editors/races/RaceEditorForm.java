@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -16,6 +17,7 @@ import editors.compoundObjects.CompoundComponent;
 import editors.compoundObjects.XmlMultiSelection;
 import editors.compoundObjects.XmlSelection;
 import util.Handler;
+import util.ImageLoader;
 import util.TextValidator;
 import util.XmlLoader;
 
@@ -34,39 +36,30 @@ public class RaceEditorForm extends XmlForm {
 		this.fields = new CompoundComponent[]{
 				new ComboBoxSelection("Sex", "sex", new String[] {"male", "female"}),
 				new XmlMultiSelection("Limbs", "models", "/models.xml", "Models")
-		/*
-				new XmlMultiSelection("Hair Styles", "hair", "/models.xml", "Models"),
-				new XmlMultiSelection("Heads", "heads", "/models.xml", "Models"),
-				new XmlSelection("Chest", "chest", "/models.xml", "Models", false),
-				new XmlSelection("Left Arm", "leftArm", "/models.xml", "Models", false),
-				new XmlSelection("Right Arm", "rightArm", "/models.xml", "Models", false),
-				new XmlSelection("Left Hand", "leftHand", "/models.xml", "Models", false),
-				new XmlSelection("Right Hand", "rightHand", "/models.xml", "Models", false),
-				new XmlSelection("Left Thigh", "leftThigh", "/models.xml", "Models", false),
-				new XmlSelection("Right Thigh", "rightThigh", "/models.xml", "Models", false),
-				new XmlSelection("Left Foot", "leftFoot", "/models.xml", "Models", false),
-				new XmlSelection("Right Foot", "rightFoot", "/models.xml", "Models", false),*/};
+				}
+		;
 		fields[1].setHeight(300);
 		
 		this.buildForm();
 		
 		//Save button
 		JButton btnSave = new JButton("Save");
+		btnSave.setIcon(ImageLoader.loadResourceIcon("/Icons/save20px.png"));
 		btnSave.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				openSaveDialog();
+				save();
 			}
 		});
 		springLayout.putConstraint(SpringLayout.NORTH, btnSave, VERT_PADDING, SpringLayout.SOUTH, fields[fields.length-1]);
-		springLayout.putConstraint(SpringLayout.EAST, btnSave, -14, SpringLayout.EAST, fields[fields.length-1]);
+		springLayout.putConstraint(SpringLayout.WEST, btnSave, 0, SpringLayout.WEST, fields[fields.length-1]);
 		add (btnSave);
 		h += 25;
 		
 		this.setPreferredSize(new Dimension(350, h));
-		racesDoc = XmlLoader.readXML(Handler.getRootDirectory() + "/races.xml", true);
+		
 	}
 	
 	//Saving
@@ -86,9 +79,18 @@ public class RaceEditorForm extends XmlForm {
 			JOptionPane.showMessageDialog(this, "That raceID is invalid\nUse only Alpha-Numeric or '_'", "Invalid Characters", JOptionPane.WARNING_MESSAGE);
 	}
 	
+	private void save()
+	{
+		racesDoc = XmlLoader.readXML(Handler.getRootDirectory() + "/races.xml", true);
+		
+		if (editElement == null)
+			openSaveDialog();
+		else
+			saveUpdate();
+	}
 	
 	//FUNCTION: Save Race / Sex
-	public void saveRace(String raceNameID)
+	private void saveRace(String raceNameID)
 	{
 		Element nameID;
 		boolean save = true;
@@ -134,28 +136,63 @@ public class RaceEditorForm extends XmlForm {
 		}
 	}
 	
+	//Gets the element that specifies the sex, and all limbs associated with that sex for this race
 	private Element createGenderElement()
 	{
 		Element sex = new Element (fields[0].getValue());
-		/*
-		Element hair = new Element (fields[1].getNodeName());
-		ArrayList<String> hairStyles = ((XmlMultiSelection) fields[1]).getListItems();
-		for (int i = 0; i < hairStyles.size(); i++)
-			hair.addContent(new Element ("style").addContent(hairStyles.get(i)));
-		sex.addContent(hair);
 		
-		Element head = new Element (fields[2].getNodeName());
-		ArrayList<String> heads = ((XmlMultiSelection) fields[2]).getListItems();
-		for (int i = 0; i < heads.size(); i++)
-			head.addContent(new Element ("head").addContent(heads.get(i)));
-		sex.addContent(head);
-		*/
 		ArrayList<String> list = ((XmlMultiSelection) fields[1]).getListItems();
 		for (String s : list)
 		{
 			sex.addContent(new Element("list").addContent(s));
+			System.out.println(s);
 		}
 		
 		return sex;
+	}
+	
+	//Saves an element being edited
+	private void saveUpdate()
+	{
+		editElement = racesDoc.getRootElement().getChild(editElement.getName()); //Should not need this, but its the only way it worked?
+		editElement.removeChild(fields[0].getValue());
+		editElement.addContent(createGenderElement());
+		
+		XmlLoader.writeXML(racesDoc);
+	}
+	
+	@Override
+	public void postLoad()
+	{
+		String[] options = {"male", "female"};
+		int choice = JOptionPane.showOptionDialog(this, "Which sex would you like to edit?", "Choose Sex", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+		
+		boolean found = editElement.getChild(options[choice]) != null;
+		
+		if (!found)
+		{
+			clearForm();
+			JOptionPane.showMessageDialog(this, "The chosen sex is undefined for this race");
+		}
+		
+		//Finally, load the race-sex
+		else
+		{
+			fields[0].setValue(options[choice]);
+			fields[1].clear();
+			List<Element> limbs = editElement.getChild(options[choice]).getChildren();
+			
+			for (Element e : limbs)
+				((XmlMultiSelection)fields[1]).addValue(e.getValue());
+			
+			fields[0].setEnabled(false);
+		}
+	}
+	
+	@Override
+	public void clearForm()
+	{
+		super.clearForm();
+		fields[0].setEnabled(true);
 	}
 }

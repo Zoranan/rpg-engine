@@ -4,6 +4,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SpringLayout;
 
 import editors.subPanels.XMLExplorerPanel;
+import util.ImageLoader;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -57,10 +58,9 @@ public class XmlMultiSelection extends CompoundComponent {
 		list.setModel(model);
 		
 		//Buttons
-		JButton btnAdd = new JButton("");
+		JButton btnAdd = new JButton(ImageLoader.loadResourceIcon("/Icons/add.png"));
 		springLayout.putConstraint(SpringLayout.NORTH, btnAdd, 0, SpringLayout.NORTH, scrollPane);
 		springLayout.putConstraint(SpringLayout.EAST, btnAdd, 30, SpringLayout.EAST, scrollPane);
-		btnAdd.setIcon(new ImageIcon(XmlMultiSelection.class.getResource("/Icons/add.png")));
 		btnAdd.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -92,8 +92,7 @@ public class XmlMultiSelection extends CompoundComponent {
 		{
 			XMLExplorerPanel chooser = XMLExplorerPanel.newXmlChooser(this.xmlPath, this.xmlName, this);
 			
-			JButton btn = new JButton ("");
-			btn.setIcon(new ImageIcon(XmlMultiSelection.class.getResource("/Icons/check.png")));
+			JButton btn = new JButton (ImageLoader.loadResourceIcon("/Icons/check.png"));
 			btn.addActionListener(
 				new ActionListener()
 				{
@@ -103,7 +102,7 @@ public class XmlMultiSelection extends CompoundComponent {
 						List<String> list = chooser.getSelectedList();
 						for (int i = 0; i < list.size(); i++)
 						{
-							model.addElement(list.get(i));
+							addValue(list.get(i));
 						}
 						chooser.dispose();
 					}
@@ -111,6 +110,11 @@ public class XmlMultiSelection extends CompoundComponent {
 			
 			chooser.addBtn(btn);
 		}
+	}
+	
+	public void addValue(String v)
+	{
+		model.addElement(v);
 	}
 	
 	public void listKeyboardShortcut(KeyEvent e)
@@ -129,6 +133,12 @@ public class XmlMultiSelection extends CompoundComponent {
 			listItems.add(model.get(i));
 		
 		return listItems;
+	}
+	
+	@Override
+	public void clear()
+	{
+		model.clear();
 	}
 	
 	@Override

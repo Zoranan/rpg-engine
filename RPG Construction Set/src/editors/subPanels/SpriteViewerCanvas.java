@@ -137,44 +137,57 @@ public class SpriteViewerCanvas extends Canvas
 		BufferStrategy bs = this.getBufferStrategy();
 		if (bs == null)
 		{
-			this.createBufferStrategy(3);
+			this.createBufferStrategy(2);
 			bs = this.getBufferStrategy();
 		}
 		
 		//Get out graphics object. Using g2d for transparency (not sure if I need to)
-		g = (Graphics2D) bs.getDrawGraphics();
-		
-		//Erase the canvas
-		g.clearRect(0, 0, w, h);
-		
-		//Draw total bounds
-		g.setColor(new Color(255, 253, 170, 200)); //Light yellow
-		g.fillRect(totalBounds.x, totalBounds.y, totalBounds.width, totalBounds.height);
-		g.setColor(Color.BLACK);
-		g.drawRect(totalBounds.x, totalBounds.y, totalBounds.width, totalBounds.height);
-		
-		//sprite render
-		if (sprite != null)
-			g.drawImage(sprite.getFrame(0), PADDING / 2, PADDING / 2, sprite.getWidth(), sprite.getHeight(), null);
-		
-		
-		//Draw solid bounds
-		g.setColor(new Color(255, 214, 214, 200));	//Light red / pink
-		g.fillRect(solidBounds.x, solidBounds.y, solidBounds.width, solidBounds.height);
-		g.setColor(Color.BLACK);
-		g.drawRect(solidBounds.x, solidBounds.y, solidBounds.width, solidBounds.height);
-		
-		g.setColor(Color.RED);
-		//Draw depthLine (horizontal)
-		g.drawLine(0, depthReference, w, depthReference);
-		
-		//Draw Canvas border
-		g.setColor(Color.BLACK);
-		g.drawRect(0, 0, w-1, h-1);
-		
-		//END draw
-		bs.show();
-		g.dispose();
+		try
+		{
+			g = (Graphics2D) bs.getDrawGraphics();
+
+			//Erase the canvas
+			g.clearRect(0, 0, w, h);
+
+			//Draw total bounds
+			g.setColor(new Color(255, 253, 170, 200)); //Light yellow
+			g.fillRect(totalBounds.x, totalBounds.y, totalBounds.width, totalBounds.height);
+			g.setColor(Color.BLACK);
+			g.drawRect(totalBounds.x, totalBounds.y, totalBounds.width, totalBounds.height);
+
+			//sprite render
+			if (sprite != null)
+				g.drawImage(sprite.getFrame(0), PADDING / 2, PADDING / 2, sprite.getWidth(), sprite.getHeight(), null);
+
+
+			//Draw solid bounds
+			g.setColor(new Color(255, 214, 214, 200));	//Light red / pink
+			g.fillRect(solidBounds.x, solidBounds.y, solidBounds.width, solidBounds.height);
+			g.setColor(Color.BLACK);
+			g.drawRect(solidBounds.x, solidBounds.y, solidBounds.width, solidBounds.height);
+
+			g.setColor(Color.RED);
+			//Draw depthLine (horizontal)
+			g.drawLine(0, depthReference, w, depthReference);
+
+			//Draw Canvas border
+			g.setColor(Color.BLACK);
+			g.drawRect(0, 0, w-1, h-1);
+
+			//END draw
+			bs.show();
+			g.dispose();
+		}
+		catch(Exception e)
+		{
+			//Recreate the buffer strategy for the next render attempt
+			e.printStackTrace();
+			bs.dispose();
+			bs = null;
+			
+			this.createBufferStrategy(2);
+			bs = this.getBufferStrategy();
+		}
 		
 	}
 	

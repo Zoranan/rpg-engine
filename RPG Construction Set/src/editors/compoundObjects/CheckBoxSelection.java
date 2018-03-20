@@ -10,6 +10,7 @@ public class CheckBoxSelection extends CompoundComponent {
 	private JCheckBox chkBox;
 	private String checkedTxt = "", uncheckedTxt = "";
 	private Action clickAction;
+	private boolean initialState = false;
 	/**
 	 * Create the panel.
 	 * @wbp.parser.constructor
@@ -20,6 +21,7 @@ public class CheckBoxSelection extends CompoundComponent {
 		SpringLayout springLayout = (SpringLayout) getLayout();
 		this.checkedTxt = checkedTxt;
 		this.uncheckedTxt = uncheckedTxt;
+		this.initialState = initialState;
 		
 		chkBox = new JCheckBox();
 		springLayout.putConstraint(SpringLayout.NORTH, chkBox, -3, SpringLayout.NORTH, lblLabel);
@@ -76,9 +78,27 @@ public class CheckBoxSelection extends CompoundComponent {
 	}
 	
 	@Override
+	public void clear()
+	{
+		setChecked(initialState);
+	}
+	
+	@Override
 	public String getValue()
 	{
 		return Boolean.toString(chkBox.isSelected());
+	}
+	
+	@Override
+	public void setValue(String s)
+	{
+		try {
+			setChecked(Boolean.parseBoolean(s));
+		}
+		catch (Exception e)
+		{
+			clear();
+		}
 	}
 	
 	public boolean getBoolValue()
