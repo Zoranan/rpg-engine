@@ -15,10 +15,17 @@ The root directory is where all the game assets you will be editing with the CS 
 is the "res" folder within our "Simple RPG Engine" folder.
 
 # To Do
-- Create generic status effects in the game engine, that can be customized in the CS.
-- Create a global variables XML file, to remove many hard coded and repeated sections (Mainly in skeletons and limbs)
-- Get the NPC editor working in CS
-- Make all editors in the CS able to preview existing XML nodes (graphically how they show up in game)
-- Make all editors able to EDIT their associated XML nodes
+GE = Game Engine, 
+CS = Construction Set
+- (GE) Create generic Status Effects in the game engine, that can be customized in the CS
+- (GE) Set up basic NPC creation in game worlds (No behaviors or stats yet)
+- (CS) Streamline the creation of CS tabs with a custom class, and move all tabs to the new format
+- (CS) Get the NPC editor working
+- (CS) Create a Stat Editor, to define what stats each Mob in game will have
+- (CS) Create a Status Effect editor (requires Stat Editor)
+- (CS) Add Stats to NPC editor, and allow values to be set per stat (will need a new type of CompountComponent to handle this)
+- (CS) Add a preview for the Models tab
+- (CS) Add a preview for the Races tab
+- (CS) Add a preview for the NPC tab
 
 Much, much more
