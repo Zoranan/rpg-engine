@@ -1,4 +1,4 @@
-package editors;
+package wizards.sprites;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,7 +32,6 @@ import util.ImageLoader;
 import util.PersistentFileChooser;
 import util.XmlLoader;
 import window.Display;
-import wizards.sprites.CreateNewSpritePanel;
 
 public class ExistingSpritePanel extends JPanel {
 		//private JLabel lblPreviewFrame;

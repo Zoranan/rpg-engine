@@ -228,8 +228,6 @@ public class XMLExplorerPanel extends JPanel {
 		
 		else if (e.getKeyCode() == KeyEvent.VK_F && (e.getModifiers() == KeyEvent.CTRL_MASK))
 			searchFilter();
-		
-		//System.out.println(e.getKeyCode() + " : " + e.getModifiers());
 	}
 	
 	//FUNCTION: Allows buttons to be added to the toolbar
@@ -259,7 +257,6 @@ public class XMLExplorerPanel extends JPanel {
 			searchFilter("");
 		else
 			searchFilter(filters.get(doc.getBaseURI()));
-		System.out.println(filters.get(doc.getBaseURI()));
 		
 		list.validate();
 		list.repaint();
@@ -270,7 +267,6 @@ public class XMLExplorerPanel extends JPanel {
 	{
 		//String cname = list.getSelectedValue();
 		List<String> selectedList = this.getSelectedList();
-		//System.out.println(this.getSelectedList());
 		if (!selectedList.isEmpty())
 			{
 			String options[] = {"Delete forever", "Cancel"};
@@ -322,7 +318,6 @@ public class XMLExplorerPanel extends JPanel {
 			search = TextValidator.eatDoubleChars(search, ' '); //Remove all but one space between words
 			search = search.toLowerCase();
 			ArrayList<String> searchTerms = new ArrayList<String>(Arrays.asList(search.split(" "))); //Separate terms by space
-			System.out.println(search);
 			
 			//look for element tags
 			List<Element> eleList = doc.getRootElement().getChildren();
@@ -344,7 +339,6 @@ public class XMLExplorerPanel extends JPanel {
 							mode = '|';
 					}
 					
-					System.out.println(term);
 					
 					//If we enter a blank search, pull all elements 
 					if (search.isEmpty() || search == "")

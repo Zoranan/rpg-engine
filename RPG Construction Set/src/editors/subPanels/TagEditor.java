@@ -170,10 +170,8 @@ public class TagEditor extends JPanel {
 				Element remove = null;
 				for (Element e : tags)
 				{
-					//System.out.println(e + " : " + e.getValue());
 					if (e.getValue().equals(list.getSelectedValue()))
 					{
-						//System.out.println(list.getSelectedValue() + " == " + e.getValue());
 						remove = e;
 					}
 				}
@@ -204,7 +202,6 @@ public class TagEditor extends JPanel {
 			for (Element e : edit.getChildren())
 			{
 				listModel.addElement(e.getValue());
-				System.out.println(e);
 			}
 		}
 	}
@@ -214,15 +211,10 @@ public class TagEditor extends JPanel {
 		//Create the sprite chooser window
 		Display display = new Display ("Tag Editor", 200, 245);
 		TagEditor editor = new TagEditor(e);
-		System.out.println(editor.getPreferredSize());
 				
 		display.getFrame().getContentPane().add(editor);
 		editor.frame = display;
-		/*
-		Component[] comp = editor.getComponents();
-		for (int i=0; i < comp.length; i++)
-			System.out.println(comp[i]);
-		*/
+		
 		
 		display.getFrame().addWindowListener(new WindowAdapter()
 		{

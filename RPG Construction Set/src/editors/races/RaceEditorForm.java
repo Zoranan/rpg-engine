@@ -31,7 +31,7 @@ public class RaceEditorForm extends XmlForm {
 	 * Create the panel.
 	 */
 	public RaceEditorForm() {
-		super ("New Race");
+		super ("Race Editor");
 		
 		this.fields = new CompoundComponent[]{
 				new ComboBoxSelection("Sex", "sex", new String[] {"male", "female"}),
@@ -56,10 +56,6 @@ public class RaceEditorForm extends XmlForm {
 		springLayout.putConstraint(SpringLayout.NORTH, btnSave, VERT_PADDING, SpringLayout.SOUTH, fields[fields.length-1]);
 		springLayout.putConstraint(SpringLayout.WEST, btnSave, 0, SpringLayout.WEST, fields[fields.length-1]);
 		add (btnSave);
-		h += 25;
-		
-		this.setPreferredSize(new Dimension(350, h));
-		
 	}
 	
 	//Saving
@@ -145,7 +141,6 @@ public class RaceEditorForm extends XmlForm {
 		for (String s : list)
 		{
 			sex.addContent(new Element("list").addContent(s));
-			System.out.println(s);
 		}
 		
 		return sex;

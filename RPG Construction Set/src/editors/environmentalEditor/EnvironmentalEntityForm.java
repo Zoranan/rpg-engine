@@ -265,7 +265,6 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 				
 				for (int j = 0; j < values.length; j++)
 				{
-					//System.out.println(attribs.get(j).getName() + "=" + values[j]);
 					attribs.get(j).setValue(values[j]);
 				}
 			}

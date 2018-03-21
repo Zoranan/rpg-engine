@@ -92,9 +92,6 @@ public class NewSpritePage01 extends NewSpritePage{
 				((CreateNewSpritePanel) this.getParent()).createSheet(img);
 			
 			allowNext();
-			
-			//Handler.setLastDirectory(fc.getSelectedFile().getParentFile().getAbsolutePath());
-			//System.out.println(Handler.getLastDirectory());
 		}
 		
 	}

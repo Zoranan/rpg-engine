@@ -8,6 +8,8 @@ import org.jdom2.Element;
 import editors.compoundObjects.CompoundComponent;
 
 import javax.swing.JLabel;
+
+import java.awt.Dimension;
 import java.awt.Font;
 
 public class XmlForm extends JPanel {
@@ -58,6 +60,9 @@ public class XmlForm extends JPanel {
 			add(fields[i]);
 			h += VERT_PADDING + fields[i].getComponentHeight();
 		}
+		
+		h += 25; //Standard buffer for added buttons
+		this.setPreferredSize(new Dimension(350, h));
 	}
 	
 	//Clears all elements in the form, sets the loaded element to null, and changes the subTitle text

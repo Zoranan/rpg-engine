@@ -51,7 +51,6 @@ public class SpritePreviewLabel extends JLabel implements Runnable
 					
 					i++;
 					i %= sprite.size();
-					System.out.println(i);
 				}
 			}
 			
