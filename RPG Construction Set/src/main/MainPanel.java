@@ -28,6 +28,7 @@ public class MainPanel extends JPanel{
 	private boolean tabsLoaded[] = {true, false, false, false, false, false};
 	private int lastTabEvent = 0;
 	private boolean buildingTab = false;
+	private boolean initialized = false;
 	/**
 	 * Create the panel.
 	 */
@@ -71,6 +72,8 @@ public class MainPanel extends JPanel{
 		{
 			tabbedPane.addTab(names[i], new JPanel());
 		}
+		
+		initialized = true;
 	}
 	
 	//Initialize a tab
@@ -98,4 +101,10 @@ public class MainPanel extends JPanel{
 			buildingTab = false;
 		}
 	}
+
+	public final boolean isInitialized() {
+		return initialized;
+	}
+	
+	
 }

@@ -22,7 +22,7 @@ public class Display {
 		createDisplay();
 	}
 	
-	private void createDisplay()
+	private synchronized void createDisplay()
 	{
 		frame = new JFrame(title);
 		frame.setSize(width, height);
@@ -48,7 +48,7 @@ public class Display {
 		return frame;
 	}
 	
-	public void setPanel (JPanel jpanel)
+	public synchronized void setPanel (JPanel jpanel)
 	{
 		frame.add(jpanel);
 	}

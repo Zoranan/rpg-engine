@@ -354,6 +354,8 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 		XmlLoader.writeXML(envObjDoc);
 		
 		load(newEntity);
+		if (onSave != null)
+			onSave.action();
 	}
 	
 	//Disable all buttons / fields

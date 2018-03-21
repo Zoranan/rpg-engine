@@ -15,7 +15,7 @@ public class Launcher{
 	private static String[] fNames;
 	private static String[] fRoots;
 	
-	public static void main(String[] args){
+	public synchronized static void main(String[] args){
 		//Initialize file names
 		fNames = new String[] {"sprites.xml", 
 				"environmentalObjects.xml"};
@@ -54,15 +54,13 @@ public class Launcher{
 			}
 		}
 		
+		//Create the window
 		MainEditor = new Display("Main Editor", 1000, 600);
 		MainEditor.getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//Create common objects
-		
 		//Add the main panel to the window
+		
 		mainPanel = new MainPanel();
 		MainEditor.setPanel(mainPanel);
-
 	}
 	
 	

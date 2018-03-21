@@ -129,6 +129,10 @@ public class RaceEditorForm extends XmlForm {
 			nameID.addContent(createGenderElement());
 			racesDoc.getRootElement().addContent(nameID);
 			XmlLoader.writeXML(racesDoc);
+			
+			this.clearForm();
+			if (onSave != null)
+				onSave.action();
 		}
 	}
 	

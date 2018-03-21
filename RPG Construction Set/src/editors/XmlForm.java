@@ -5,6 +5,7 @@ import javax.swing.SpringLayout;
 
 import org.jdom2.Element;
 
+import editors.compoundObjects.Action;
 import editors.compoundObjects.CompoundComponent;
 
 import javax.swing.JLabel;
@@ -21,6 +22,8 @@ public class XmlForm extends JPanel {
 	protected int h = 100;
 	
 	protected Element editElement = null;
+	
+	protected Action onSave;
 	/**
 	 * Create the panel.
 	 */
@@ -92,5 +95,15 @@ public class XmlForm extends JPanel {
 	protected void postLoad()
 	{
 		
+	}
+	
+	public final void setOnSave(Action a)
+	{
+		onSave = a;
+	}
+	
+	public final void deleteCheck()
+	{
+		this.clearForm();
 	}
 }

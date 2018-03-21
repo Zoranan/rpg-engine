@@ -124,6 +124,8 @@ public class ModelEditorForm extends XmlForm {
 
 			XmlLoader.writeXML(modelsXml);
 			load(newModel);//Sets the new model as the currently edited element
+			if (onSave != null)
+				onSave.action();
 		}
 	}
 

@@ -228,6 +228,10 @@ public class ItemEditorForm extends XmlForm {
 			//the saving
 			itemsXml.getRootElement().addContent(newItem);
 			XmlLoader.writeXML(itemsXml);
+			
+			load(newItem);
+			if (onSave != null)
+				onSave.action();
 		}
 	}
 	

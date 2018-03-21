@@ -16,12 +16,12 @@ import javax.swing.JToolBar;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import editors.compoundObjects.Action;
 import util.Handler;
 import util.TextValidator;
 import util.XmlLoader;
 import window.Display;
 
-import javax.swing.Action;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.KeyAdapter;
@@ -54,6 +54,8 @@ public class XMLExplorerPanel extends JPanel {
 	private String fileName;
 	private Document doc;
 	private static HashMap<String, String> filters = new HashMap<String, String>();
+	
+	private Action onDelete;
 	
 	public XMLExplorerPanel(String fn, String title) {
 		setLayout(new BorderLayout(0, 0));
@@ -294,6 +296,9 @@ public class XMLExplorerPanel extends JPanel {
 				XmlLoader.writeXML(doc);
 				list.validate();
 				list.repaint();
+				
+				if (onDelete != null)
+					onDelete.action();
 			}
 		}
 	}
@@ -467,6 +472,11 @@ public class XMLExplorerPanel extends JPanel {
 		display.getFrame().setLocation(parent.getLocationOnScreen());
 		
 		return chooser;
+	}
+	
+	public void setOnDelete(Action a)
+	{
+		this.onDelete = a;
 	}
 
 }

@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JSplitPane;
 
+import editors.compoundObjects.Action;
 import editors.subPanels.XMLExplorerPanel;
 import util.ImageLoader;
 
@@ -24,6 +25,9 @@ public class EditorTab extends JPanel {
 	private JScrollPane scrollPane;
 	protected XMLExplorerPanel explorer;
 	protected XmlForm form;
+	
+	protected Action onSave;
+	protected Action onDelete;
 	
 	//This constructor creates the panel empty
 	public EditorTab() {
@@ -69,6 +73,24 @@ public class EditorTab extends JPanel {
 			explorer.addBtn(btnEdit);
 			explorer.addBtn(btnNew);
 		}
+		
+		//Actions (Ties the Explorer and Form together)
+		onSave = new Action() {
+			@Override
+			public void action() {
+				explorer.loadXML(true);
+			}
+		};
+		form.setOnSave(onSave);
+		
+		onDelete = new Action() {
+			@Override
+			public void action() {
+				form.deleteCheck();
+			}
+		};
+		if (explorer != null)
+			explorer.setOnDelete(onDelete);
 	}
 	
 	//Creates an XmlExplorer, and then adds it to the panel along with the form
