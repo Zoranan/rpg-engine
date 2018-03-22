@@ -16,12 +16,19 @@ public class Launcher{
 	private static String[] fRoots;
 	
 	public synchronized static void main(String[] args){
-		//Initialize file names
-		fNames = new String[] {"sprites.xml", 
-				"environmentalObjects.xml"};
+		//Initialize file names for checking the root folder
+		fNames = new String[] {"sprites.xml",
+				"models.xml",
+				"environmentalObjects.xml",
+				"items.xml",
+				"races.xml"
+				};
 		
 		fRoots = new String[] {"sprites", 
-								"objects"};
+								"models",
+								"objects",
+								"items",
+								"races"};
 		
 		//Attempt to load preferences
 		Handler.loadPrefs();
@@ -57,9 +64,11 @@ public class Launcher{
 		//Create the window
 		MainEditor = new Display("Main Editor", 1000, 600);
 		MainEditor.getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//Add the main panel to the window
 		
-		mainPanel = new MainPanel();
+		//Add the main panel to the window.
+		for (int j = 0; j < 2; j++)	// At times, the panel would fail to initialize. This seems to have fixed it
+			mainPanel = new MainPanel();
+		
 		MainEditor.setPanel(mainPanel);
 	}
 	
