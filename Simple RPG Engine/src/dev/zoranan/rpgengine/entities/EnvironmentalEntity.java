@@ -1,8 +1,6 @@
 package dev.zoranan.rpgengine.entities;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-
 import org.jdom2.Element;
 
 import dev.zoranan.rpgengine.Handler;

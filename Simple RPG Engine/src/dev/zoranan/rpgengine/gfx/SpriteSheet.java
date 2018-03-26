@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 import org.jdom2.Element;
 
-import dev.zoranan.rpgengine.util.FpsTimer;
-
 /*
  * This class holds our in game images
  * If we load a sheet with many images, it chops them up into frames

@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import dev.zoranan.rpgengine.display.Display;
-import dev.zoranan.rpgengine.entities.combat.CombatManager;
 import dev.zoranan.rpgengine.gfx.GameCamera;
 import dev.zoranan.rpgengine.input.KeyManager;
 import dev.zoranan.rpgengine.input.MouseManager;
@@ -13,7 +12,6 @@ import dev.zoranan.rpgengine.states.MenuState;
 import dev.zoranan.rpgengine.states.State;
 import dev.zoranan.rpgengine.util.Assets;
 import dev.zoranan.rpgengine.util.FpsTimer;
-import dev.zoranan.rpgengine.util.XmlLoader;
 
 public class Game implements Runnable {
 	private Display display;

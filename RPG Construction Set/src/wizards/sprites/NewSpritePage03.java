@@ -26,7 +26,7 @@ public class NewSpritePage03 extends NewSpritePage {
 	private JTextField txtName;
 	private JTextField txtNameid;
 	private JTextField txtNewTagBox;
-	private JList tagList;
+	private JList<String> tagList;
 	private DefaultListModel<String> tagListModel;
 
 	/**

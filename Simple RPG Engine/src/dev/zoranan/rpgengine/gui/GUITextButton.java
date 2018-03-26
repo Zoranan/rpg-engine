@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import dev.zoranan.rpgengine.gfx.SpriteSheet;
 import dev.zoranan.rpgengine.gfx.Text;
 import dev.zoranan.rpgengine.util.Assets;
 

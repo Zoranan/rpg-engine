@@ -15,8 +15,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -27,7 +25,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 public class TagEditor extends JPanel {
 	private Display frame;

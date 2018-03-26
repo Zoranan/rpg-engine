@@ -2,14 +2,8 @@ package dev.zoranan.rpgengine.gfx;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map.Entry;
-
-import org.jdom2.Document;
-import org.jdom2.Element;
 
 import dev.zoranan.rpgengine.Handler;
 import dev.zoranan.rpgengine.entities.Mob;
@@ -17,7 +11,6 @@ import dev.zoranan.rpgengine.entities.Mob.Direction;
 import dev.zoranan.rpgengine.items.Item;
 import dev.zoranan.rpgengine.util.Assets;
 import dev.zoranan.rpgengine.util.FpsTimer;
-import dev.zoranan.rpgengine.util.XmlLoader;
 
 /*
  * The Skeleton class controls grouped skeleton animations

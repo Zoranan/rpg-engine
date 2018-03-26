@@ -2,7 +2,6 @@ package editors.races;
 
 import javax.swing.JOptionPane;
 
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ import editors.XmlForm;
 import editors.compoundObjects.ComboBoxSelection;
 import editors.compoundObjects.CompoundComponent;
 import editors.compoundObjects.XmlMultiSelection;
-import editors.compoundObjects.XmlSelection;
 import util.Handler;
 import util.ImageLoader;
 import util.TextValidator;

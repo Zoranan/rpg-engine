@@ -2,7 +2,6 @@ package dev.zoranan.rpgengine.entities;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 import dev.zoranan.rpgengine.Handler;
@@ -10,13 +9,11 @@ import dev.zoranan.rpgengine.entities.attributes.Stat;
 import dev.zoranan.rpgengine.entities.attributes.StatSheet;
 import dev.zoranan.rpgengine.entities.behaviors.Behavior;
 import dev.zoranan.rpgengine.entities.combat.Attack;
-import dev.zoranan.rpgengine.entities.combat.CombatManager;
 import dev.zoranan.rpgengine.entities.containers.Container;
 import dev.zoranan.rpgengine.gfx.GameCamera;
 import dev.zoranan.rpgengine.gfx.SpriteSheet;
 import dev.zoranan.rpgengine.items.Item;
 import dev.zoranan.rpgengine.items.equipment.EquipmentSheet;
-import dev.zoranan.rpgengine.util.FpsTimer;
 
 public abstract class Mob extends Entity{
 	//DEFAULTS

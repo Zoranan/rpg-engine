@@ -28,14 +28,12 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.ListSelectionModel;
 import javax.swing.ImageIcon;
 
 public class XMLExplorerPanel extends JPanel {
@@ -429,7 +427,7 @@ public class XMLExplorerPanel extends JPanel {
 	}
 	
 	//Gets the JList so other panels can add listeners to it
-	public JList getList()
+	public JList<String> getList()
 	{
 		return this.list;
 	}

@@ -6,8 +6,6 @@ import java.util.Comparator;
 
 import dev.zoranan.rpgengine.Handler;
 import dev.zoranan.rpgengine.entities.behaviors.Behavior;
-import dev.zoranan.rpgengine.entities.behaviors.Player;
-import dev.zoranan.rpgengine.items.Item;
 
 /*
  * Handles all entities currently placed on the loaded map

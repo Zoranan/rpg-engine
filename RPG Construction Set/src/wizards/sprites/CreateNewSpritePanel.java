@@ -7,24 +7,15 @@ import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.text.NumberFormat;
 import java.util.List;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
-import javax.swing.text.NumberFormatter;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
-import org.jdom2.output.Format;
-import org.jdom2.output.XMLOutputter;
-
 import gameObjects.SpriteSheet;
 import util.Handler;
 import util.XmlLoader;
-import wizards.sprites.*;
-
 import java.awt.ComponentOrientation;
 
 public class CreateNewSpritePanel extends JPanel {

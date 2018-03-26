@@ -1,6 +1,5 @@
 package wizards.sprites;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -13,8 +12,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.List;
-
 import javax.swing.JSplitPane;
 
 import javax.swing.event.ListSelectionEvent;

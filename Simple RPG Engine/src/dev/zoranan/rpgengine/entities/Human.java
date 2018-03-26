@@ -1,13 +1,11 @@
 package dev.zoranan.rpgengine.entities;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 import org.jdom2.Element;
 
 import dev.zoranan.rpgengine.Handler;
-import dev.zoranan.rpgengine.gfx.ImageLoader;
 import dev.zoranan.rpgengine.gfx.Skeleton;
 import dev.zoranan.rpgengine.util.Assets;
 import dev.zoranan.rpgengine.util.FpsTimer;

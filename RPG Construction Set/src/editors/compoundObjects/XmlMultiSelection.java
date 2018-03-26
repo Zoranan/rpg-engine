@@ -17,8 +17,6 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-
 public class XmlMultiSelection extends CompoundComponent {
 	private JList<String> list;
 	private DefaultListModel<String> model;

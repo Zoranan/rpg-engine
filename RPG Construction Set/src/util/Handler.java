@@ -1,6 +1,5 @@
 package util;
 
-import java.awt.Component;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,10 +8,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import javax.swing.JFileChooser;
-
-import org.jdom2.Document;
-
-import main.Launcher;
 
 public class Handler {
 	private static String rootDirectory = ".";

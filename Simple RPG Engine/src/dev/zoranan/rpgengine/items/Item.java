@@ -2,18 +2,12 @@ package dev.zoranan.rpgengine.items;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
-
 import org.jdom2.Element;
 
 import dev.zoranan.rpgengine.Handler;
-import dev.zoranan.rpgengine.entities.Entity;
-import dev.zoranan.rpgengine.gfx.GameCamera;
-import dev.zoranan.rpgengine.gfx.ImageLoader;
 import dev.zoranan.rpgengine.gfx.Sprite;
 import dev.zoranan.rpgengine.gfx.Text;
 import dev.zoranan.rpgengine.util.Assets;

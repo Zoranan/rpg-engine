@@ -8,8 +8,6 @@ import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import dev.zoranan.rpgengine.entities.Entity;
-import dev.zoranan.rpgengine.entities.EnvironmentalEntity;
 import dev.zoranan.rpgengine.gfx.ImageLoader;
 import dev.zoranan.rpgengine.gfx.SkeletonAnimation;
 import dev.zoranan.rpgengine.gfx.SpriteSheet;
