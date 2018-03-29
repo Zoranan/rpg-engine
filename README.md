@@ -5,9 +5,11 @@ The project currently loads most images from paths stored in the "sprites.xml" f
 Item and Entity creation systems are working now, so all Items and entities are dynamically created at runtime.
 
 ## Dependencies
+
 This project requires JDOM for the XML loading.
 JDOM can be downloaded here: http://www.jdom.org/downloads/
-You just need to extract the "jdom-2.0.6.jar" from the zip, and make sure it's linked in the build path
+You just need to extract the "jdom-2.0.6.jar" from the zip, and make sure it's linked in the build path.
+Additionally you will need my Common Utilities package. Its available for build here on my GitHub.
 
 ## Using The Construction Set
 The CS requires a "Root Directory" to be set before it will open. Currently, you can not create a new directory. 
