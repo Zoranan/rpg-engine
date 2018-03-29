@@ -3,7 +3,7 @@ package dev.zoranan.rpgengine.gfx;
 import java.awt.image.BufferedImage;
 
 import dev.zoranan.rpgengine.util.Assets;
-import dev.zoranan.rpgengine.util.FpsTimer;
+import dev.zoranan.utils.FpsTimer;
 
 /*
  * The Sprite class animates a spritesheet. This separation was necessary to allow each

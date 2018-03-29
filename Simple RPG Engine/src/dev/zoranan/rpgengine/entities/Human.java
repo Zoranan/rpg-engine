@@ -8,7 +8,7 @@ import org.jdom2.Element;
 import dev.zoranan.rpgengine.Handler;
 import dev.zoranan.rpgengine.gfx.Skeleton;
 import dev.zoranan.rpgengine.util.Assets;
-import dev.zoranan.rpgengine.util.FpsTimer;
+import dev.zoranan.utils.FpsTimer;
 
 //A skeletal animated mob
 

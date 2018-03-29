@@ -1,6 +1,11 @@
 package dev.zoranan.rpgengine.entities.attributes;
 
 import java.util.HashMap;
+import java.util.List;
+
+import org.jdom2.Element;
+
+import dev.zoranan.rpgengine.util.Assets;
 
 /*
  * This class holds our stats, and buffs for those stats (soon)
@@ -8,33 +13,48 @@ import java.util.HashMap;
  */
 
 public class StatSheet {
-	private static final int STARTING_LEVEL = 1;
-	private static final int MAXIMUM_LEVEL = 10;
-	
-	//All stats (Needs to be loaded from XML)
+	private static HashMap<String, Stat> defaultStats;
 	private HashMap<String, Stat> statMap;
+	/*
 	private static final String[] statNames = {"Health", "Mana", 
 												"Strength", "Toughness",
 												"Agility", "Speed",
 												"Intelligence", "Wit",
 												"Stabbing", "Slashing", "Crushing",
 												"Elemental", "Arcane", "Life",
-												"Archery", "Throwing", "BeastTaming"};
+												"Archery", "Throwing", "BeastTaming"};*/
 	
 	
 	//This whole setup is temporary. We need to load this information from an XML
 	public StatSheet()
 	{
-		statMap = new HashMap<String, Stat>();
-		//Derived Stats
-		for (String s : statNames)
-		{
-			statMap.put(s, new Stat(s, STARTING_LEVEL, MAXIMUM_LEVEL));
-		}
+		if (defaultStats == null)
+			loadDefaults();
 		
-		//Special Cases
-		statMap.get("Health").setMax(20);
-		statMap.get("Mana").setMax(5);
+		statMap = new HashMap<String, Stat>();
+		statMap.putAll(defaultStats);
+	}
+	
+	public void loadDefaults()
+	{
+		defaultStats = new HashMap<String, Stat>();
+		List<Element> stats = Assets.getVariables("stats").getChildren();
+		int value;
+		String name;
+		
+		for (Element e : stats)
+		{
+			name = e.getAttributeValue("name");
+			try {
+				value = Integer.parseInt(e.getAttributeValue("value"));
+			}
+			catch(Exception ex)
+			{
+				value = 0;
+			}
+			defaultStats.put(name, new Stat ("", value, value));
+			System.out.println(name + ": " + value);
+		}
 	}
 	
 	public Stat get(String key)

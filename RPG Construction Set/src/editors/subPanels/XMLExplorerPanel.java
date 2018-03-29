@@ -16,10 +16,10 @@ import javax.swing.JToolBar;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import dev.zoranan.utils.TextValidator;
+import dev.zoranan.utils.XmlLoader;
 import editors.compoundObjects.Action;
 import util.Handler;
-import util.TextValidator;
-import util.XmlLoader;
 import window.Display;
 
 import javax.swing.DefaultListModel;

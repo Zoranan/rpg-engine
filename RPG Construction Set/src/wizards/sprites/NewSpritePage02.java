@@ -10,8 +10,8 @@ import javax.swing.text.NumberFormatter;
 import org.jdom2.Element;
 import org.jdom2.Text;
 
-import util.FpsTimer;
-import util.TextValidator;
+import dev.zoranan.utils.FpsTimer;
+import dev.zoranan.utils.TextValidator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;

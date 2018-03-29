@@ -1,52 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <variables>
-	<limbs>
-		<rightFoot />
-		<leftFoot />
-		<rightThigh />
-		<leftThigh />
-		<head />
-		<chest />
-		<rightArm />
-		<rightHand />
-		<leftArm />
-		<leftHand />
-		<weapon />
-		<offHand />
-	</limbs>
-	<angles>
-		<front />
-		<back />
-		<left />
-		<right />
-	</angles>
-	<itemTypes>
-		<weapon />
-		<offHand />
-		<headGear />
-		<chestGear />
-		<handGear />
-		<legGear />
-		<footGear />
-		<ring />
-	</itemTypes>
 	<stats>
-		<Health default="20"/>
-		<Mana default="10"/>
-		<Strength default="1"/>
-		<Toughness default="1"/>
-		<Agility default="1"/>
-		<Speed default="1"/>
-		<Intelligence default="1"/>
-		<Wit default="1"/>
-		<Stabbing default="1"/>
-		<Slashing default="1"/>
-		<Crushing default="1"/>
-		<Elemental default="1"/>
-		<Arcane default="1"/>
-		<Life default="1"/>
-		<Archery default="1"/>
-		<Throwing default="1"/>
-		<BeastTaming default="1"/>
+		<stat name="Strength" value="5" />
+		<stat name="Toughness" value="5" />
+		<stat name="Intelligence" value="5" />
+		<stat name="Wit" value="5" />
+		<stat name="Agility" value="5" />
+		<stat name="Speed" value="5" />
+		
+		<stat name="Health" value="20"/>
+		<stat name="Mana" value="20"/>
+		
+		<stat name="Attack Speed" value="0" />
 	</stats>
 </variables>

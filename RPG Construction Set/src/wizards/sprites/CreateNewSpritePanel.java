@@ -13,9 +13,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 import org.jdom2.Document;
 import org.jdom2.Element;
+
+import dev.zoranan.utils.XmlLoader;
 import gameObjects.SpriteSheet;
 import util.Handler;
-import util.XmlLoader;
+
 import java.awt.ComponentOrientation;
 
 public class CreateNewSpritePanel extends JPanel {

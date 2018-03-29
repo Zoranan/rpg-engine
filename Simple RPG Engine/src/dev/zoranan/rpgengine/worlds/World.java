@@ -18,7 +18,7 @@ import dev.zoranan.rpgengine.entities.combat.CombatManager;
 import dev.zoranan.rpgengine.gfx.GameCamera;
 import dev.zoranan.rpgengine.gfx.ImageLoader;
 import dev.zoranan.rpgengine.util.Assets;
-import dev.zoranan.rpgengine.util.XmlLoader;
+import dev.zoranan.utils.XmlLoader;
 
 /*
  * World Objects load world (map) data, and create objects for that world dynamically 
@@ -57,7 +57,8 @@ public class World {
 	public void loadWorld(String name)
 	{
 		String baseURL = MAP_DIR + name + "/";
-		Document map = XmlLoader.readXML((baseURL + name + ".xml"));
+		//Document map = XmlLoader.readXML((baseURL + name + ".xml"));
+		Document map = XmlLoader.readXML("res/maps/testTown/testTown.xml");
 		Element root = map.getRootElement();
 		
 		//Start by loading the base images in (Due for removal)

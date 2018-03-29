@@ -8,6 +8,9 @@ import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+/*
+ * This class handles all of the image loading.
+ */
 
 public class ImageLoader {
 	private static HashMap<String, BufferedImage> loadedImages = new HashMap<String, BufferedImage>();

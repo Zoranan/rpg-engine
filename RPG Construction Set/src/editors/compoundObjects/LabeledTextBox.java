@@ -3,7 +3,7 @@ package editors.compoundObjects;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import util.TextValidator;
+import dev.zoranan.utils.TextValidator;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

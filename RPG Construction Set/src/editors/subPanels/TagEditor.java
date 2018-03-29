@@ -4,8 +4,8 @@ import javax.swing.JPanel;
 
 import org.jdom2.Element;
 
-import util.TextValidator;
-import util.XmlLoader;
+import dev.zoranan.utils.TextValidator;
+import dev.zoranan.utils.XmlLoader;
 import window.Display;
 
 import javax.swing.SpringLayout;

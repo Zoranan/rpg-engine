@@ -11,15 +11,15 @@ import javax.swing.SpringLayout;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import dev.zoranan.utils.TextValidator;
+import dev.zoranan.utils.XmlLoader;
 import editors.XmlForm;
 import editors.compoundObjects.ComboBoxSelection;
 import editors.compoundObjects.CompoundComponent;
 import editors.compoundObjects.XmlMultiSelection;
 import editors.compoundObjects.XmlSelection;
 import util.Handler;
-import util.TextValidator;
 import util.TxtLoader;
-import util.XmlLoader;
 
 public class ModelEditorForm extends XmlForm {
 	private JButton btnSave;

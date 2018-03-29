@@ -14,6 +14,8 @@ import javax.swing.SpringLayout;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import dev.zoranan.utils.TextValidator;
+import dev.zoranan.utils.XmlLoader;
 import editors.XmlForm;
 import editors.compoundObjects.Action;
 import editors.compoundObjects.CheckBoxSelection;
@@ -26,9 +28,7 @@ import editors.subPanels.SpriteViewerPanel;
 import gameObjects.SpriteSheet;
 import util.Handler;
 import util.ImageLoader;
-import util.TextValidator;
 import util.TxtLoader;
-import util.XmlLoader;
 
 public class ItemEditorForm extends XmlForm {
 	private SpriteViewerPanel iconPreview;

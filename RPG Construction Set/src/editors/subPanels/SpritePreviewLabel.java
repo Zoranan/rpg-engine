@@ -3,8 +3,8 @@ package editors.subPanels;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import dev.zoranan.utils.FpsTimer;
 import gameObjects.SpriteSheet;
-import util.FpsTimer;
 
 public class SpritePreviewLabel extends JLabel implements Runnable
 {

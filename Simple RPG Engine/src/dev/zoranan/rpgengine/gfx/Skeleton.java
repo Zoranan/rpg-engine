@@ -10,7 +10,7 @@ import dev.zoranan.rpgengine.entities.Mob;
 import dev.zoranan.rpgengine.entities.Mob.Direction;
 import dev.zoranan.rpgengine.items.Item;
 import dev.zoranan.rpgengine.util.Assets;
-import dev.zoranan.rpgengine.util.FpsTimer;
+import dev.zoranan.utils.FpsTimer;
 
 /*
  * The Skeleton class controls grouped skeleton animations

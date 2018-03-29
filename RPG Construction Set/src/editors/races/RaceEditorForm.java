@@ -10,14 +10,14 @@ import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import dev.zoranan.utils.TextValidator;
+import dev.zoranan.utils.XmlLoader;
 import editors.XmlForm;
 import editors.compoundObjects.ComboBoxSelection;
 import editors.compoundObjects.CompoundComponent;
 import editors.compoundObjects.XmlMultiSelection;
 import util.Handler;
 import util.ImageLoader;
-import util.TextValidator;
-import util.XmlLoader;
 
 import javax.swing.SpringLayout;
 import javax.swing.JButton;

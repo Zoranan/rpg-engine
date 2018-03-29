@@ -12,6 +12,9 @@ import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import dev.zoranan.utils.FpsTimer;
+import dev.zoranan.utils.TextValidator;
+import dev.zoranan.utils.XmlLoader;
 import editors.XmlForm;
 import editors.compoundObjects.Action;
 import editors.compoundObjects.CheckBoxSelection;
@@ -20,11 +23,9 @@ import editors.compoundObjects.LabeledTextBox;
 import editors.compoundObjects.XmlSelection;
 import editors.subPanels.SpriteViewerCanvas;
 import gameObjects.SpriteSheet;
-import util.FpsTimer;
 import util.Handler;
 import util.ImageLoader;
-import util.TextValidator;
-import util.XmlLoader;
+
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;

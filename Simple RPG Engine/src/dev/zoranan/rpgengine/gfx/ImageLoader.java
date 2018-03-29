@@ -1,7 +1,10 @@
 package dev.zoranan.rpgengine.gfx;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
@@ -13,11 +16,27 @@ import javax.imageio.ImageIO;
 public class ImageLoader {
 	public static BufferedImage loadImage (String path)
 	{
+		Path res = Paths.get("res/");
+		Path p = Paths.get(path);
+		res.normalize();
+		p.normalize();
+		
+		//Correct any improper file paths
+		if (!p.startsWith(res))
+			p = Paths.get(res.toString(), p.toString());
+		
+		File f = p.toFile();
+		
 		try 
 		{
-			System.out.println("Trying to read from " + path);
-			return  ImageIO.read(ImageLoader.class.getResource(path));
-			//return  ImageIO.read(new File(path));
+			if (f.exists())
+			{
+				return ImageIO.read(f);
+			}
+			else
+			{
+				return  ImageIO.read(ImageLoader.class.getResource(path));
+			}
 		} 
 		//Cant access or load image
 		catch (IOException e) 

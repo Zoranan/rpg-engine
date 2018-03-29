@@ -11,6 +11,7 @@ import org.jdom2.Element;
 import dev.zoranan.rpgengine.gfx.ImageLoader;
 import dev.zoranan.rpgengine.gfx.SkeletonAnimation;
 import dev.zoranan.rpgengine.gfx.SpriteSheet;
+import dev.zoranan.utils.XmlLoader;
 
 /*
  * The assets class handles all of our File/Resource IO
@@ -26,6 +27,7 @@ public class Assets {
 	public static BufferedImage warning;
 	
 	//XML DOCUMENTS
+	public static Document varsXML;
 	public static Document spriteXML;
 	public static Document modelsXML;
 	public static Document envEntityXML;
@@ -83,7 +85,7 @@ public class Assets {
 		fontRoboto14 = FontLoader.loadFont("/fonts/RobotoCondensed-Light.ttf", 14);
 		
 		//SKELETON ANIMATIONS
-		Document animDoc = XmlLoader.readXML("/skeleTest/skeleAnimation.xml");
+		Document animDoc = XmlLoader.readXML("res/skeleTest/skeleAnimation.xml");
 		lowerSkeleAngles = new HashMap<String, HashMap<String, SkeletonAnimation>>();
 		lowerSkeleAngles.put("front", new HashMap<String, SkeletonAnimation>());
 		lowerSkeleAngles.put("back", new HashMap<String, SkeletonAnimation>());
@@ -109,6 +111,15 @@ public class Assets {
 			upperSkeleAngles.get(e.getAttributeValue("angle")).put(e.getName(), new SkeletonAnimation(e));
 	}
 	
+	//Load external variables
+	public static Element getVariables(String varGroup)
+	{
+		if (varsXML == null)
+			varsXML = XmlLoader.readXML("res/vars.xml");
+		
+		return varsXML.getRootElement().getChild(varGroup);
+	}
+	
 	//Get a sprite sheet by ID
 	//This function checks for the sprite sheet in our HashMap
 	//If it hasnt been loaded, we get the data from the xml file, and create it
@@ -119,7 +130,7 @@ public class Assets {
 		if (ss == null)
 		{
 			if (spriteXML == null)
-				spriteXML = XmlLoader.readXML("/sprites.xml");
+				spriteXML = XmlLoader.readXML("res/sprites.xml");
 			
 			System.out.println("Trying to load " + spriteID);
 			//Create the new sprite sheet and add it to the hashmap
@@ -133,7 +144,7 @@ public class Assets {
 	public static Element getEnvironmentalEntity(String entityID)
 	{	
 		if (envEntityXML == null)
-			envEntityXML = XmlLoader.readXML("/environmentalObjects.xml");
+			envEntityXML = XmlLoader.readXML("res/environmentalObjects.xml");
 		
 		return envEntityXML.getRootElement().getChild(entityID);
 	}
@@ -142,7 +153,7 @@ public class Assets {
 	public static Element getItem(String entityID)
 	{	
 		if (itemsXML == null)
-			itemsXML = XmlLoader.readXML("/items.xml");
+			itemsXML = XmlLoader.readXML("res/items.xml");
 		
 		return itemsXML.getRootElement().getChild(entityID);
 	}
@@ -151,7 +162,7 @@ public class Assets {
 	public static HashMap<String, HashMap<String, String>> getModel(String modelID)
 	{	
 		if (modelsXML == null)
-			modelsXML = XmlLoader.readXML("/models.xml");
+			modelsXML = XmlLoader.readXML("res/models.xml");
 		
 		//		//Limb		//Angle		//spriteID
 		HashMap<String, HashMap<String, String>> models = new HashMap<String, HashMap<String,String>>();
@@ -182,7 +193,7 @@ public class Assets {
 	public static Element getRace(String raceID)
 	{
 		if (racesXML == null)
-			racesXML = XmlLoader.readXML("/races.xml");
+			racesXML = XmlLoader.readXML("res/races.xml");
 		
 		return racesXML.getRootElement().getChild(raceID);
 	}
@@ -191,7 +202,7 @@ public class Assets {
 	public static Element getSound(String soundID)
 	{	
 		if (soundsXML == null)
-			soundsXML = XmlLoader.readXML("/sounds.xml");
+			soundsXML = XmlLoader.readXML("res/sounds.xml");
 		
 		return soundsXML.getRootElement().getChild(soundID);
 	}

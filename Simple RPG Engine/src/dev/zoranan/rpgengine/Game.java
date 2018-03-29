@@ -11,7 +11,7 @@ import dev.zoranan.rpgengine.states.GameState;
 import dev.zoranan.rpgengine.states.MenuState;
 import dev.zoranan.rpgengine.states.State;
 import dev.zoranan.rpgengine.util.Assets;
-import dev.zoranan.rpgengine.util.FpsTimer;
+import dev.zoranan.utils.FpsTimer;
 
 public class Game implements Runnable {
 	private Display display;

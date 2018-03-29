@@ -100,14 +100,14 @@ public abstract class Mob extends Entity{
 	}
 	
 	//Get ahold of our stats
-	public StatSheet getStatSheet()
-	{
-		return statSheet;
-	}
-	
 	public Stat getStat(String key)
 	{
 		return statSheet.get(key);
+	}
+	
+	public int getStatValue(String key)
+	{
+		return statSheet.get(key).get();//Return our current stat level for the given stat
 	}
 	
 	//MOVEMENT
@@ -277,5 +277,4 @@ public abstract class Mob extends Entity{
 	{
 		return this.facing;
 	}
-	
 }
