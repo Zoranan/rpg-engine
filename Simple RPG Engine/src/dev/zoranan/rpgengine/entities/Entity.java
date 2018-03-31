@@ -7,6 +7,7 @@ import org.jdom2.Element;
 
 import dev.zoranan.rpgengine.Handler;
 import dev.zoranan.rpgengine.entities.containers.Container;
+import dev.zoranan.rpgengine.util.ScriptExecuter;
 
 /*
  * ABSTRACT CLASS
@@ -16,7 +17,7 @@ import dev.zoranan.rpgengine.entities.containers.Container;
  * 
  */
 
-public abstract class Entity {
+public abstract class Entity implements ScriptExecuter{
 	protected float posX;
 	protected float posY;
 	protected float depthReference;

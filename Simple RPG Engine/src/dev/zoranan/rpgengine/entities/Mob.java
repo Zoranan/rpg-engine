@@ -14,6 +14,9 @@ import dev.zoranan.rpgengine.gfx.GameCamera;
 import dev.zoranan.rpgengine.gfx.SpriteSheet;
 import dev.zoranan.rpgengine.items.Item;
 import dev.zoranan.rpgengine.items.equipment.EquipmentSheet;
+import dev.zoranan.rpgengine.util.Assets;
+import dev.zoranan.rpgengine.util.ScriptInterpreterClass;
+import dev.zoranan.utils.MathString;
 
 public abstract class Mob extends Entity{
 	//DEFAULTS
@@ -57,10 +60,22 @@ public abstract class Mob extends Entity{
 		
 		xp = 0;
 		level = 1;
-		speed = DEFAULT_SPEED;
+		//speed = (float) MathString.eval(getStatValue("Speed") + "/12 + 1");
+		speed = (float) exec(Assets.getVariables("equations").getChildText("movementSpeed"));
+		System.out.println("SPEED: " + speed);
 		xMove = 0;
 		yMove = 0;
 		inventory = new Container(this);
+	}
+	
+	//How we get our stats for our scripts
+	@Override
+	public String getVar(String[] nameParts)
+	{
+		if (nameParts[0].equals("stats"))
+			return Integer.toString((getStatValue(nameParts[1])));
+		else
+			return "0";
 	}
 	
 	public HashMap<String, String> getSkin (String key)

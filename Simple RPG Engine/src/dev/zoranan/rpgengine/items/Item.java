@@ -53,7 +53,6 @@ public class Item{
 		try
 		{
 			List<Element> modelEles = e.getChild("models").getChildren();
-			System.out.println(e.getName() + " has " + modelEles.size() + " models");
 			for (Element m : modelEles)
 			{
 				System.out.println("Loading " + m.getName() + " --> " + Assets.getModel(m.getValue()).toString());

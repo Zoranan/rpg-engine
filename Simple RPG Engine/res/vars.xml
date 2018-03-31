@@ -13,4 +13,8 @@
 		
 		<stat name="Attack Speed" value="0" />
 	</stats>
+	
+	<equations>
+		<movementSpeed>stats.Speed / 10 + 1</movementSpeed>
+	</equations>
 </variables>

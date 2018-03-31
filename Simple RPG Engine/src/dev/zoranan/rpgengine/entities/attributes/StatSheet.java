@@ -40,11 +40,12 @@ public class StatSheet {
 		defaultStats = new HashMap<String, Stat>();
 		List<Element> stats = Assets.getVariables("stats").getChildren();
 		int value;
-		String name;
+		String name, type;
 		
 		for (Element e : stats)
 		{
 			name = e.getAttributeValue("name");
+			type = e.getName();
 			try {
 				value = Integer.parseInt(e.getAttributeValue("value"));
 			}
@@ -53,7 +54,6 @@ public class StatSheet {
 				value = 0;
 			}
 			defaultStats.put(name, new Stat ("", value, value));
-			System.out.println(name + ": " + value);
 		}
 	}
 	
