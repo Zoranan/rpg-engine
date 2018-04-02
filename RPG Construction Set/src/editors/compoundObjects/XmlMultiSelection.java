@@ -30,7 +30,7 @@ public class XmlMultiSelection extends CompoundComponent {
 	public XmlMultiSelection(String labelTxt, String nodeName) 
 	{
 		super (labelTxt, nodeName);
-		springLayout = (SpringLayout) getLayout();
+		SpringLayout springLayout = (SpringLayout) getLayout();
 		
 		scrollPane = new JScrollPane();
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, -3, SpringLayout.NORTH, lblLabel);
@@ -140,15 +140,14 @@ public class XmlMultiSelection extends CompoundComponent {
 	}
 	
 	@Override
-	public int getComponentHeight()
-	{
-		return height;	
-	}
-	
-	@Override
 	public void setHeight(int h)
 	{
 		super.setHeight(h);
+		if (springLayout == null)
+		{
+			springLayout = (SpringLayout) getLayout();
+		}
+		
 		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, h-5, SpringLayout.NORTH, lblLabel);
 	}
 }

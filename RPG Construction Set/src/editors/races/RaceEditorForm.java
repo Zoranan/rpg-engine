@@ -59,7 +59,7 @@ public class RaceEditorForm extends XmlForm {
 	//Saving
 	public void openSaveDialog()
 	{
-		String raceNameID = JOptionPane.showInputDialog(this, "Enter a unique ItemID", "Save Entity", JOptionPane.PLAIN_MESSAGE);
+		String raceNameID = JOptionPane.showInputDialog(this, "Enter a unique RaceID", "Save Race", JOptionPane.PLAIN_MESSAGE);
 		boolean valid = true;
 		
 		if (raceNameID != null && raceNameID.length() > 1)

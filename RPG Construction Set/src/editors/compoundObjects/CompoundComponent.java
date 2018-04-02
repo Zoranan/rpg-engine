@@ -9,7 +9,7 @@ public class CompoundComponent  extends JPanel{
 	protected String nodeName;
 	protected JLabel lblLabel;
 	protected SpringLayout springLayout;
-	protected int height = 30;
+	protected int height = 22;
 
 	public CompoundComponent(String labelTxt, String nodeName)
 	{
@@ -65,7 +65,7 @@ public class CompoundComponent  extends JPanel{
 	
 	public int getComponentHeight()
 	{
-		return 22;
+		return height;
 	}
 
 }

@@ -24,7 +24,7 @@ public class XmlSelection extends LabeledTextBox{
 	public XmlSelection(String labelTxt, String nodeName, boolean editable) {
 		super (labelTxt, nodeName);
 		this.setEditable(editable);
-		SpringLayout springLayout = (SpringLayout) getLayout();
+		height = 26;
 		
 		//Select btn
 		btnSelect = new JButton("");
@@ -146,12 +146,6 @@ public class XmlSelection extends LabeledTextBox{
 		
 		if (this.btnClear != null)
 			this.btnClear.setEnabled(b);
-	}
-	
-	@Override
-	public int getComponentHeight()
-	{
-		return 26;
 	}
 	
 }

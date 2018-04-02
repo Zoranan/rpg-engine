@@ -1,5 +1,6 @@
 package editors.compoundObjects;
 
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
@@ -16,8 +17,7 @@ public class ComboBoxSelection extends LabeledTextBox {
 	public ComboBoxSelection(String labelTxt, String nodeName, String[] options)
 	{
 		super (labelTxt, nodeName);
-		SpringLayout springLayout = (SpringLayout) getLayout();
-		
+		height = 28;
 		//replace the text box
 		this.remove(txtSelectionField);
 		
@@ -38,6 +38,11 @@ public class ComboBoxSelection extends LabeledTextBox {
 	public ComboBoxSelection(String labelTxt, String nodeName)
 	{
 		this (labelTxt, nodeName, new String[0]);
+	}
+	
+	public void addActionListener(ActionListener al)
+	{
+		this.comboBox.addActionListener(al);
 	}
 	
 	public void setOptions(String[] options)
@@ -101,12 +106,6 @@ public class ComboBoxSelection extends LabeledTextBox {
 	public void clear()
 	{
 		comboBox.setSelectedIndex(0);
-	}
-	
-	@Override
-	public int getComponentHeight()
-	{
-		return 28;
 	}
 	
 	@Override

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <variables>
+	# Stats are the same for all Mobs, and the "value" field is the default starting value of the stat.
+	# You can make a math equation to represent a stat instead of hard-coding a starting value.
+	# To reference another stat in an equation type "stats.StatName"
 	<stats>
 		<stat name="Strength" value="5" />
 		<stat name="Toughness" value="5" />
@@ -8,8 +11,8 @@
 		<stat name="Agility" value="5" />
 		<stat name="Speed" value="5" />
 		
-		<stat name="Health" value="20"/>
-		<stat name="Mana" value="20"/>
+		<stat name="Health" value="20" />
+		<stat name="Mana" value="20" />
 		
 		<stat name="Attack Speed" value="0" />
 	</stats>

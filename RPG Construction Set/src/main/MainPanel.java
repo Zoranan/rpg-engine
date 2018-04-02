@@ -93,7 +93,7 @@ public class MainPanel extends JPanel{
 			else if (i == 4)
 				tabbedPane.insertTab("Races", null, new EditorTab("/races.xml", "Races", new RaceEditorForm()), "", i);
 			else if (i == 5)
-				tabbedPane.insertTab("NPC's", null, new EditorTab(null, new NpcEditorForm()), "", i);
+				tabbedPane.insertTab("NPC's", null, new EditorTab("/npcs.xml", "NPC's", new NpcEditorForm()), "", i);
 			
 			tabsLoaded[i] = true;
 			tabbedPane.setSelectedIndex(i);
