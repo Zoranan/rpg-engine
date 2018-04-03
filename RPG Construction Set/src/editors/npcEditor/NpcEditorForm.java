@@ -5,6 +5,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.SpringLayout;
+
 import org.jdom2.Document;
 import org.jdom2.Element;
 
@@ -15,21 +19,23 @@ import editors.compoundObjects.Action;
 import editors.compoundObjects.ComboBoxSelection;
 import editors.compoundObjects.CompoundComponent;
 import editors.compoundObjects.LabeledTextBox;
-import editors.compoundObjects.PropertiesList;
 import editors.compoundObjects.XmlMultiSelection;
 import editors.compoundObjects.XmlSelection;
+import editors.compoundObjects.XmlSubform;
 import util.Handler;
+import util.ImageLoader;
 
 public class NpcEditorForm extends XmlForm {
 	private ComboBoxSelection hairComboBox;
 	private ComboBoxSelection headComboBox;
 	private ComboBoxSelection sexComboBox;
 	private XmlSelection raceSelect;
-	private PropertiesList statsPropertyList;
 	private ComboBoxSelection behaviorSelect;
 	private Document racesDoc;
 	private Document modelsDoc;
+	private Document npcsDoc;
 	private Document varsDoc;
+	private Element newNpc;
 	/**
 	 * Create the panel.
 	 */
@@ -38,9 +44,6 @@ public class NpcEditorForm extends XmlForm {
 		varsDoc = XmlLoader.readXML(Handler.getRootDirectory() + "/vars.xml", true);
 		List<Element> statList = varsDoc.getRootElement().getChild("stats").getChildren();
 		
-		//Create our stat table data
-		String[][] data;
-		
 		//Get desired array length
 		for (int row = 0; row < statList.size(); row++)
 		{
@@ -48,27 +51,27 @@ public class NpcEditorForm extends XmlForm {
 				statList.remove(row);
 		}
 		//Initialize array
-		data = new String[statList.size()][2];
+		ArrayList<CompoundComponent> inner = new ArrayList<CompoundComponent>();
+		ArrayList<String> values = new ArrayList<String>(); 
 		
 		//Add array data
-		for (int row = 0; row < data.length; row++)
+		for (int row = 0; row < statList.size(); row++)
 		{
 			if (TextValidator.isNumeric(statList.get(row).getAttributeValue("value")))
 			{
-				data[row][0] = statList.get(row).getAttributeValue("name");
-				data[row][1] = statList.get(row).getAttributeValue("value");
+				
+				inner.add(new LabeledTextBox(statList.get(row).getAttributeValue("name"), "value"));
+				values.add(statList.get(row).getAttributeValue("value"));
 			}
 		}
 		
-		
-		
+		//Form components
 		hairComboBox = new ComboBoxSelection("Hair", "hairID");
 		hairComboBox.setEditable(false);
 		headComboBox = new ComboBoxSelection("Head", "headID");
 		headComboBox.setEditable(false);
 		raceSelect = new XmlSelection("Race", "raceID", "/races.xml", "Races", false);
 		sexComboBox = new ComboBoxSelection ("Sex", "sex", new String[] {"male", "female"});
-		statsPropertyList = new PropertiesList("Stats", "stats", new String[]{"Name", "Value"}, data);
 		behaviorSelect = new ComboBoxSelection ("Behavior", "behavior");
 		behaviorSelect.setEditable(false);
 		
@@ -92,7 +95,7 @@ public class NpcEditorForm extends XmlForm {
 												raceSelect,
 												sexComboBox,
 												hairComboBox, headComboBox,
-												statsPropertyList,
+												new XmlSubform("Stats", "stats", inner, values),
 												new XmlMultiSelection("Inventory", "inventory", "/items.xml", "Items"),
 												new XmlMultiSelection("Equipment", "equipment", "/items.xml", "Items"),
 												behaviorSelect};
@@ -100,7 +103,18 @@ public class NpcEditorForm extends XmlForm {
 		this.buildForm();
 		this.loadDocs();
 		
-		statsPropertyList.getList();
+		//Add a save button
+		JButton btnSave = new JButton("Save");
+		btnSave.setIcon(ImageLoader.loadResourceIcon("/Icons/save20px.png"));
+		btnSave.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				save();
+			}
+		});
+		springLayout.putConstraint(SpringLayout.NORTH, btnSave, VERT_PADDING, SpringLayout.SOUTH, fields[fields.length-1]);
+		springLayout.putConstraint(SpringLayout.WEST, btnSave, 0, SpringLayout.WEST, fields[fields.length-1]);
+		add(btnSave);
 	}
 	
 	//Load XML files
@@ -108,6 +122,7 @@ public class NpcEditorForm extends XmlForm {
 	{
 		this.racesDoc = XmlLoader.readXML(Handler.getRootDirectory() + "/races.xml");
 		this.modelsDoc = XmlLoader.readXML(Handler.getRootDirectory() + "/models.xml");
+		this.npcsDoc = XmlLoader.readXML(Handler.getRootDirectory() + "/npcs.xml");
 	}
 	
 	//Get a list of body part models by limb category
@@ -133,5 +148,118 @@ public class NpcEditorForm extends XmlForm {
 		}
 		return options;
 	}//END getLimbOptions()
+	
+	//Save our NPC
+	public void save()
+	{
+		if (editElement == null)
+			saveAs();
+		else
+		{
+			editElement.detach();
+			saveNpc(editElement.getName());
+		}
+	}
+	
+	//Gets a save name, and initiate saving
+	private void saveAs()
+	{
+		//Get the itemID from the user
+		String npcID = "";
+		boolean valid = false;
+
+		//Validation loop
+		while (!valid && npcID != null)
+		{
+			npcID = JOptionPane.showInputDialog(this, "Enter a unique npcID", "Save NPC", JOptionPane.PLAIN_MESSAGE);
+
+			if (npcID != null)
+			{
+				valid = TextValidator.isAlphaNumeric(npcID);
+				if (!valid)
+					JOptionPane.showMessageDialog(this, "Use only numbers and letters", "Invalid npcID", JOptionPane.WARNING_MESSAGE);
+
+				else
+				{
+					valid &= npcsDoc.getRootElement().getChild(npcID) == null;
+					if (!valid)
+						JOptionPane.showMessageDialog(this, "That npcID is taken", "ID in Use", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		}
+		
+		if (npcID != null)
+		{
+			saveNpc(npcID);
+		}
+	}
+	
+	//Save the current form to the NPC xml file
+	private void saveNpc(String ID)
+	{
+		Element newNpc = new Element(ID);
+		for (int i = 0; i < fields.length; i++)
+		{
+			Element current = new Element(fields[i].getNodeName());
+			if (fields[i] instanceof XmlMultiSelection)
+			{
+				ArrayList<String> items = ((XmlMultiSelection) fields[i]).getListItems();
+				for (int j = 0; j < items.size(); j++)
+				{
+					current.addContent(new Element ("list").addContent(items.get(j)));
+				}
+			}
+			else if (fields[i] instanceof XmlSubform)
+			{
+				ArrayList<String> names = ((XmlSubform) fields[i]).getLabelTexts();
+				ArrayList<String> values = ((XmlSubform) fields[i]).getValues();
+				for (int j = 0; j < values.size(); j++)
+				{
+					Element stat = new Element ("stat");
+					stat.setAttribute("name", names.get(j));
+					stat.setAttribute("value", values.get(j));
+					//Only add the stat if it is not the default value
+					if (!values.get(j).isEmpty() && statHasChanged(stat))
+						current.addContent(stat);
+				}
+			}
+			else
+			{
+				current.addContent(fields[i].getValue());
+			}
+			
+			newNpc.addContent(current);
+		}
+		
+		this.npcsDoc.getRootElement().addContent(newNpc);
+		XmlLoader.writeXML(npcsDoc);
+		onSave.action();
+		
+		load(newNpc);
+	}
+	
+	//Check if a stat is set different than the default
+	private boolean statHasChanged(Element newStat)
+	{
+		List<Element> allStats = this.varsDoc.getRootElement().getChild("stats").getChildren();
+		boolean hasChanged = false;
+		
+		for (Element e : allStats)
+		{
+			if (!hasChanged && TextValidator.isNumeric(newStat.getAttributeValue("value"))
+					&& e.getAttributeValue("name").equals(newStat.getAttributeValue("name")) 
+					&& e.getAttributeValue("value").equals(newStat.getAttributeValue("value")) == false)
+				hasChanged = true;
+		}
+		
+		return hasChanged;
+	}
+	
+	//
+	@Override
+	protected void postLoad()
+	{
+		
+	}
 
 }

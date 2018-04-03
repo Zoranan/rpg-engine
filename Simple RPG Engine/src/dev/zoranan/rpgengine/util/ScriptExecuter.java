@@ -3,7 +3,7 @@ package dev.zoranan.rpgengine.util;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import dev.zoranan.utils.MathString;
+import dev.zoranan.utils.mathString.MathString;
 import dev.zoranan.utils.TextValidator;
 
 public interface ScriptExecuter {

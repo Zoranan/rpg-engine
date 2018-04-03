@@ -33,14 +33,22 @@ public class PropertiesList extends CompoundComponent{
 		height = 120;
 	}
 	
-	public ArrayList<String> getList()
+	public ArrayList<String> getList(int col)
 	{
 		TableModel model = table_1.getModel();
 		ArrayList<String> values = new ArrayList<String>();
 		
 		for (int i = 0; i < model.getRowCount(); i++)
-			values.add(model.getValueAt(i, 1).toString());
+			values.add(model.getValueAt(i, col).toString());
+		
+		for (String s : values)
+			System.out.println(s);
 		
 		return values;
+	}
+	
+	public ArrayList<String> getList()
+	{
+		return getList(1);
 	}
 }

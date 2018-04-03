@@ -15,8 +15,6 @@ import dev.zoranan.rpgengine.gfx.SpriteSheet;
 import dev.zoranan.rpgengine.items.Item;
 import dev.zoranan.rpgengine.items.equipment.EquipmentSheet;
 import dev.zoranan.rpgengine.util.Assets;
-import dev.zoranan.rpgengine.util.ScriptInterpreterClass;
-import dev.zoranan.utils.MathString;
 
 public abstract class Mob extends Entity{
 	//DEFAULTS

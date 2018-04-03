@@ -65,7 +65,7 @@ public class XmlForm extends JPanel {
 		}
 		
 		h += 25; //Standard buffer for added buttons
-		this.setPreferredSize(new Dimension(350, h));
+		this.setPreferredSize(new Dimension(450, h));
 	}
 	
 	//Clears all elements in the form, sets the loaded element to null, and changes the subTitle text

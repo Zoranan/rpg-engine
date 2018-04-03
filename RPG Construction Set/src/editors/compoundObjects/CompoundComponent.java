@@ -7,6 +7,7 @@ import javax.swing.SwingConstants;
 
 public class CompoundComponent  extends JPanel{
 	protected String nodeName;
+	protected String labelText;
 	protected JLabel lblLabel;
 	protected SpringLayout springLayout;
 	protected int height = 22;
@@ -14,6 +15,7 @@ public class CompoundComponent  extends JPanel{
 	public CompoundComponent(String labelTxt, String nodeName)
 	{
 		this.nodeName = nodeName; 
+		this.labelText = labelTxt;
 		
 		springLayout = new SpringLayout();
 		setLayout(springLayout);
@@ -53,6 +55,11 @@ public class CompoundComponent  extends JPanel{
 		return this.nodeName;
 	}
 	
+	public String getLabelText()
+	{
+		return this.labelText;
+	}
+	
 	public String getValue()
 	{
 		return "";
@@ -60,7 +67,7 @@ public class CompoundComponent  extends JPanel{
 	
 	public int getComponentWidth()
 	{
-		return 300;
+		return 450;
 	}
 	
 	public int getComponentHeight()

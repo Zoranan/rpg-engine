@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import dev.zoranan.rpgengine.entities.Mob;
-import dev.zoranan.utils.MathString;
+import dev.zoranan.utils.mathString.MathString;
 import dev.zoranan.utils.TextValidator;
 
 public class ScriptInterpreterClass {

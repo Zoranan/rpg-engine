@@ -86,7 +86,7 @@ public class ComboBoxSelection extends LabeledTextBox {
 	public void setSelection(String s)
 	{
 		if (s.isEmpty())
-			comboBox.setSelectedIndex(0);
+			clear();
 		else
 			for (int i = 0; i < model.getSize(); i++)
 			{
@@ -105,7 +105,8 @@ public class ComboBoxSelection extends LabeledTextBox {
 	@Override
 	public void clear()
 	{
-		comboBox.setSelectedIndex(0);
+		if (model.getSize() > 0)
+			comboBox.setSelectedIndex(0);
 	}
 	
 	@Override

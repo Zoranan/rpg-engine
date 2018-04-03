@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <npcs>
-	
+  <carl>
+    <name>Carl</name>
+    <raceID>white</raceID>
+    <sex>male</sex>
+    <hairID>whiteMaleHair1</hairID>
+    <headID>whiteMaleHead</headID>
+    <stats>
+      <stat name="Toughness" value="15" />
+    </stats>
+    <inventory>
+      <list>smallHealthPotion</list>
+    </inventory>
+    <equipment>
+      <list>ironSword</list>
+      <list>ironPlateCuirass</list>
+      <list>ironPlateHelm</list>
+    </equipment>
+    <behavior />
+  </carl>
 </npcs>
