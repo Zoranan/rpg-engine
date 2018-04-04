@@ -55,6 +55,7 @@ public class EditorTab extends JPanel {
 		btnEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Loading " + explorer.getSelectedElement());
 				form.load(explorer.getSelectedElement());
 			}
 		});

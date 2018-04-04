@@ -1,6 +1,8 @@
 package editors.compoundObjects;
 
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
@@ -11,6 +13,7 @@ import javax.swing.text.JTextComponent;
 public class ComboBoxSelection extends LabeledTextBox {
 	private JComboBox<String> comboBox;
 	private DefaultComboBoxModel<String> model;
+	private Action onChangeAction;
 	/**
 	 * Create the panel.
 	 */
@@ -32,6 +35,14 @@ public class ComboBoxSelection extends LabeledTextBox {
 		setOptions(options);
 		comboBox.setModel(model);
 		
+		comboBox.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (onChangeAction != null && e.getStateChange() == ItemEvent.SELECTED)
+					onChangeAction.action();
+			}	
+		});
+		
 		add(comboBox);
 	}
 	
@@ -43,6 +54,11 @@ public class ComboBoxSelection extends LabeledTextBox {
 	public void addActionListener(ActionListener al)
 	{
 		this.comboBox.addActionListener(al);
+	}
+	
+	public void setSelectionChangeAction(Action a)
+	{
+		this.onChangeAction = a;
 	}
 	
 	public void setOptions(String[] options)
@@ -85,7 +101,7 @@ public class ComboBoxSelection extends LabeledTextBox {
 	//If an empty string is passed in, we select the first option
 	public void setSelection(String s)
 	{
-		if (s.isEmpty())
+		if (s.isEmpty() || s == null)
 			clear();
 		else
 			for (int i = 0; i < model.getSize(); i++)
@@ -98,8 +114,11 @@ public class ComboBoxSelection extends LabeledTextBox {
 			}
 		//If we are here, we need to add the item to our combo box
 		//Recursive
-		model.addElement(s);
-		setSelection(s);
+		if (s.isEmpty() == false)
+		{
+			model.addElement(s);
+			setSelection(s);
+		}
 	}
 	
 	@Override

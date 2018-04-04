@@ -14,6 +14,7 @@ public class XmlSubform extends CompoundComponent {
 	private JPanel formPanel;
 	private JScrollPane scrollPane;
 	private ArrayList<CompoundComponent> fields;
+	private ArrayList<String> values;
 	/**
 	 * Create the panel.
 	 */
@@ -113,10 +114,53 @@ public class XmlSubform extends CompoundComponent {
 	//Set the values of each element in the form
 	public void setValues(ArrayList<String> values)
 	{
+		this.values = values;
+		
 		for (int i = 0; i < values.size(); i++)
 		{
 			if (!values.get(i).isEmpty())
 				fields.get(i).setValue(values.get(i));
 		}
+	}
+	
+	//Set value by nodeName
+	public void setValueAtNode (String nodeName, String value)
+	{
+		for (int i = 0; i < fields.size(); i++)
+		{
+			if (fields.get(i).getNodeName().equals(nodeName))
+			{
+				fields.get(i).setValue(value);
+				break;
+			}
+		}
+	}
+	
+	//Set value by Label text
+	public void setValueAtLabel (String labelTxt, String value)
+	{
+		for (int i = 0; i < fields.size(); i++)
+		{
+			if (fields.get(i).getLabelText().equals(labelTxt))
+			{
+				fields.get(i).setValue(value);
+				break;
+			}
+		}
+	}
+	
+	@Override
+	public void clear()
+	{
+		if (values == null)
+			for (int i = 0; i < fields.size(); i++)
+			{
+				fields.get(i).clear();
+			}
+		else
+		{
+			setValues(values);
+		}
+			
 	}
 }

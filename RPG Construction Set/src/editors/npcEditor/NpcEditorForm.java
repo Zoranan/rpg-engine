@@ -35,7 +35,6 @@ public class NpcEditorForm extends XmlForm {
 	private Document modelsDoc;
 	private Document npcsDoc;
 	private Document varsDoc;
-	private Element newNpc;
 	/**
 	 * Create the panel.
 	 */
@@ -60,7 +59,7 @@ public class NpcEditorForm extends XmlForm {
 			if (TextValidator.isNumeric(statList.get(row).getAttributeValue("value")))
 			{
 				
-				inner.add(new LabeledTextBox(statList.get(row).getAttributeValue("name"), "value"));
+				inner.add(new LabeledTextBox(statList.get(row).getAttributeValue("name"), statList.get(row).getName()));
 				values.add(statList.get(row).getAttributeValue("value"));
 			}
 		}
@@ -83,9 +82,9 @@ public class NpcEditorForm extends XmlForm {
 			}
 		});
 		
-		sexComboBox.addActionListener(new ActionListener() {
+		sexComboBox.setSelectionChangeAction(new Action() {
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void action() {
 				hairComboBox.setOptions(getLimbOptions("hair"));
 				headComboBox.setOptions(getLimbOptions("head"));
 			}
@@ -211,15 +210,15 @@ public class NpcEditorForm extends XmlForm {
 			}
 			else if (fields[i] instanceof XmlSubform)
 			{
-				ArrayList<String> names = ((XmlSubform) fields[i]).getLabelTexts();
 				ArrayList<String> values = ((XmlSubform) fields[i]).getValues();
+				ArrayList<String> nodeNames = ((XmlSubform) fields[i]).getNodeNames();
 				for (int j = 0; j < values.size(); j++)
 				{
-					Element stat = new Element ("stat");
-					stat.setAttribute("name", names.get(j));
+					Element stat = new Element (nodeNames.get(j));
 					stat.setAttribute("value", values.get(j));
+					
 					//Only add the stat if it is not the default value
-					if (!values.get(j).isEmpty() && statHasChanged(stat))
+					if (values.get(j).isEmpty() == false && statHasChanged(stat))
 						current.addContent(stat);
 				}
 			}
@@ -241,15 +240,13 @@ public class NpcEditorForm extends XmlForm {
 	//Check if a stat is set different than the default
 	private boolean statHasChanged(Element newStat)
 	{
-		List<Element> allStats = this.varsDoc.getRootElement().getChild("stats").getChildren();
 		boolean hasChanged = false;
 		
-		for (Element e : allStats)
+		String origValue = this.varsDoc.getRootElement().getChild("stats").getChild(newStat.getName()).getAttributeValue("value");
+		String newValue = newStat.getAttributeValue("value");
+		if (!origValue.equals(newValue) && TextValidator.isNumeric(newValue))
 		{
-			if (!hasChanged && TextValidator.isNumeric(newStat.getAttributeValue("value"))
-					&& e.getAttributeValue("name").equals(newStat.getAttributeValue("name")) 
-					&& e.getAttributeValue("value").equals(newStat.getAttributeValue("value")) == false)
-				hasChanged = true;
+			hasChanged = true;
 		}
 		
 		return hasChanged;
@@ -260,6 +257,36 @@ public class NpcEditorForm extends XmlForm {
 	protected void postLoad()
 	{
 		
+		for (CompoundComponent field : fields)
+		{
+			field.clear();
+			
+			//Set our stats values in the editor
+			if (field instanceof XmlSubform)
+			{
+				List<Element> stats = editElement.getChild(field.getNodeName()).getChildren();
+				for (Element e : stats)
+				{
+					((XmlSubform) field).setValueAtNode(e.getName(), e.getAttributeValue("value"));
+				}
+			}
+			//Set our list items
+			else if (field instanceof XmlMultiSelection)
+			{
+				List<Element> list = editElement.getChild(field.getNodeName()).getChildren();
+				for (Element e : list)
+				{
+					((XmlMultiSelection) field).addValue(e.getText());
+				}
+			}
+			//Set single field values
+			else
+			{
+				//System.out.println(editElement);
+				//System.out.println(editElement.getChildText("name"));
+				field.setValue(editElement.getChildText(field.getNodeName()));
+			}
+		}
 	}
 
 }
