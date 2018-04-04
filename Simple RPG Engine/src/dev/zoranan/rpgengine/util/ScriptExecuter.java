@@ -40,7 +40,7 @@ public interface ScriptExecuter {
 		
 		//Now we need to replace our variables with numbers
 		for (Entry<String, String[]> e : vars.entrySet())
-		{
+		{	
 			//Replace the fully qualified name of each variable with whatever we find in our lookup function
 			code = code.replaceAll(e.getKey(), getVar(e.getValue()));
 		}

@@ -84,9 +84,9 @@ public class World {
 		int x = Integer.parseInt(ele.getChild("position").getAttributeValue("x"));
 		int y = Integer.parseInt(ele.getChild("position").getAttributeValue("y"));
 		
+		//Static entities
 		if (type == "envEnt")
 		{
-			//e = new Tree(Integer.parseInt(ele.getAttributeValue("treeType")), handler, x, y);
 			e = new EnvironmentalEntity(ele, handler);
 		}
 		
@@ -97,10 +97,10 @@ public class World {
 		}
 		
 		//MOBS
-		else if (type == "humanoid")
+		else if (type == "npcEnt")
 		{
-			String nameID = ele.getChildText("nameID");
-			e = new Human(ele.getChildText("name"), handler, x, y, 50, 75);
+			//String nameID = ele.getChildText("nameID");
+			e = new Human(ele, handler);
 		}
 			
 		return e;

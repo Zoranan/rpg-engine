@@ -65,6 +65,11 @@
 			<itemID>ironPlateGreaves</itemID>
 			<position x="975" y="1600"></position>
 		</itemEnt>
+		
+		<npcEnt>
+			<npcID>carlJR</npcID>
+			<position x="975" y="1450"></position>
+		</npcEnt>
 	</entities>
 	
 </world>

@@ -34,6 +34,7 @@ public class Assets {
 	public static Document itemsXML;
 	public static Document soundsXML;
 	public static Document racesXML;
+	public static Document npcsXML;
 	
 	//GUI
 	public static BufferedImage woodBtn;
@@ -196,6 +197,15 @@ public class Assets {
 			racesXML = XmlLoader.readXML("res/races.xml");
 		
 		return racesXML.getRootElement().getChild(raceID);
+	}
+	
+	//Get an npc element by ID
+	public static Element getNpc(String npcID)
+	{
+		if (npcsXML == null)
+			npcsXML = XmlLoader.readXML("res/npcs.xml");
+
+		return npcsXML.getRootElement().getChild(npcID);
 	}
 	
 	//Get a sound element by ID

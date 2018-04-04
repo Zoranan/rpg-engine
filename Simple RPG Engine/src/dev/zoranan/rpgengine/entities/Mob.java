@@ -3,6 +3,9 @@ package dev.zoranan.rpgengine.entities;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.HashMap;
+import java.util.List;
+
+import org.jdom2.Element;
 
 import dev.zoranan.rpgengine.Handler;
 import dev.zoranan.rpgengine.entities.attributes.Stat;
@@ -53,7 +56,21 @@ public abstract class Mob extends Entity{
 	public Mob (String name, Handler handler, float x, float y, int w, int h)
 	{
 		super (name, handler, x, y, w, h);
-		statSheet = new StatSheet();
+		initStats();
+		initMob();
+	}
+	
+	public Mob (Element mapEle, Element stats, Handler handler, int w, int h)
+	{
+		super ("name", handler, Integer.parseInt(mapEle.getChild("position").getAttributeValue("x")), 
+				Integer.parseInt(mapEle.getChild("position").getAttributeValue("y")), w, h);
+		
+		initStats(stats);
+		initMob();
+	}
+	
+	private void initMob()
+	{
 		equipmentSheet = new EquipmentSheet();
 		
 		xp = 0;
@@ -64,6 +81,31 @@ public abstract class Mob extends Entity{
 		xMove = 0;
 		yMove = 0;
 		inventory = new Container(this);
+	}
+	
+	private void initStats(Element stats)
+	{
+		//Load the default stats, and updated them with values from the passed in stats element
+		Element finalStats = Assets.getVariables("stats").clone();
+		
+		if (stats != null)
+		{
+			List<Element> finalStatsList = finalStats.getChildren();
+			for (Element e : finalStatsList)
+			{
+				if (stats.getChild(e.getName()) != null)
+				{
+					e.setAttribute(stats.getChild(e.getName()).getAttribute("value"));
+				}
+			}
+		}
+		
+		statSheet = new StatSheet(finalStats);
+	}
+	
+	private void initStats()
+	{
+		initStats(null);
 	}
 	
 	//How we get our stats for our scripts
@@ -120,6 +162,7 @@ public abstract class Mob extends Entity{
 	
 	public int getStatValue(String key)
 	{
+		System.out.println(key);
 		return statSheet.get(key).get();//Return our current stat level for the given stat
 	}
 	

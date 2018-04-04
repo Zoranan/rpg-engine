@@ -14,7 +14,7 @@
 		<hp name="Health" value="20" />
 		<mp name="Mana" value="20" />
 		
-		<attackSpeed name="Attack Speed" value="0 * something" />
+		<attackSpeed name="Attack Speed" value="0" />
 	</stats>
 	
 	<equations>

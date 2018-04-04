@@ -22,15 +22,29 @@ public class Human extends Mob{
 	public Human (String name, Handler handler, float x, float y, int w, int h)
 	{
 		super(name, handler, x, y, w, h);
-		init();
+		init("white", "male");
 	}
 	
-	private void init ()
+	public Human (Element mapEle, Handler handler)
+	{
+		super (mapEle, Assets.getNpc(mapEle.getChildText("npcID")), handler, 50, 75);
+		Element npcEle = Assets.getNpc(mapEle.getChildText("npcID"));
+		System.out.println(npcEle);
+		this.setName(npcEle.getChildText("name"));
+		init(npcEle.getChildText("raceID"), npcEle.getChildText("sex"));
+		
+		//Head and Hair
+		skinModels.putAll(Assets.getModel(npcEle.getChildText("headID")));
+		skinModels.putAll(Assets.getModel(npcEle.getChildText("hairID")));
+		
+	}
+	
+	private void init (String race, String sex)
 	{
 		this.setHitBounds(18, 64, 14, 7);	//This needs to be loaded eventually
 		
 		skinModels = new HashMap <String, HashMap<String, String>>();
-		Element skin = Assets.getRace("white").getChild("male");	//Hard coded for now. Races are loading from XML though. YAY!
+		Element skin = Assets.getRace(race).getChild(sex);	//Races are loading XML. YAY!
 		
 		//Get the mob's skin
 		for (Element e : skin.getChildren())

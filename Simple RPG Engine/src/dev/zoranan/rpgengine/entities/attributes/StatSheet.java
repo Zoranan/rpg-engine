@@ -26,26 +26,30 @@ public class StatSheet {
 	
 	
 	//This whole setup is temporary. We need to load this information from an XML
-	public StatSheet()
+	public StatSheet(Element stats)
 	{
-		if (defaultStats == null)
-			loadDefaults();
-		
 		statMap = new HashMap<String, Stat>();
-		statMap.putAll(defaultStats);
+		if (stats == null)
+			loadStats(Assets.getVariables("stats"));
+		else
+			loadStats(stats);
 	}
 	
-	public void loadDefaults()
+	public StatSheet ()
 	{
-		defaultStats = new HashMap<String, Stat>();
-		List<Element> stats = Assets.getVariables("stats").getChildren();
+		this(null);
+	}
+	
+	public void loadStats(Element statsEle)
+	{
+		statMap.clear();
+		List<Element> stats = statsEle.getChildren();
 		int value;
-		String name, type;
+		String name;
 		
 		for (Element e : stats)
 		{
 			name = e.getAttributeValue("name");
-			type = e.getName();
 			try {
 				value = Integer.parseInt(e.getAttributeValue("value"));
 			}
@@ -53,7 +57,7 @@ public class StatSheet {
 			{
 				value = 0;
 			}
-			defaultStats.put(name, new Stat ("", value, value));
+			statMap.put(name, new Stat (name, value, value));
 		}
 	}
 	
