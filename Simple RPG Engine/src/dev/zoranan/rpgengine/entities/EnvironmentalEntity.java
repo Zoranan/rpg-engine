@@ -1,5 +1,6 @@
 package dev.zoranan.rpgengine.entities;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import org.jdom2.Element;
 
@@ -58,6 +59,8 @@ public class EnvironmentalEntity extends Entity{
 	{	
 		GameCamera cam = handler.getGameCamera();
 		g.drawImage(sprite.get(), cam.calcRenderX(posX), cam.calcRenderY(posY), width, height, null);
+		//g.setColor(Color.RED);
+		//g.fillRect(cam.calcRenderX(getHitBounds(0,0).x), cam.calcRenderY(getHitBounds(0,0).y), this.hitBounds.width, this.hitBounds.height);
 	}
 
 }

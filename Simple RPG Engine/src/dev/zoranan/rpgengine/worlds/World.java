@@ -99,10 +99,9 @@ public class World {
 		//MOBS
 		else if (type == "npcEnt")
 		{
-			//String nameID = ele.getChildText("nameID");
 			e = new Human(ele, handler);
 		}
-			
+		
 		return e;
 	}
 	

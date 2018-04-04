@@ -117,7 +117,8 @@ public abstract class Entity implements ScriptExecuter{
 			 * e is not solid (check this first to short circuit the condition on the easiest check)
 			 * e is this (we are checking against ourself, since that will always return true)
 			 */
-			if (!e.isSolid || e.equals(this))
+			
+			if (!e.isSolid || e == this)
 				continue;
 			
 			else if (e.getHitBounds(0f, 0f).intersects(this.getHitBounds(xOffset, yOffset)))

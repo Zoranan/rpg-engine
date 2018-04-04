@@ -167,7 +167,7 @@ public abstract class Mob extends Entity{
 	}
 	
 	//MOVEMENT
-	public void move()
+	private void move()
 	{	
 		boolean xHit = checkMapCollision(xMove, 0f) || checkEntityCollision(xMove, 0f);
 		boolean yHit = checkMapCollision(0f, yMove) || checkEntityCollision(0f, yMove);

@@ -42,6 +42,7 @@ public class Human extends Mob{
 	private void init (String race, String sex)
 	{
 		this.setHitBounds(18, 64, 14, 7);	//This needs to be loaded eventually
+		this.isSolid = true;
 		
 		skinModels = new HashMap <String, HashMap<String, String>>();
 		Element skin = Assets.getRace(race).getChild(sex);	//Races are loading XML. YAY!
@@ -58,7 +59,6 @@ public class Human extends Mob{
 	@Override
 	public HashMap<String, String> getSkin (String key)
 	{
-		System.out.println("Updating " + key + " to " + skinModels.get(key).get("front"));
 		return skinModels.get(key);
 	}
 	
@@ -89,12 +89,12 @@ public class Human extends Mob{
 	public void render(Graphics g) 
 	{
 		skeleton.render(g);
+		//g.fillRect(handler.getGameCamera().calcRenderX(getHitBounds(0,0).x), handler.getGameCamera().calcRenderY(getHitBounds(0,0).y), this.hitBounds.width, this.hitBounds.height);
 	}
 	
 	@Override
 	public void updateSkin()
 	{
-		System.out.println("Skin update");
 		skeleton.updateSkin();
 	}
 	
