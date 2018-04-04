@@ -12,32 +12,21 @@
 				<leftThigh x = "21" y = "43" w = "11" h = "17" r = "0"></leftThigh>
 				<rightFoot x = "15" y = "53" w = "9" h = "14" r = "0"></rightFoot>
 				<leftFoot x = "22" y = "52" w = "14" h = "22" r = "0"></leftFoot>
-				
-				
 			</keyFrame>
 			
 			<keyFrame n = "5">
-				
 				<rightFoot x = "15" y = "49" w = "9" h = "14" r = "0"></rightFoot>
 				<leftFoot x = "22.5" y = "52.5" w = "12" h = "18" r = "0"></leftFoot>
-				
-				
 			</keyFrame>
 			
 			<keyFrame n = "10">
-				
 				<rightFoot x = "11" y = "52" w = "14" h = "22" r = "0"></rightFoot>
 				<leftFoot x = "23" y = "53" w = "9" h = "14" r = "0"></leftFoot>
-				
-				
 			</keyFrame>
 			
 			<keyFrame n = "15">
-				
 				<rightFoot x = "12.6" y = "52.5" w = "11" h = "18" r = "0"></rightFoot>
 				<leftFoot x = "23" y = "49" w = "9" h = "14" r = "0"></leftFoot>
-				
-				
 			</keyFrame>
 			
 			<keyFrame n = "20">
@@ -45,8 +34,6 @@
 				<leftThigh x = "21" y = "43" w = "11" h = "17" r = "0"></leftThigh>
 				<rightFoot x = "15" y = "53" w = "9" h = "14" r = "0"></rightFoot>
 				<leftFoot x = "22" y = "52" w = "14" h = "22" r = "0"></leftFoot>
-				
-				
 			</keyFrame>
 		
 		</walk>
