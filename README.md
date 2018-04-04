@@ -20,13 +20,14 @@ is the "res" folder within our "Simple RPG Engine" folder.
 GE = Game Engine, 
 CS = Construction Set
 - (GE) Create generic Status Effects in the game engine, that can be customized in the CS
-- (GE) Set up basic NPC creation in game worlds (No behaviors or stats yet)
+- (GE) Set up basic NPC creation in game worlds (No behaviors ~~or stats~~ yet)
 - ~~(CS) Move "Edit" and "New" buttons inside the XmlExplorer and use an interface for custom actions~~
 - ~~(CS) Streamline the creation of CS tabs with a custom class, and move all tabs to the new format~~
-- (CS) Get the NPC editor working
+- ~~(CS) Get the NPC editor working~~
 - (CS) Create a Stat Editor, to define what stats each Mob in game will have
 - (CS) Create a Status Effect editor (requires Stat Editor)
-- (CS) Add Stats to NPC editor, and allow values to be set per stat (will need a new type of CompountComponent to handle this)
+- ~~(CS) Add Stats to NPC editor, and allow values to be set per stat (will need a new type of CompountComponent to handle this)~~
+- (CS) Create a Status Effect editor tab
 - (CS) Add a preview for the Models tab
 - (CS) Add a preview for the Races tab
 - (CS) Add a preview for the NPC tab
