@@ -133,7 +133,7 @@ public class Assets {
 			if (spriteXML == null)
 				spriteXML = XmlLoader.readXML("res/sprites.xml");
 			
-			System.out.println("Trying to load " + spriteID);
+			System.out.println("Attempting to load sprite: " + spriteID);
 			//Create the new sprite sheet and add it to the hashmap
 			ss = new SpriteSheet(spriteXML.getRootElement().getChild(spriteID));
 			sprites.put(spriteID, ss);

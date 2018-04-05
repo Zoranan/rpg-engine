@@ -11,7 +11,7 @@
 		<agility name="Agility" value="5" />
 		<speed name="Speed" value="5" />
 		
-		<hp name="Health" value="20" />
+		<hp name="Health" value="stats.Strength * 4" />
 		<mp name="Mana" value="20" />
 		
 		<attackSpeed name="Attack Speed" value="0" />

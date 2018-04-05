@@ -55,7 +55,6 @@ public class Item{
 			List<Element> modelEles = e.getChild("models").getChildren();
 			for (Element m : modelEles)
 			{
-				System.out.println("Loading " + m.getName() + " --> " + Assets.getModel(m.getValue()).toString());
 				if (models == null)
 					models = Assets.getModel(m.getValue());
 				else

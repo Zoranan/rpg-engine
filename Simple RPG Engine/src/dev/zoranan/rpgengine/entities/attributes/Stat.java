@@ -5,9 +5,9 @@ package dev.zoranan.rpgengine.entities.attributes;
  */
 
 public class Stat {
-	private String name;
-	private int current;
-	private int maximum;
+	protected String name;
+	protected int current;
+	protected int maximum;
 	//possibly add in for buffs / debuffs
 	
 	public Stat(String name, int level, int max)
@@ -85,5 +85,11 @@ public class Stat {
 	public String name()
 	{
 		return this.name;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return (name() + ": " + this.get() + "/" + this.getMax());
 	}
 }

@@ -2,11 +2,13 @@ package dev.zoranan.rpgengine.entities;
 
 import java.awt.Graphics;
 import java.util.HashMap;
+import java.util.List;
 
 import org.jdom2.Element;
 
 import dev.zoranan.rpgengine.Handler;
 import dev.zoranan.rpgengine.gfx.Skeleton;
+import dev.zoranan.rpgengine.items.Item;
 import dev.zoranan.rpgengine.util.Assets;
 import dev.zoranan.utils.FpsTimer;
 
@@ -27,9 +29,8 @@ public class Human extends Mob{
 	
 	public Human (Element mapEle, Handler handler)
 	{
-		super (mapEle, Assets.getNpc(mapEle.getChildText("npcID")), handler, 50, 75);
+		super (mapEle, Assets.getNpc(mapEle.getChildText("npcID")).getChild("stats"), handler, 50, 75);
 		Element npcEle = Assets.getNpc(mapEle.getChildText("npcID"));
-		System.out.println(npcEle);
 		this.setName(npcEle.getChildText("name"));
 		init(npcEle.getChildText("raceID"), npcEle.getChildText("sex"));
 		
@@ -37,6 +38,27 @@ public class Human extends Mob{
 		skinModels.putAll(Assets.getModel(npcEle.getChildText("headID")));
 		skinModels.putAll(Assets.getModel(npcEle.getChildText("hairID")));
 		
+		//Equipment and Inventory
+		Item i;
+		//Equipment
+		List<Element> equipmentList = npcEle.getChild("equipment").getChildren();
+		for (Element e : equipmentList)
+		{
+			i = new Item(Assets.getItem(e.getText()));
+			
+			if (this.equipmentSheet.isEquipable(i))
+			{
+				this.equipmentSheet.setEquipped(i);
+			}
+		}
+		
+		//Inventory
+		List<Element> inventoryList = npcEle.getChild("inventory").getChildren();
+		for (Element e : inventoryList)
+		{
+			i = new Item(Assets.getItem(e.getText()));
+			this.inventory.add(i);
+		}
 	}
 	
 	private void init (String race, String sex)

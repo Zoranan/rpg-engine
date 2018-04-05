@@ -48,24 +48,6 @@ public interface ScriptExecuter {
 		return MathString.eval(code);
 	}
 	
-	/*
-	 
-	 if (caller instanceof Mob)
-		{	
-			String actualValue;
-			for (Entry<String, String[]> e : vars.entrySet())
-			{
-				String[] parts = e.getValue();
-				if (parts[0].equals("stats"))
-				{
-					actualValue = Integer.toString(((Mob) caller).getStatValue(parts[1]));
-					code = code.replaceAll(e.getKey(), actualValue);
-				}
-			}
-		}
-	 
-	 */
-	
 	//Everything defaults to 0
 	public default String getVar(String[] parts)
 	{

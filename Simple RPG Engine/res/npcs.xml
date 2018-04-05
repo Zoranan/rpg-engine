@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <npcs>
-  <carlJR>
-    <name>CarlJR</name>
-    <raceID>white</raceID>
-    <sex>male</sex>
-    <hairID>whiteMaleHair1</hairID>
-    <headID>whiteMaleHead</headID>
-    <stats>
-      <intelligence value="15" />
-    </stats>
-    <inventory>
-      <list>smallManaPotion</list>
-    </inventory>
-    <equipment>
-      <list>ironPlateGreaves</list>
-    </equipment>
-    <behavior />
-  </carlJR>
   <carl>
     <name>Carl</name>
     <raceID>white</raceID>
@@ -37,4 +20,24 @@
     </equipment>
     <behavior />
   </carl>
+  <carlJR>
+    <name>CarlJR</name>
+    <raceID>white</raceID>
+    <sex>male</sex>
+    <hairID>whiteMaleHair1</hairID>
+    <headID>whiteMaleHead</headID>
+    <stats>
+      <strength value="1" />
+      <intelligence value="15" />
+    </stats>
+    <inventory>
+      <list>smallManaPotion</list>
+      <list>smallManaPotion</list>
+    </inventory>
+    <equipment>
+      <list>ironPlateGreaves</list>
+      <list>ironPlateCuirass</list>
+    </equipment>
+    <behavior />
+  </carlJR>
 </npcs>

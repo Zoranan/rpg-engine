@@ -41,7 +41,7 @@ public abstract class Mob extends Entity{
 	protected boolean attacking = false;
 	protected boolean walking = false;
 	
-	protected Direction direction;
+	protected Direction direction = Direction.STOP;
 	protected Direction facing = Direction.SOUTH;
 	protected Rectangle body = new Rectangle(0, 0, 25, 50);
 	
@@ -75,9 +75,7 @@ public abstract class Mob extends Entity{
 		
 		xp = 0;
 		level = 1;
-		//speed = (float) MathString.eval(getStatValue("Speed") + "/12 + 1");
 		speed = (float) exec(Assets.getVariables("equations").getChildText("movementSpeed"));
-		System.out.println("SPEED: " + speed);
 		xMove = 0;
 		yMove = 0;
 		inventory = new Container(this);
@@ -95,12 +93,13 @@ public abstract class Mob extends Entity{
 			{
 				if (stats.getChild(e.getName()) != null)
 				{
-					e.setAttribute(stats.getChild(e.getName()).getAttribute("value"));
+					e.getAttribute("value").setValue(stats.getChild(e.getName()).getAttributeValue("value"));
 				}
 			}
 		}
 		
-		statSheet = new StatSheet(finalStats);
+		statSheet = new StatSheet(finalStats, this);
+		statSheet.calculateStats();
 	}
 	
 	private void initStats()
@@ -162,7 +161,6 @@ public abstract class Mob extends Entity{
 	
 	public int getStatValue(String key)
 	{
-		System.out.println(key);
 		return statSheet.get(key).get();//Return our current stat level for the given stat
 	}
 	
