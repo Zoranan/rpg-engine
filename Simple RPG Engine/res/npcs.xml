@@ -27,7 +27,6 @@
     <hairID>whiteMaleHair1</hairID>
     <headID>whiteMaleHead</headID>
     <stats>
-      <strength value="1" />
       <intelligence value="15" />
     </stats>
     <inventory>

@@ -5,8 +5,8 @@ import dev.zoranan.rpgengine.entities.containers.ItemTransfer.Context;
 import dev.zoranan.rpgengine.items.Item;
 
 /*
- * Container object are not physical Entities. They are attached to entities in order to store items
- * if that entity is meant to be a container
+ * Container objects are not physical Entities. 
+ * They are attached to entities in order to store items if that entity is meant to be a container
  */
 
 public class Container {

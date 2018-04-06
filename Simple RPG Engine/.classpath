@@ -7,7 +7,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Will/OneDrive/Programming Libraries/Java/commonUtils.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Will/OneDrive/Programming Libraries/Java/jdom-2.0.6.jar" sourcepath="C:/Users/Will/Documents/Java Libraries/jdom-2.0.6/jdom-2.0.6-sources.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Common Utilities"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
