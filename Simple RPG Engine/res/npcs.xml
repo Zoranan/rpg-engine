@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <npcs>
-  <carl>
-    <name>Carl</name>
+  <carlJR>
+    <name>Carl Junior</name>
     <raceID>white</raceID>
     <sex>male</sex>
-    <hairID>whiteMaleHair1</hairID>
-    <headID>whiteMaleHead</headID>
+    <limbs>
+      <head>whiteMaleHead</head>
+      <leftFoot>whiteMaleLeftFoot</leftFoot>
+    </limbs>
     <stats>
-      <strength value="12" />
-      <toughness value="19" />
+      <strength>6</strength>
+      <intelligence>4</intelligence>
     </stats>
     <inventory>
       <list>smallHealthPotion</list>
@@ -16,26 +18,7 @@
     <equipment>
       <list>ironSword</list>
       <list>ironPlateCuirass</list>
-      <list>ironPlateHelm</list>
-    </equipment>
-    <behavior />
-  </carl>
-  <carlJR>
-    <name>CarlJR</name>
-    <raceID>white</raceID>
-    <sex>male</sex>
-    <hairID>whiteMaleHair1</hairID>
-    <headID>whiteMaleHead</headID>
-    <stats>
-      <intelligence value="15" />
-    </stats>
-    <inventory>
-      <list>smallManaPotion</list>
-      <list>smallManaPotion</list>
-    </inventory>
-    <equipment>
       <list>ironPlateGreaves</list>
-      <list>ironPlateCuirass</list>
     </equipment>
     <behavior />
   </carlJR>

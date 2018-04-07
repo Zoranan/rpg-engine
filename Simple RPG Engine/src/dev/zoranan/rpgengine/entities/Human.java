@@ -34,9 +34,12 @@ public class Human extends Mob{
 		this.setName(npcEle.getChildText("name"));
 		init(npcEle.getChildText("raceID"), npcEle.getChildText("sex"));
 		
-		//Head and Hair
-		skinModels.putAll(Assets.getModel(npcEle.getChildText("headID")));
-		skinModels.putAll(Assets.getModel(npcEle.getChildText("hairID")));
+		//Load custom limbs
+		List<Element> limbs = npcEle.getChild("limbs").getChildren();
+		for (Element e : limbs)
+		{
+			skinModels.putAll(Assets.getModel(e.getText()));
+		}
 		
 		//Equipment and Inventory
 		Item i;
@@ -72,7 +75,7 @@ public class Human extends Mob{
 		//Get the mob's skin
 		for (Element e : skin.getChildren())
 		{
-			skinModels.putAll(Assets.getModel(e.getValue()));
+			skinModels.putAll(Assets.getModel(e.getText()));
 		}
 		
 		skeleton = new Skeleton(this, handler);

@@ -16,6 +16,7 @@ public class XmlSelection extends LabeledTextBox{
 	private String xmlPath;
 	private String xmlTypeName;
 	private Action selectAction;
+	private Action clearAction;
 	
 	/**
 	 * Create the panel.
@@ -51,6 +52,8 @@ public class XmlSelection extends LabeledTextBox{
 				public void actionPerformed(ActionEvent e) 
 				{
 					txtSelectionField.setText("");
+					if (clearAction != null)
+						clearAction.action();
 				}
 			});
 			btnClear.setIcon(ImageLoader.loadResourceIcon("/Icons/x.png"));
@@ -126,6 +129,12 @@ public class XmlSelection extends LabeledTextBox{
 	public void addSelectAction(Action a)
 	{
 		this.selectAction = a;
+	}
+	
+	//Adds an action to be performed when this component is cleared
+	public void setClearAction(Action a)
+	{
+		this.clearAction = a;
 	}
 	
 	public void setXmlPath(String p)

@@ -42,34 +42,55 @@ public class XmlSubform extends CompoundComponent {
 		this.setValues(values);
 	}
 	
+	public XmlSubform(String label, String nodeName) 
+	{
+		this(label, nodeName, new ArrayList<CompoundComponent>());
+	}
+	
 	public void buildForm()
 	{
+		
 		formPanel = new JPanel();
 		scrollPane.setViewportView(formPanel);
 		innerLayout = new SpringLayout();
 		formPanel.setLayout(innerLayout);
 		
-		CompoundComponent field = fields.get(0);
-		innerLayout.putConstraint(SpringLayout.NORTH, field, 0, SpringLayout.NORTH, formPanel);
-		innerLayout.putConstraint(SpringLayout.WEST, field, 0, SpringLayout.WEST, formPanel);
-		innerLayout.putConstraint(SpringLayout.SOUTH, field, field.getComponentHeight(), SpringLayout.NORTH, field);
-		innerLayout.putConstraint(SpringLayout.EAST, field, field.getComponentWidth(), SpringLayout.WEST, field);
-		formPanel.add(field);
-		
-		int h = (field.getComponentHeight() + 10);
-		for (int i = 1; i < fields.size(); i++)
-		{
-			field = fields.get(i);
-			innerLayout.putConstraint(SpringLayout.NORTH, field, VERT_PADDING, SpringLayout.SOUTH, fields.get(i-1));
+		if (!fields.isEmpty())
+			{
+			CompoundComponent field = fields.get(0);
+			innerLayout.putConstraint(SpringLayout.NORTH, field, 0, SpringLayout.NORTH, formPanel);
 			innerLayout.putConstraint(SpringLayout.WEST, field, 0, SpringLayout.WEST, formPanel);
-			innerLayout.putConstraint(SpringLayout.SOUTH, field, field.getComponentHeight() + VERT_PADDING, SpringLayout.SOUTH, fields.get(i-1));
-			innerLayout.putConstraint(SpringLayout.EAST, field, field.getComponentWidth(), SpringLayout.WEST, formPanel);
+			innerLayout.putConstraint(SpringLayout.SOUTH, field, field.getComponentHeight(), SpringLayout.NORTH, field);
+			innerLayout.putConstraint(SpringLayout.EAST, field, field.getComponentWidth(), SpringLayout.WEST, field);
 			formPanel.add(field);
-			
-			h += (field.getComponentHeight() + VERT_PADDING);
+
+			int h = (field.getComponentHeight() + 10);
+			for (int i = 1; i < fields.size(); i++)
+			{
+				field = fields.get(i);
+				innerLayout.putConstraint(SpringLayout.NORTH, field, VERT_PADDING, SpringLayout.SOUTH, fields.get(i-1));
+				innerLayout.putConstraint(SpringLayout.WEST, field, 0, SpringLayout.WEST, formPanel);
+				innerLayout.putConstraint(SpringLayout.SOUTH, field, field.getComponentHeight() + VERT_PADDING, SpringLayout.SOUTH, fields.get(i-1));
+				innerLayout.putConstraint(SpringLayout.EAST, field, field.getComponentWidth(), SpringLayout.WEST, formPanel);
+				formPanel.add(field);
+
+				h += (field.getComponentHeight() + VERT_PADDING);
+			}
+
+			formPanel.setPreferredSize(new Dimension(240, h));
 		}
-		
-		formPanel.setPreferredSize(new Dimension(240, h));
+	}
+	
+	public void addComponent(CompoundComponent component)
+	{
+		fields.add(component);
+		buildForm();
+	}
+	
+	public void removeAll()
+	{
+		fields.clear();
+		buildForm();
 	}
 	
 	//Get a list of all the current values
@@ -147,6 +168,14 @@ public class XmlSubform extends CompoundComponent {
 				break;
 			}
 		}
+	}
+	
+	/**Get the number of elements added to the form.
+	 * @return the length of the {@link #fields} array list.
+	 */
+	public int length()
+	{
+		return this.fields.size();
 	}
 	
 	@Override

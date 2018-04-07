@@ -93,7 +93,7 @@ public abstract class Mob extends Entity{
 			{
 				if (stats.getChild(e.getName()) != null)
 				{
-					e.getAttribute("value").setValue(stats.getChild(e.getName()).getAttributeValue("value"));
+					e.getAttribute("value").setValue(stats.getChild(e.getName()).getText());
 				}
 			}
 		}
