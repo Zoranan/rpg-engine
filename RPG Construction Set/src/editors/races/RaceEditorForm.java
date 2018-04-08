@@ -127,6 +127,7 @@ public class RaceEditorForm extends XmlForm {
 			nameID.addContent(createGenderElement());
 			racesDoc.getRootElement().addContent(nameID);
 			XmlLoader.writeXML(racesDoc);
+			this.racesDoc = XmlLoader.readXML(Handler.getRootDirectory() + "/races.xml");
 			
 			this.clearForm();
 			if (onSave != null)
@@ -156,6 +157,7 @@ public class RaceEditorForm extends XmlForm {
 		editElement.addContent(createGenderElement());
 		
 		XmlLoader.writeXML(racesDoc);
+		this.racesDoc = XmlLoader.readXML(Handler.getRootDirectory() + "/races.xml");
 	}
 	
 	@Override

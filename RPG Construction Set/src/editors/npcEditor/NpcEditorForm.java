@@ -85,8 +85,6 @@ public class NpcEditorForm extends XmlForm {
 		raceSelect.addSelectAction(new Action() {
 			@Override
 			public void action() {
-//				hairComboBox.setOptions(getLimbOptions("hair"));
-//				headComboBox.setOptions(getLimbOptions("head"));
 				buildLimbSelectionForm();
 			}
 		});
@@ -359,6 +357,7 @@ public class NpcEditorForm extends XmlForm {
 	{
 		//This form has to be rebuilt after the data is loaded
 		customLimbs.removeAll();
+		loadDocs();
 		
 		for (CompoundComponent field : fields)
 		{
@@ -395,6 +394,13 @@ public class NpcEditorForm extends XmlForm {
 				field.setValue(editElement.getChildText(field.getNodeName()));
 			}
 		}
+	}
+	
+	@Override
+	public void clearForm()
+	{
+		super.clearForm();
+		this.customLimbs.removeAll();
 	}
 
 }

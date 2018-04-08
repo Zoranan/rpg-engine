@@ -149,7 +149,7 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 		});
 		
 		//Depth register
-		this.compDepthReg.setMode(LabeledTextBox.CharacterMode.NUMERIC);
+		this.compDepthReg.setCharacterMode(LabeledTextBox.CharacterMode.NUMERIC);
 		this.compDepthReg.setKeyTypedAction(new Action(){
 			@Override
 			public void action() {
@@ -164,7 +164,7 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 			}
 		});
 		//Depth register
-		this.compSolidBounds.setMode(LabeledTextBox.CharacterMode.NUMERIC);
+		this.compSolidBounds.setCharacterMode(LabeledTextBox.CharacterMode.NUMERIC);
 		this.compSolidBounds.setValidChars(",");
 		this.compSolidBounds.setKeyTypedAction(new Action(){
 			@Override
@@ -173,7 +173,7 @@ public class EnvironmentalEntityForm extends XmlForm implements Runnable {
 			}
 		});
 		//Depth register
-		this.compTotalBounds.setMode(LabeledTextBox.CharacterMode.NUMERIC);
+		this.compTotalBounds.setCharacterMode(LabeledTextBox.CharacterMode.NUMERIC);
 		this.compTotalBounds.setValidChars(",");
 		this.compTotalBounds.setKeyTypedAction(new Action(){
 			@Override

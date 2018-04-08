@@ -8,6 +8,10 @@ import dev.zoranan.utils.TextValidator;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**A simple labeled text field. Child of {@link CompoundComponent}.
+ * @author Will
+ *
+ */
 public class LabeledTextBox extends CompoundComponent {
 	public static enum CharacterMode {ALL, ALPHA, NUMERIC, ALPHA_NUMERIC};
 	protected JTextField txtSelectionField;
@@ -17,7 +21,9 @@ public class LabeledTextBox extends CompoundComponent {
 	protected Action keyTypeAction;
 	
 	/**
-	 * Create the panel.
+	 * Creates a new {@link LabeledTextBox}.
+	 * @param labelTxt The label lext that appears to the left of the text box on the form.
+	 * @param nodeName The name of the xml node that this CompoundComponent is associated with. 
 	 */
 	public LabeledTextBox(String labelTxt, String nodeName) 
 	{
@@ -72,48 +78,65 @@ public class LabeledTextBox extends CompoundComponent {
 	
 	//FUNCTIONS
 	
-	public void setEditable (boolean b)
+	/**Sets if the text field is editable or not
+	 * @param isEditable If true, the text field is editable. Otherwise, it is not editable.
+	 */
+	public void setEditable (boolean isEditable)
 	{
-		this.txtSelectionField.setEditable(b);
+		this.txtSelectionField.setEditable(isEditable);
 	}
 	
+	/**Gets the text field component within this {@link LabeledTextBox}
+	 * @return The JTextField Component of this form element
+	 */
 	public JTextField getTextField()
 	{
 		return this.txtSelectionField;
 	}
 	
+	/* (non-Javadoc)
+	 * @see editors.compoundObjects.CompoundComponent#setValue(java.lang.String)
+	 */
 	@Override
-	public void setValue(String s)
+	public void setValue(String value)
 	{
-		this.txtSelectionField.setText(s);
+		this.txtSelectionField.setText(value);
 	}
 	
-	public void setMode(CharacterMode cm)
+	/**Sets which characters are acceptable in this text field. 
+	 * @param cm The character mode that determines which characters are acceptable
+	 */
+	public void setCharacterMode(CharacterMode cm)
 	{
 		this.mode = cm;
 	}
 	
+	/**Sets a list of additional valid characters for the text field.<br/> 
+	 * These characters will pass by the CharacterMode filter.
+	 * @param chars A string containing all characters that are allowed to pass through the the CharacterMode filter. 
+	 */
 	public void setValidChars(String chars)
 	{
 		this.validChars = chars.toCharArray();
 	}
 	
-	//Custom actions for our key typed action
-	public void setKeyTypedAction(Action a)
+	
+	/**Sets an action to be performed when the user types anything into the text field.
+	 * @param action The {@link Action} interface to be triggered when text is typed
+	 */
+	public void setKeyTypedAction(Action action)
 	{
-		this.keyTypeAction = a;
+		this.keyTypeAction = action;
 	}
 	
+	/**Gets the text entered into this CompoundComponent's JTextField.
+	 * @return A string of text from the JTextField.
+	 * @see editors.compoundObjects.CompoundComponent#getValue()
+	 */
 	@Override
 	public String getValue()
 	{
 		return this.txtSelectionField.getText();
-	}
-	
-	@Override
-	public int getComponentWidth()
-	{
-		return 300;
 	}
 	
 	@Override

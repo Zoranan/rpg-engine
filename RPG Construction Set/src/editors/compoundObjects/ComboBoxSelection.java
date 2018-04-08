@@ -10,12 +10,19 @@ import javax.swing.JComboBox;
 import javax.swing.SpringLayout;
 import javax.swing.text.JTextComponent;
 
+/**A Labeled ComboBox
+ * @author Will
+ *
+ */
 public class ComboBoxSelection extends LabeledTextBox {
 	private JComboBox<String> comboBox;
 	private DefaultComboBoxModel<String> model;
 	private Action onChangeAction;
 	/**
-	 * Create the panel.
+	 * Create a labeled ComboBox
+	 * @param labelTxt The text to be displayed to the left of this component on the form.
+	 * @param nodeName The name of the xml node that this component is associated with.
+	 * @param options The options to be populated into the JComboBox. 
 	 */
 	public ComboBoxSelection(String labelTxt, String nodeName, String[] options)
 	{

@@ -4,10 +4,7 @@
     <name>Carl Junior</name>
     <raceID>white</raceID>
     <sex>male</sex>
-    <limbs>
-      <head>whiteMaleHead</head>
-      <leftFoot>whiteMaleLeftFoot</leftFoot>
-    </limbs>
+    <limbs />
     <stats>
       <strength>6</strength>
       <intelligence>4</intelligence>

@@ -55,10 +55,10 @@ public class ItemEditorForm extends XmlForm {
 											};
 		
 		compType.setEditable(true);
-		compType.setMode(LabeledTextBox.CharacterMode.ALPHA);
-		compStackSize.setMode(LabeledTextBox.CharacterMode.NUMERIC);
+		compType.setCharacterMode(LabeledTextBox.CharacterMode.ALPHA);
+		compStackSize.setCharacterMode(LabeledTextBox.CharacterMode.NUMERIC);
 		compStackSize.setValue("1");
-		compBaseValue.setMode(LabeledTextBox.CharacterMode.NUMERIC);
+		compBaseValue.setCharacterMode(LabeledTextBox.CharacterMode.NUMERIC);
 		compBaseValue.setValue("0");
 		
 		//This will make sure the value within the field is kept above 0

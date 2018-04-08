@@ -5,13 +5,21 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 
-public class CompoundComponent  extends JPanel{
+/**A commonly used, pre-defined form element consisting of multiple swing components
+ * @author Will
+ *
+ */
+public abstract class CompoundComponent  extends JPanel{
 	protected String nodeName;
 	protected String labelText;
 	protected JLabel lblLabel;
 	protected SpringLayout springLayout;
 	protected int height = 22;
 
+	/**Creates a new {@link CompoundComponent}.
+	 * @param labelTxt The label for this field shown in the form.
+	 * @param nodeName The name of the XML node this element is associated with.
+	 */
 	public CompoundComponent(String labelTxt, String nodeName)
 	{
 		this.nodeName = nodeName; 
@@ -35,16 +43,25 @@ public class CompoundComponent  extends JPanel{
 		
 	}
 	
-	public void setHeight(int h)
+	/**Sets the height of this field
+	 * @param height
+	 */
+	public void setHeight(int height)
 	{
-		this.height = h;
+		this.height = height;
 	}
 	
-	public void setValue(String s)
+	/**Sets the value entered into this field
+	 * @param value The desired value to be entered into the field
+	 */
+	public void setValue(String value)
 	{
 		
 	}
 	
+	/**Reset this Component to its default value
+	 * 
+	 */
 	public void clear()
 	{
 		setValue("");
@@ -60,6 +77,9 @@ public class CompoundComponent  extends JPanel{
 		return this.labelText;
 	}
 	
+	/**Gets the value entered into this Component's field as a String
+	 * @return The value entered into this Component
+	 */
 	public String getValue()
 	{
 		return "";
