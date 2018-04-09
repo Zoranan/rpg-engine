@@ -1,6 +1,5 @@
 package editors.compoundObjects;
 
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
@@ -53,21 +52,27 @@ public class ComboBoxSelection extends LabeledTextBox {
 		add(comboBox);
 	}
 	
+	/**Creates a labeled ComboBox with no options
+	 * @param labelTxt The label text displayed to the left of the component on the form
+	 * @param nodeName The name of the xml node that this component is associated with
+	 */
 	public ComboBoxSelection(String labelTxt, String nodeName)
 	{
 		this (labelTxt, nodeName, new String[0]);
 	}
 	
-	public void addActionListener(ActionListener al)
+	/**Adds an Action interface to be triggered whenever the combo box selection changes
+	 * @param action The action interface to be triggered.
+	 */
+	public void setSelectionChangeAction(Action action)
 	{
-		this.comboBox.addActionListener(al);
+		this.onChangeAction = action;
 	}
 	
-	public void setSelectionChangeAction(Action a)
-	{
-		this.onChangeAction = a;
-	}
-	
+	/**Sets the available options in the ComboBox to be selected from.
+	 * @param options A string array of possible selection options.
+	 * @see #setOptions(ArrayList)
+	 */
 	public void setOptions(String[] options)
 	{
 		model.removeAllElements();
@@ -76,6 +81,10 @@ public class ComboBoxSelection extends LabeledTextBox {
 			model.addElement(options[i]);
 	}
 	
+	/**Sets the available options in the ComboBox to be selected from.
+	 * @param options A string ArrayList of possible selection options.
+	 * @see #setOptions(String[])
+	 */
 	public void setOptions(ArrayList<String> options)
 	{
 		model.removeAllElements();
@@ -84,17 +93,31 @@ public class ComboBoxSelection extends LabeledTextBox {
 			model.addElement(options.get(i));
 	}
 	
+	
+	/**Sets is the combo box is editable or not.
+	 * @param b If true, the comboBox is selectable. Otherwise, it's not selectable.
+	 * @see editors.compoundObjects.LabeledTextBox#setEditable(boolean)
+	 */
+	@Override
 	public void setEditable(boolean b)
 	{
 		comboBox.setEditable(b);
 	}
 	
+	/**Sets if the ComboBox is enabled or disabled
+	 * @see editors.compoundObjects.LabeledTextBox#setEnabled(boolean)
+	 */
 	@Override
 	public void setEnabled(boolean b)
 	{
 		comboBox.setEnabled(b);
 	}
 	
+	/**If the ComboBox accepts custom values, the value of the ComboBox is set to the passed in string.<br/>
+	 * Otherwise, {@link #setSelection(String)} is called.
+	 * @param s The value to set our ComboBox to.
+	 * @see editors.compoundObjects.LabeledTextBox#setValue(java.lang.String)
+	 */
 	@Override
 	public void setValue(String s)
 	{
@@ -104,8 +127,12 @@ public class ComboBoxSelection extends LabeledTextBox {
 			setSelection(s);
 	}
 	
-	//Attempts to set the selection to one that exists in the combo box model
-	//If an empty string is passed in, we select the first option
+	
+	/**Attempts to set the selection to one that exists in the combo box model. <br/>
+	 * If an empty string is passed in, we select the first option.
+	 * If the String is not empty, and does not exist as an option in the combo box model, it is added to the model, and set as the current option.
+	 * @param s The value to select in the ComboBox
+	 */
 	public void setSelection(String s)
 	{
 		if (s.isEmpty() || s == null)
@@ -135,6 +162,10 @@ public class ComboBoxSelection extends LabeledTextBox {
 			comboBox.setSelectedIndex(0);
 	}
 	
+	/**Gets the text entered, or the current selection of the ComboBox.
+	 * @return The value in the ComboBox as a String.
+	 * @see editors.compoundObjects.LabeledTextBox#getValue()
+	 */
 	@Override
 	public String getValue()
 	{	

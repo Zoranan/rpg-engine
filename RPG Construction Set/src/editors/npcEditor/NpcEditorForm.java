@@ -293,7 +293,7 @@ public class NpcEditorForm extends XmlForm {
 			Element current = new Element(fields[i].getNodeName());
 			if (fields[i] instanceof XmlMultiSelection)
 			{
-				ArrayList<String> items = ((XmlMultiSelection) fields[i]).getListItems();
+				ArrayList<String> items = ((XmlMultiSelection) fields[i]).getValuesList();
 				for (int j = 0; j < items.size(); j++)
 				{
 					current.addContent(new Element ("list").addContent(items.get(j)));

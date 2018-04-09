@@ -8,6 +8,13 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.ScrollPaneConstants;
 
+/**A {@link CompoundComponent} Consisting of a JLabel to the left, and a JScrollPane to the right.<br/>
+ * This Component is a container for other CompoundComponents. It has its own xml node associated with it, 
+ * and all Components within this Component have their own xml node associated with them. This allows for 
+ * a nested "group" xml node to be created.
+ * @author Will
+ *
+ */
 public class XmlSubform extends CompoundComponent {
 	public final int VERT_PADDING = 0;
 	private SpringLayout innerLayout;
@@ -15,8 +22,11 @@ public class XmlSubform extends CompoundComponent {
 	private JScrollPane scrollPane;
 	private ArrayList<CompoundComponent> fields;
 	private ArrayList<String> values;
-	/**
-	 * Create the panel.
+	
+	/**Creates an XmlSubform with 3 parameters.
+	 * @param label The text to be displayed to the left of this component on the form.
+	 * @param nodeName The name of the xml node that this component is associated with.
+	 * @param fields A list of components to be displayed in the subform
 	 */
 	public XmlSubform(String label, String nodeName, ArrayList<CompoundComponent> fields) 
 	{
@@ -36,17 +46,30 @@ public class XmlSubform extends CompoundComponent {
 		buildForm();
 	}
 	
+	/**Creates an XmlSubform with 4 parameters.
+	 * @param label The text to be displayed to the left of this component on the form.
+	 * @param nodeName The name of the xml node that this component is associated with.
+	 * @param fields A list of components to be displayed in the subform
+	 * @param values A list of default values for each field in the subform (parallel with the "fields" list).
+	 */
 	public XmlSubform(String label, String nodeName, ArrayList<CompoundComponent> fields, ArrayList<String> values) 
 	{
 		this(label, nodeName, fields);
 		this.setValues(values);
 	}
 	
+	/**Creates an empty XmlSubform with 2 parameters.
+	 * @param label The text to be displayed to the left of this component on the form.
+	 * @param nodeName The name of the xml node that this component is associated with.
+	 */
 	public XmlSubform(String label, String nodeName) 
 	{
 		this(label, nodeName, new ArrayList<CompoundComponent>());
 	}
 	
+	/**
+	 * Builds the subform from the components currently in {@link #fields}.
+	 */
 	public void buildForm()
 	{
 		
@@ -81,12 +104,19 @@ public class XmlSubform extends CompoundComponent {
 		}
 	}
 	
+	/**Adds a CompoundComponent to the {@link #fields} list, and rebuilds the form. All fields are added from top to bottom.
+	 * @param component The CompoundComponent to be added.
+	 */
 	public void addComponent(CompoundComponent component)
 	{
 		fields.add(component);
 		buildForm();
 	}
 	
+	/**
+	 * Removes all  CompoundComponents from {@link #fields} and rebuilds the form (now empty).
+	 */
+	@Override
 	public void removeAll()
 	{
 		fields.clear();
@@ -94,6 +124,9 @@ public class XmlSubform extends CompoundComponent {
 	}
 	
 	//Get a list of all the current values
+	/**Creates an ArrayList of values from the form Components in {@link #fields}.
+	 * @return A list of String values from each form Component.
+	 */
 	public ArrayList<String> getValues()
 	{
 		ArrayList<String> list = new ArrayList<String>();
@@ -107,6 +140,9 @@ public class XmlSubform extends CompoundComponent {
 	}
 	
 	//Get a list of all label texts
+	/**Creates an ArrayList of values from the form Component labels in {@link #fields}.
+	 * @return A list of String values from each form Component's label.
+	 */
 	public ArrayList<String> getLabelTexts()
 	{
 		ArrayList<String> list = new ArrayList<String>();
@@ -120,6 +156,9 @@ public class XmlSubform extends CompoundComponent {
 	}
 	
 	//Get a list of all node names
+	/**Creates an ArrayList of values from the form Component xml nodes in {@link #fields}.
+	 * @return A list of String values from each form Component's node name.
+	 */
 	public ArrayList<String> getNodeNames()
 	{
 		ArrayList<String> list = new ArrayList<String>();
@@ -133,6 +172,9 @@ public class XmlSubform extends CompoundComponent {
 	}
 	
 	//Set the values of each element in the form
+	/**Sets each form component's value to its corresponding value in the passed in ArrayList. 
+	 * @param values The list of values to set the form components to.
+	 */
 	public void setValues(ArrayList<String> values)
 	{
 		this.values = values;
@@ -145,6 +187,10 @@ public class XmlSubform extends CompoundComponent {
 	}
 	
 	//Set value by nodeName
+	/**Sets the value of the first inner component found with the passed in nodeName, to the passed in value.
+	 * @param nodeName The nodeName of the component.
+	 * @param value The value to set that component to.
+	 */
 	public void setValueAtNode (String nodeName, String value)
 	{
 		for (int i = 0; i < fields.size(); i++)
@@ -158,6 +204,10 @@ public class XmlSubform extends CompoundComponent {
 	}
 	
 	//Set value by Label text
+	/**Sets the value of the first inner component found with the passed in label text, to the passed in value.
+	 * @param labelTxt The label text of the component.
+	 * @param value The value to set that component to.
+	 */
 	public void setValueAtLabel (String labelTxt, String value)
 	{
 		for (int i = 0; i < fields.size(); i++)

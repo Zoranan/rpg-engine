@@ -140,7 +140,7 @@ public class RaceEditorForm extends XmlForm {
 	{
 		Element sex = new Element (fields[0].getValue());
 		
-		ArrayList<String> list = ((XmlMultiSelection) fields[1]).getListItems();
+		ArrayList<String> list = ((XmlMultiSelection) fields[1]).getValuesList();
 		for (String s : list)
 		{
 			sex.addContent(new Element("list").addContent(s));

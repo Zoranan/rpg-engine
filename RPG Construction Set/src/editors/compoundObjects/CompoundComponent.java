@@ -17,8 +17,8 @@ public abstract class CompoundComponent  extends JPanel{
 	protected int height = 22;
 
 	/**Creates a new {@link CompoundComponent}.
-	 * @param labelTxt The label for this field shown in the form.
-	 * @param nodeName The name of the XML node this element is associated with.
+	 * @param labelTxt The text to be displayed to the left of this component on the form.
+	 * @param nodeName The name of the xml node that this component is associated with.
 	 */
 	public CompoundComponent(String labelTxt, String nodeName)
 	{
@@ -37,6 +37,10 @@ public abstract class CompoundComponent  extends JPanel{
 		
 	}
 	
+	/**Enables, or disables the editable components of this CompoundComponent.
+	 * @param b If true, the editable components are enabled. If false, they are disabled.
+	 * @see javax.swing.JComponent#setEnabled(boolean)
+	 */
 	@Override
 	public void setEnabled(boolean b)
 	{

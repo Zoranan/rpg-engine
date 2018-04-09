@@ -212,7 +212,7 @@ public class ItemEditorForm extends XmlForm {
 				if (fields[i] instanceof XmlMultiSelection)
 				{
 					Element listElement = new Element (fields[i].getNodeName());
-					ArrayList<String> items = ((XmlMultiSelection) fields[i]).getListItems();
+					ArrayList<String> items = ((XmlMultiSelection) fields[i]).getValuesList();
 					for (int j = 0; j < items.size(); j++)
 					{
 						listElement.addContent(new Element ("list").addContent(items.get(j)));
@@ -249,7 +249,7 @@ public class ItemEditorForm extends XmlForm {
 				current.detach();
 				current = new Element(current.getName());
 				//Now start adding elements
-				ArrayList<String> list = field.getListItems();
+				ArrayList<String> list = field.getValuesList();
 				for (String s : list)
 				{
 					current.addContent(new Element("list").addContent(s));

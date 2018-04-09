@@ -17,6 +17,10 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**A {@link CompoundComponent} consisting of a JLabel to the left, a JList in the middle, and a JButton to the right.<br/>
+ * Clicking the JButton allows the user to select one or more elements from an xml file (specified in the constructor)
+ * @author Will
+ */
 public class XmlMultiSelection extends CompoundComponent {
 	private JList<String> list;
 	private DefaultListModel<String> model;
@@ -24,8 +28,10 @@ public class XmlMultiSelection extends CompoundComponent {
 	private String xmlName;
 	private SpringLayout springLayout;
 	private JScrollPane scrollPane;
-	/**
-	 * Create the panel.
+	
+	/**Creates a new XmlMultiSelection from two parameters
+	 * @param labelTxt The text to be displayed to the left of this component on the form.
+	 * @param nodeName The name of the xml node that this component is associated with.
 	 */
 	public XmlMultiSelection(String labelTxt, String nodeName) 
 	{
@@ -73,6 +79,10 @@ public class XmlMultiSelection extends CompoundComponent {
 	}
 	
 	/**
+	 * @param labelTxt The text to be displayed to the left of this component on the form.
+	 * @param nodeName The name of the xml node that this component is associated with.
+	 * @param xmlPath The path to the xml file this Component can select elements from.
+	 * @param xmlName The title displayed at the top of the selection window.
 	 * @wbp.parser.constructor
 	 */
 	public XmlMultiSelection (String labelTxt, String nodeName, String xmlPath, String xmlName)
@@ -80,11 +90,13 @@ public class XmlMultiSelection extends CompoundComponent {
 		this (labelTxt, nodeName);
 		this.xmlPath = xmlPath;
 		this.xmlName = xmlName;
-		
-		
 	}
 	
-	public void defaultOnClick()
+	/**The default action for the JButton to the right of the JList.<br/>
+	 * Creates a selection window that loads elements from the xml file set in the constructor. 
+	 * If no xmlPath was set in the constructor, nothing happens.
+	 */
+	private void defaultOnClick()
 	{
 		if (this.xmlPath != null)
 		{
@@ -110,12 +122,20 @@ public class XmlMultiSelection extends CompoundComponent {
 		}
 	}
 	
-	public void addValue(String v)
+	/**Adds a String value to the JList
+	 * @param value The List item to be added.
+	 */
+	public void addValue(String value)
 	{
-		model.addElement(v);
+		model.addElement(value);
 	}
 	
-	public void listKeyboardShortcut(KeyEvent e)
+	
+	/**Processes key events from the JList.<br/>
+	 * The 'DEL' key removes an item from the JList
+	 * @param e The key event to be processed.
+	 */
+	private void listKeyboardShortcut(KeyEvent e)
 	{
 		if (e.getKeyChar() == KeyEvent.VK_DELETE && list.getSelectedIndex() >= 0)
 		{
@@ -123,7 +143,10 @@ public class XmlMultiSelection extends CompoundComponent {
 		}
 	}
 	
-	public ArrayList<String> getListItems()
+	/**Creates an ArrayList of all items contained in the JList.
+	 * @return A list of values currently in the JList.
+	 */
+	public ArrayList<String> getValuesList()
 	{
 		ArrayList<String> listItems = new ArrayList<String>();
 		
